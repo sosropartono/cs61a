@@ -1,5 +1,6 @@
 """CS 61A Presents The Game of Hog."""
 
+from unittest import result
 from dice import six_sided, four_sided, make_test_dice
 from ucb import main, trace, interact
 
@@ -22,6 +23,19 @@ def roll_dice(num_rolls, dice=six_sided):
     assert num_rolls > 0, 'Must roll at least once.'
     # BEGIN PROBLEM 1
     "*** YOUR CODE HERE ***"
+    counter, sum, checker = 0, 0, False
+    while counter < num_rolls:
+        result = dice()
+        if result == 1:
+            checker = True
+            counter += 1
+        else:
+            sum += result
+            counter += 1
+    if checker == True:
+        return 1
+    return sum
+
     # END PROBLEM 1
 
 
@@ -32,6 +46,12 @@ def picky_piggy(score):
     """
     # BEGIN PROBLEM 2
     "*** YOUR CODE HERE ***"
+    ones = score % 10
+    tens = score - (ones) // 10
+    calculation = 2 * tens - ones
+    if calculation < 1:
+        return 1
+    return calculation
     # END PROBLEM 2
 
 
