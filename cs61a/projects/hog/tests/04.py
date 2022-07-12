@@ -6,7 +6,7 @@ test = {
       'cases': [
         {
           'code': r"""
-          >>> hog_pile(25, 43)
+          >>> pigs_on_prime(25, 43)
           962aea5f59fc55bd65ccacf4603c8f22
           # locked
           """,
@@ -16,7 +16,17 @@ test = {
         },
         {
           'code': r"""
-          >>> hog_pile(32, 33)
+          >>> pigs_on_prime(7, 7) # Remember that we return the number of ADDITIONAL points the current player gains!
+          edcbd82ba98a8122be244fa325c62071
+          # locked
+          """,
+          'hidden': False,
+          'locked': True,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> pigs_on_prime(32, 33)
           962aea5f59fc55bd65ccacf4603c8f22
           # locked
           """,
@@ -26,8 +36,8 @@ test = {
         },
         {
           'code': r"""
-          >>> hog_pile(7, 7)
-          c42887e7b9ffe8fc26bb57b61329f916
+          >>> pigs_on_prime(11, 26)
+          46caef5ffd6d72c8757279cbcf01b12f
           # locked
           """,
           'hidden': False,
@@ -36,39 +46,9 @@ test = {
         },
         {
           'code': r"""
-          >>> hog_pile(26, 26)
-          d234f38b1fd45e21dcab1ed25bde7266
-          # locked
-          """,
-          'hidden': False,
-          'locked': True,
-          'multiline': False
-        },
-        {
-          'code': r"""
-          >>> hog_pile(23, 23)
-          d4e635123d3bf027954fb7a6e4ca8cdb
-          # locked
-          """,
-          'hidden': False,
-          'locked': True,
-          'multiline': False
-        },
-        {
-          'code': r"""
-          >>> hog_pile(193, 42)
-          962aea5f59fc55bd65ccacf4603c8f22
-          # locked
-          """,
-          'hidden': False,
-          'locked': True,
-          'multiline': False
-        },
-        {
-          'code': r"""
-          >>> a = hog_pile(187, 187)
+          >>> a = pigs_on_prime(5, 5)
           >>> a # check that the value is being returned, not printed
-          43c964966d827257fe87fa130c9abbac
+          46caef5ffd6d72c8757279cbcf01b12f
           # locked
           """,
           'hidden': False,
@@ -77,7 +57,7 @@ test = {
         },
         {
           'code': r"""
-          >>> hog_pile(64, 67)
+          >>> pigs_on_prime(22, 42)
           0
           """,
           'hidden': False,
@@ -86,8 +66,8 @@ test = {
         },
         {
           'code': r"""
-          >>> hog_pile(12, 72)
-          0
+          >>> pigs_on_prime(3, 60)
+          2
           """,
           'hidden': False,
           'locked': False,
@@ -95,7 +75,7 @@ test = {
         },
         {
           'code': r"""
-          >>> hog_pile(72, 22)
+          >>> pigs_on_prime(14, 13)
           0
           """,
           'hidden': False,
@@ -104,7 +84,7 @@ test = {
         },
         {
           'code': r"""
-          >>> hog_pile(3, 56)
+          >>> pigs_on_prime(87, 55)
           0
           """,
           'hidden': False,
@@ -113,7 +93,7 @@ test = {
         },
         {
           'code': r"""
-          >>> hog_pile(439, 709)
+          >>> pigs_on_prime(24, 90)
           0
           """,
           'hidden': False,
@@ -122,7 +102,7 @@ test = {
         },
         {
           'code': r"""
-          >>> hog_pile(61, 16)
+          >>> pigs_on_prime(308, 686)
           0
           """,
           'hidden': False,
@@ -131,7 +111,7 @@ test = {
         },
         {
           'code': r"""
-          >>> hog_pile(99, 84)
+          >>> pigs_on_prime(10, 45)
           0
           """,
           'hidden': False,
@@ -140,7 +120,7 @@ test = {
         },
         {
           'code': r"""
-          >>> hog_pile(25, 67)
+          >>> pigs_on_prime(75, 89)
           0
           """,
           'hidden': False,
@@ -149,8 +129,8 @@ test = {
         },
         {
           'code': r"""
-          >>> hog_pile(5, 90)
-          0
+          >>> pigs_on_prime(29, 9)
+          2
           """,
           'hidden': False,
           'locked': False,
@@ -158,7 +138,7 @@ test = {
         },
         {
           'code': r"""
-          >>> hog_pile(54, 56)
+          >>> pigs_on_prime(0, 20)
           0
           """,
           'hidden': False,
@@ -167,8 +147,8 @@ test = {
         },
         {
           'code': r"""
-          >>> hog_pile(15, 64)
-          0
+          >>> pigs_on_prime(13, 37)
+          4
           """,
           'hidden': False,
           'locked': False,
@@ -176,8 +156,8 @@ test = {
         },
         {
           'code': r"""
-          >>> hog_pile(80, 91)
-          0
+          >>> pigs_on_prime(11, 18)
+          2
           """,
           'hidden': False,
           'locked': False,
@@ -185,8 +165,8 @@ test = {
         },
         {
           'code': r"""
-          >>> hog_pile(6, 2)
-          0
+          >>> pigs_on_prime(43, 5)
+          4
           """,
           'hidden': False,
           'locked': False,
@@ -194,7 +174,7 @@ test = {
         },
         {
           'code': r"""
-          >>> hog_pile(74, 16)
+          >>> pigs_on_prime(15, 32)
           0
           """,
           'hidden': False,
@@ -203,7 +183,7 @@ test = {
         },
         {
           'code': r"""
-          >>> hog_pile(12, 22)
+          >>> pigs_on_prime(70, 41)
           0
           """,
           'hidden': False,
@@ -212,8 +192,8 @@ test = {
         },
         {
           'code': r"""
-          >>> hog_pile(12, 5)
-          0
+          >>> pigs_on_prime(47, 33)
+          6
           """,
           'hidden': False,
           'locked': False,
@@ -221,7 +201,7 @@ test = {
         },
         {
           'code': r"""
-          >>> hog_pile(69, 65)
+          >>> pigs_on_prime(51, 24)
           0
           """,
           'hidden': False,
@@ -230,7 +210,7 @@ test = {
         },
         {
           'code': r"""
-          >>> hog_pile(15, 6)
+          >>> pigs_on_prime(94, 67)
           0
           """,
           'hidden': False,
@@ -239,8 +219,8 @@ test = {
         },
         {
           'code': r"""
-          >>> hog_pile(69, 62)
-          0
+          >>> pigs_on_prime(23, 55)
+          6
           """,
           'hidden': False,
           'locked': False,
@@ -248,7 +228,7 @@ test = {
         },
         {
           'code': r"""
-          >>> hog_pile(98, 40)
+          >>> pigs_on_prime(18, 32)
           0
           """,
           'hidden': False,
@@ -257,8 +237,8 @@ test = {
         },
         {
           'code': r"""
-          >>> hog_pile(15, 95)
-          0
+          >>> pigs_on_prime(73, 55)
+          6
           """,
           'hidden': False,
           'locked': False,
@@ -266,8 +246,8 @@ test = {
         },
         {
           'code': r"""
-          >>> hog_pile(56, 4)
-          0
+          >>> pigs_on_prime(97, 66)
+          4
           """,
           'hidden': False,
           'locked': False,
@@ -275,7 +255,7 @@ test = {
         },
         {
           'code': r"""
-          >>> hog_pile(44, 64)
+          >>> pigs_on_prime(58, 28)
           0
           """,
           'hidden': False,
@@ -284,8 +264,8 @@ test = {
         },
         {
           'code': r"""
-          >>> hog_pile(40, 73)
-          0
+          >>> pigs_on_prime(37, 3)
+          4
           """,
           'hidden': False,
           'locked': False,
@@ -293,7 +273,7 @@ test = {
         },
         {
           'code': r"""
-          >>> hog_pile(192, 343)
+          >>> pigs_on_prime(0, 31)
           0
           """,
           'hidden': False,
@@ -302,8 +282,8 @@ test = {
         },
         {
           'code': r"""
-          >>> hog_pile(90, 15)
-          0
+          >>> pigs_on_prime(7, 76)
+          4
           """,
           'hidden': False,
           'locked': False,
@@ -311,7 +291,7 @@ test = {
         },
         {
           'code': r"""
-          >>> hog_pile(6, 48)
+          >>> pigs_on_prime(94, 97)
           0
           """,
           'hidden': False,
@@ -320,8 +300,8 @@ test = {
         },
         {
           'code': r"""
-          >>> hog_pile(72, 31)
-          0
+          >>> pigs_on_prime(79, 50)
+          4
           """,
           'hidden': False,
           'locked': False,
@@ -329,7 +309,7 @@ test = {
         },
         {
           'code': r"""
-          >>> hog_pile(5, 22)
+          >>> pigs_on_prime(63, 89)
           0
           """,
           'hidden': False,
@@ -338,7 +318,7 @@ test = {
         },
         {
           'code': r"""
-          >>> hog_pile(34, 40)
+          >>> pigs_on_prime(351, 947)
           0
           """,
           'hidden': False,
@@ -347,8 +327,8 @@ test = {
         },
         {
           'code': r"""
-          >>> hog_pile(45, 45)
-          45
+          >>> pigs_on_prime(20, 39)
+          0
           """,
           'hidden': False,
           'locked': False,
@@ -356,7 +336,7 @@ test = {
         },
         {
           'code': r"""
-          >>> hog_pile(16, 98)
+          >>> pigs_on_prime(16, 49)
           0
           """,
           'hidden': False,
@@ -365,7 +345,7 @@ test = {
         },
         {
           'code': r"""
-          >>> hog_pile(5, 54)
+          >>> pigs_on_prime(628, 783)
           0
           """,
           'hidden': False,
@@ -374,7 +354,7 @@ test = {
         },
         {
           'code': r"""
-          >>> hog_pile(88, 66)
+          >>> pigs_on_prime(39, 98)
           0
           """,
           'hidden': False,
@@ -383,7 +363,7 @@ test = {
         },
         {
           'code': r"""
-          >>> hog_pile(85, 68)
+          >>> pigs_on_prime(14, 17)
           0
           """,
           'hidden': False,
@@ -392,8 +372,8 @@ test = {
         },
         {
           'code': r"""
-          >>> hog_pile(55, 33)
-          0
+          >>> pigs_on_prime(5, 48)
+          2
           """,
           'hidden': False,
           'locked': False,
@@ -401,7 +381,7 @@ test = {
         },
         {
           'code': r"""
-          >>> hog_pile(30, 40)
+          >>> pigs_on_prime(16, 41)
           0
           """,
           'hidden': False,
@@ -410,7 +390,7 @@ test = {
         },
         {
           'code': r"""
-          >>> hog_pile(844, 251)
+          >>> pigs_on_prime(80, 53)
           0
           """,
           'hidden': False,
@@ -419,8 +399,8 @@ test = {
         },
         {
           'code': r"""
-          >>> hog_pile(53, 83)
-          0
+          >>> pigs_on_prime(37, 2)
+          4
           """,
           'hidden': False,
           'locked': False,
@@ -428,7 +408,7 @@ test = {
         },
         {
           'code': r"""
-          >>> hog_pile(41, 64)
+          >>> pigs_on_prime(55, 37)
           0
           """,
           'hidden': False,
@@ -437,7 +417,7 @@ test = {
         },
         {
           'code': r"""
-          >>> hog_pile(7, 37)
+          >>> pigs_on_prime(8, 15)
           0
           """,
           'hidden': False,
@@ -446,7 +426,7 @@ test = {
         },
         {
           'code': r"""
-          >>> hog_pile(12, 98)
+          >>> pigs_on_prime(99, 20)
           0
           """,
           'hidden': False,
@@ -455,7 +435,7 @@ test = {
         },
         {
           'code': r"""
-          >>> hog_pile(92, 14)
+          >>> pigs_on_prime(66, 25)
           0
           """,
           'hidden': False,
@@ -464,7 +444,7 @@ test = {
         },
         {
           'code': r"""
-          >>> hog_pile(49, 21)
+          >>> pigs_on_prime(8, 42)
           0
           """,
           'hidden': False,
@@ -473,7 +453,7 @@ test = {
         },
         {
           'code': r"""
-          >>> hog_pile(45, 59)
+          >>> pigs_on_prime(21, 96)
           0
           """,
           'hidden': False,
@@ -482,7 +462,7 @@ test = {
         },
         {
           'code': r"""
-          >>> hog_pile(643, 892)
+          >>> pigs_on_prime(12, 14)
           0
           """,
           'hidden': False,
@@ -491,7 +471,7 @@ test = {
         },
         {
           'code': r"""
-          >>> hog_pile(40, 58)
+          >>> pigs_on_prime(70, 38)
           0
           """,
           'hidden': False,
@@ -500,7 +480,7 @@ test = {
         },
         {
           'code': r"""
-          >>> hog_pile(71, 8)
+          >>> pigs_on_prime(30, 72)
           0
           """,
           'hidden': False,
@@ -509,7 +489,7 @@ test = {
         },
         {
           'code': r"""
-          >>> hog_pile(81, 68)
+          >>> pigs_on_prime(18, 54)
           0
           """,
           'hidden': False,
@@ -518,8 +498,8 @@ test = {
         },
         {
           'code': r"""
-          >>> hog_pile(40, 54)
-          0
+          >>> pigs_on_prime(23, 98)
+          6
           """,
           'hidden': False,
           'locked': False,
@@ -527,7 +507,7 @@ test = {
         },
         {
           'code': r"""
-          >>> hog_pile(11, 33)
+          >>> pigs_on_prime(12, 79)
           0
           """,
           'hidden': False,
@@ -536,7 +516,7 @@ test = {
         },
         {
           'code': r"""
-          >>> hog_pile(96, 73)
+          >>> pigs_on_prime(94, 48)
           0
           """,
           'hidden': False,
@@ -545,8 +525,8 @@ test = {
         },
         {
           'code': r"""
-          >>> hog_pile(11, 13)
-          0
+          >>> pigs_on_prime(71, 22)
+          2
           """,
           'hidden': False,
           'locked': False,
@@ -554,7 +534,7 @@ test = {
         },
         {
           'code': r"""
-          >>> hog_pile(37, 61)
+          >>> pigs_on_prime(45, 98)
           0
           """,
           'hidden': False,
@@ -563,7 +543,7 @@ test = {
         },
         {
           'code': r"""
-          >>> hog_pile(2, 15)
+          >>> pigs_on_prime(25, 29)
           0
           """,
           'hidden': False,
@@ -572,7 +552,7 @@ test = {
         },
         {
           'code': r"""
-          >>> hog_pile(39, 72)
+          >>> pigs_on_prime(69, 26)
           0
           """,
           'hidden': False,
@@ -581,8 +561,8 @@ test = {
         },
         {
           'code': r"""
-          >>> hog_pile(399, 192)
-          0
+          >>> pigs_on_prime(37, 49)
+          4
           """,
           'hidden': False,
           'locked': False,
@@ -590,8 +570,8 @@ test = {
         },
         {
           'code': r"""
-          >>> hog_pile(5, 22)
-          0
+          >>> pigs_on_prime(3, 29)
+          2
           """,
           'hidden': False,
           'locked': False,
@@ -599,7 +579,7 @@ test = {
         },
         {
           'code': r"""
-          >>> hog_pile(23, 25)
+          >>> pigs_on_prime(648, 685)
           0
           """,
           'hidden': False,
@@ -608,7 +588,7 @@ test = {
         },
         {
           'code': r"""
-          >>> hog_pile(205, 663)
+          >>> pigs_on_prime(75, 80)
           0
           """,
           'hidden': False,
@@ -617,7 +597,7 @@ test = {
         },
         {
           'code': r"""
-          >>> hog_pile(70, 10)
+          >>> pigs_on_prime(498, 89)
           0
           """,
           'hidden': False,
@@ -626,7 +606,7 @@ test = {
         },
         {
           'code': r"""
-          >>> hog_pile(34, 16)
+          >>> pigs_on_prime(62, 50)
           0
           """,
           'hidden': False,
@@ -635,7 +615,7 @@ test = {
         },
         {
           'code': r"""
-          >>> hog_pile(81, 9)
+          >>> pigs_on_prime(45, 21)
           0
           """,
           'hidden': False,
@@ -644,7 +624,7 @@ test = {
         },
         {
           'code': r"""
-          >>> hog_pile(11, 87)
+          >>> pigs_on_prime(63, 1)
           0
           """,
           'hidden': False,
@@ -653,7 +633,7 @@ test = {
         },
         {
           'code': r"""
-          >>> hog_pile(38, 54)
+          >>> pigs_on_prime(18, 78)
           0
           """,
           'hidden': False,
@@ -662,8 +642,8 @@ test = {
         },
         {
           'code': r"""
-          >>> hog_pile(63, 40)
-          0
+          >>> pigs_on_prime(2, 76)
+          1
           """,
           'hidden': False,
           'locked': False,
@@ -671,7 +651,7 @@ test = {
         },
         {
           'code': r"""
-          >>> hog_pile(51, 77)
+          >>> pigs_on_prime(75, 56)
           0
           """,
           'hidden': False,
@@ -680,7 +660,7 @@ test = {
         },
         {
           'code': r"""
-          >>> hog_pile(74, 69)
+          >>> pigs_on_prime(55, 94)
           0
           """,
           'hidden': False,
@@ -689,7 +669,7 @@ test = {
         },
         {
           'code': r"""
-          >>> hog_pile(39, 36)
+          >>> pigs_on_prime(444, 719)
           0
           """,
           'hidden': False,
@@ -698,7 +678,7 @@ test = {
         },
         {
           'code': r"""
-          >>> hog_pile(73, 90)
+          >>> pigs_on_prime(39, 17)
           0
           """,
           'hidden': False,
@@ -707,8 +687,8 @@ test = {
         },
         {
           'code': r"""
-          >>> hog_pile(114, 792)
-          0
+          >>> pigs_on_prime(97, 64)
+          4
           """,
           'hidden': False,
           'locked': False,
@@ -716,8 +696,8 @@ test = {
         },
         {
           'code': r"""
-          >>> hog_pile(11, 55)
-          0
+          >>> pigs_on_prime(73, 74)
+          6
           """,
           'hidden': False,
           'locked': False,
@@ -725,7 +705,7 @@ test = {
         },
         {
           'code': r"""
-          >>> hog_pile(46, 74)
+          >>> pigs_on_prime(44, 89)
           0
           """,
           'hidden': False,
@@ -734,7 +714,7 @@ test = {
         },
         {
           'code': r"""
-          >>> hog_pile(46, 10)
+          >>> pigs_on_prime(80, 89)
           0
           """,
           'hidden': False,
@@ -743,7 +723,7 @@ test = {
         },
         {
           'code': r"""
-          >>> hog_pile(9, 73)
+          >>> pigs_on_prime(58, 2)
           0
           """,
           'hidden': False,
@@ -752,7 +732,7 @@ test = {
         },
         {
           'code': r"""
-          >>> hog_pile(19, 81)
+          >>> pigs_on_prime(99, 54)
           0
           """,
           'hidden': False,
@@ -761,7 +741,7 @@ test = {
         },
         {
           'code': r"""
-          >>> hog_pile(7, 0)
+          >>> pigs_on_prime(585, 850)
           0
           """,
           'hidden': False,
@@ -770,7 +750,7 @@ test = {
         },
         {
           'code': r"""
-          >>> hog_pile(596, 980)
+          >>> pigs_on_prime(74, 7)
           0
           """,
           'hidden': False,
@@ -779,7 +759,7 @@ test = {
         },
         {
           'code': r"""
-          >>> hog_pile(23, 40)
+          >>> pigs_on_prime(44, 61)
           0
           """,
           'hidden': False,
@@ -788,7 +768,7 @@ test = {
         },
         {
           'code': r"""
-          >>> hog_pile(74, 67)
+          >>> pigs_on_prime(86, 26)
           0
           """,
           'hidden': False,
@@ -797,7 +777,7 @@ test = {
         },
         {
           'code': r"""
-          >>> hog_pile(38, 83)
+          >>> pigs_on_prime(84, 25)
           0
           """,
           'hidden': False,
@@ -806,7 +786,7 @@ test = {
         },
         {
           'code': r"""
-          >>> hog_pile(56, 46)
+          >>> pigs_on_prime(76, 58)
           0
           """,
           'hidden': False,
@@ -815,7 +795,7 @@ test = {
         },
         {
           'code': r"""
-          >>> hog_pile(3, 27)
+          >>> pigs_on_prime(6, 92)
           0
           """,
           'hidden': False,
@@ -824,7 +804,7 @@ test = {
         },
         {
           'code': r"""
-          >>> hog_pile(39, 0)
+          >>> pigs_on_prime(81, 75)
           0
           """,
           'hidden': False,
@@ -833,7 +813,7 @@ test = {
         },
         {
           'code': r"""
-          >>> hog_pile(89, 56)
+          >>> pigs_on_prime(10, 47)
           0
           """,
           'hidden': False,
@@ -842,7 +822,7 @@ test = {
         },
         {
           'code': r"""
-          >>> hog_pile(13, 68)
+          >>> pigs_on_prime(91, 3)
           0
           """,
           'hidden': False,
@@ -851,7 +831,7 @@ test = {
         },
         {
           'code': r"""
-          >>> hog_pile(44, 28)
+          >>> pigs_on_prime(86, 39)
           0
           """,
           'hidden': False,
@@ -860,7 +840,7 @@ test = {
         },
         {
           'code': r"""
-          >>> hog_pile(59, 15)
+          >>> pigs_on_prime(80, 33)
           0
           """,
           'hidden': False,
@@ -869,7 +849,7 @@ test = {
         },
         {
           'code': r"""
-          >>> hog_pile(79, 49)
+          >>> pigs_on_prime(87, 74)
           0
           """,
           'hidden': False,
@@ -878,8 +858,8 @@ test = {
         },
         {
           'code': r"""
-          >>> hog_pile(4, 22)
-          0
+          >>> pigs_on_prime(7, 81)
+          4
           """,
           'hidden': False,
           'locked': False,
@@ -887,7 +867,7 @@ test = {
         },
         {
           'code': r"""
-          >>> hog_pile(31, 67)
+          >>> pigs_on_prime(72, 87)
           0
           """,
           'hidden': False,
@@ -896,8 +876,8 @@ test = {
         },
         {
           'code': r"""
-          >>> hog_pile(82, 93)
-          0
+          >>> pigs_on_prime(83, 2)
+          6
           """,
           'hidden': False,
           'locked': False,
@@ -905,7 +885,7 @@ test = {
         },
         {
           'code': r"""
-          >>> hog_pile(67, 18)
+          >>> pigs_on_prime(69, 96)
           0
           """,
           'hidden': False,
@@ -914,7 +894,7 @@ test = {
         },
         {
           'code': r"""
-          >>> hog_pile(4, 24)
+          >>> pigs_on_prime(63, 22)
           0
           """,
           'hidden': False,
@@ -923,7 +903,7 @@ test = {
         },
         {
           'code': r"""
-          >>> hog_pile(64, 67)
+          >>> pigs_on_prime(40, 49)
           0
           """,
           'hidden': False,
@@ -932,7 +912,7 @@ test = {
         },
         {
           'code': r"""
-          >>> hog_pile(19, 62)
+          >>> pigs_on_prime(92, 5)
           0
           """,
           'hidden': False,
@@ -941,7 +921,7 @@ test = {
         },
         {
           'code': r"""
-          >>> hog_pile(38, 97)
+          >>> pigs_on_prime(34, 31)
           0
           """,
           'hidden': False,
@@ -950,7 +930,7 @@ test = {
         },
         {
           'code': r"""
-          >>> hog_pile(51, 53)
+          >>> pigs_on_prime(58, 5)
           0
           """,
           'hidden': False,
@@ -959,8 +939,8 @@ test = {
         },
         {
           'code': r"""
-          >>> hog_pile(52, 63)
-          0
+          >>> pigs_on_prime(79, 34)
+          4
           """,
           'hidden': False,
           'locked': False,
@@ -968,8 +948,8 @@ test = {
         },
         {
           'code': r"""
-          >>> hog_pile(57, 40)
-          0
+          >>> pigs_on_prime(59, 68)
+          2
           """,
           'hidden': False,
           'locked': False,

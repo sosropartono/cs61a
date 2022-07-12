@@ -1,63 +1,21 @@
 test = {
   'name': 'Question 7',
-  'points': 3,
+  'points': 2,
   'suites': [
     {
       'cases': [
         {
-          'answer': '1b26ada5a58db30444f6f64d80a11c53',
+          'answer': '6d36cf85dceafad42b3816d0df5734e3',
           'choices': [
-            r"""
-            A commentary function that prints information about the
-            biggest point increase for the current player.
-            """,
-            r"""
-            A string containing the largest point increase for the
-            current player.
-            """,
-            r"""
-            The current largest point increase between both
-            players.
-            """
+            'A message.',
+            'A player.',
+            'A message and a player (in that order).',
+            'A player and a message (in that order).'
           ],
           'hidden': False,
           'locked': True,
           'multiline': False,
-          'question': 'What does announce_highest return?'
-        },
-        {
-          'answer': '7d886fd7ff35daff80023a8393a95a32',
-          'choices': [
-            r"""
-            When the current player, given by the parameter `who`,
-            earns their biggest point increase yet in the game.
-            """,
-            'After each turn.',
-            r"""
-            When the current player, given by the parameter `who`,
-            earns the biggest point increase yet between both
-            players in the game.
-            """
-          ],
-          'hidden': False,
-          'locked': True,
-          'multiline': False,
-          'question': r"""
-          When does the commentary function returned by announce_highest
-          print something out?
-          """
-        },
-        {
-          'answer': '0d5dba16a5bd53ef6b0ab8e64a1a60fe',
-          'choices': [
-            'The last highest gain for the current player.',
-            "The relevant player's score before this turn.",
-            "The opponent's score before this turn."
-          ],
-          'hidden': False,
-          'locked': True,
-          'multiline': False,
-          'question': 'What does the parameter last_score represent?'
+          'question': 'What does a commentary function return?'
         }
       ],
       'scored': False,
@@ -67,27 +25,12 @@ test = {
       'cases': [
         {
           'code': r"""
-          >>> # this might not technically be a possible game for the current rules, this shouldn't be relevant
-          >>> f0 = announce_highest(1) # Only announce Player 1 score gains
-          >>> f1 = f0(12, 0)
-          >>> f2 = f1(12, 10)
-          10 point(s)! That's a record gain for Player 1!
-          >>> f3 = f2(20, 10)
-          >>> f4 = f3(22, 20)
-          >>> f5 = f4(22, 35)
-          15 point(s)! That's a record gain for Player 1!
-          >>> f6 = f5(30, 47) # Player 1 gets 12 points; not enough for a new high
-          >>> f7 = f6(31, 47)
-          >>> f8 = f7(32, 77)
-          30 point(s)! That's a record gain for Player 1!
-          >>> f9 = f8(83, 32)
-          >>> f10 = f9(38, 83)
-          51 point(s)! That's a record gain for Player 1!
-          >>> # The following function call checks if the behavior of f1 changes,
-          >>> # perhaps due to a side effect other than printing. The only side
-          >>> # effect of a commentary function should be to print.
-          >>> f2_again = f1(11, 9)
-          9 point(s)! That's a record gain for Player 1!
+          >>> #
+          >>> s0, s1 = play(always_roll(1), always_roll(1), dice=make_test_dice(4, 6, 4), goal=10, say=announce_lead_changes)
+          Player 0 takes the lead by 4
+          Player 1 takes the lead by 2
+          Player 0 takes the lead by 2
+          Player 1 takes the lead by 2
           """,
           'hidden': False,
           'locked': False,
@@ -96,10 +39,125 @@ test = {
         {
           'code': r"""
           >>> #
-          >>> announce_both = both(announce_highest(0), announce_highest(1))
-          >>> s0, s1 = play(always_roll(1), always_roll(1), dice=make_test_dice(5, 3, 5), goal=10, say=announce_both)
-          5 point(s)! That's a record gain for Player 0!
-          3 point(s)! That's a record gain for Player 1!
+          >>> s0, s1 = play(always_roll(1), always_roll(2), dice=make_test_dice(1, 3, 3), goal=10, say=announce_lead_changes)
+          Player 0 takes the lead by 2
+          Player 1 takes the lead by 4
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> #
+          >>> def echo(s0, s1, player=None):
+          ...     return player, f"{s0} {s1}" # message of the form: "s0 s1"
+          >>> s0, s1 = play(always_roll(1), always_roll(1), dice=make_test_dice(3), goal=6, say=echo) # Remember pigs on prime!
+          791e80e4872c37c0b77421f6211d8e54
+          6e3b797d0348d34c68cc3caeb6bc49f7
+          5a7d3511c2b271dc7566cdcc93c504e9
+          # locked
+          """,
+          'hidden': False,
+          'locked': True,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> def count(n):
+          ...     def say(s0, s1, curr_count=None):
+          ...         if curr_count is None:
+          ...           curr_count = n
+          ...         return curr_count + 1, str(curr_count) + " " + str(s0)
+          ...     return say
+          >>> s0, s1 = play(always_roll(1), always_roll(1), dice=make_test_dice(5), goal=15, say=count(1))
+          65778d21a5651e6f07c0edda625d4d25
+          3ffe50afce5e5610d9cecba2a566c86d
+          721f0b1ab817deaa5cac39327411c19e
+          461ff541bd06a2e3310447d10cc6615b
+          0eae6eedf96692954917ccec3fde1e1a
+          # locked
+          """,
+          'hidden': False,
+          'locked': True,
+          'multiline': False
+        }
+      ],
+      'scored': True,
+      'setup': r"""
+      >>> from hog import play, always_roll, announce_lead_changes
+      >>> from dice import make_test_dice
+      """,
+      'teardown': '',
+      'type': 'doctest'
+    },
+    {
+      'cases': [
+        {
+          'code': r"""
+          >>> #
+          >>> def echo(s0, s1, player=None):
+          ...     return player, str(s0) + " " + str(s1)
+          >>> strat0 = lambda score, opponent: 1 - opponent // 10
+          >>> strat1 = always_roll(3)
+          >>> s0, s1 = play(strat0, strat1, dice=make_test_dice(4, 2, 6), goal=15, say=echo)
+          f4d41f4e29a08f003e0a9a5473c61d5e
+          461ff541bd06a2e3310447d10cc6615b
+          ab92c2ead3d7b80c5e86a0a280dc94b5
+          f6e85b18fc8f82a2883888dfe553eba8
+          # locked
+          """,
+          'hidden': False,
+          'locked': True,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> #
+          >>> def total(s0, s1, player=None):
+          ...     return player, str(s0 + s1)
+          >>> s0, s1 = play(always_roll(1), always_roll(1), dice=make_test_dice(2, 5), goal=10, say=total)
+          16e2cf37e8254529473d9e0a36b75fcb
+          70e71b420a966665c548a3bb2cb30d7d
+          26dad951f8e75106f151e4085e117edd
+          25c20617047858d41b4c21bd68b1bd5b
+          # locked
+          """,
+          'hidden': False,
+          'locked': True,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> #
+          >>> def echo_0(s0, s1, player=None):
+          ...     return player, f"* {s0}" # message of the form: "* s0"
+          >>> def echo_1(s0, s1, player=None):
+          ...     return player, f"** {s1}" # message of the form: "** s1"
+          >>> s0, s1 = play(always_roll(1), always_roll(1), dice=make_test_dice(2), goal=5, say=both(echo_0, echo_1))
+          e58117f80b57e46a3f1b2fbf34c8d330
+          4a64fe964dc771a219ed773c3a146c75
+          e58117f80b57e46a3f1b2fbf34c8d330
+          24ba9ce1d94be52f2551b89d6547398c
+          85020533317ed0d716a2776b0db86a0e
+          24ba9ce1d94be52f2551b89d6547398c
+          # locked
+          """,
+          'hidden': False,
+          'locked': True,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> #
+          >>> s0, s1 = play(always_roll(3), always_roll(3), dice=make_test_dice(1, 2, 3, 3), goal=8, say=both(say_scores, announce_lead_changes))
+          Player 0 now has 2 and now Player 1 has 0
+          Player 0 takes the lead by 2
+          Player 0 now has 2 and now Player 1 has 2
+          Player 0 now has 5 and now Player 1 has 2
+          Player 0 takes the lead by 3
+          Player 0 now has 5 and now Player 1 has 10
+          Player 1 takes the lead by 5
           """,
           'hidden': False,
           'locked': False,
@@ -108,7 +166,7 @@ test = {
       ],
       'scored': True,
       'setup': r"""
-      >>> from hog import play, always_roll, announce_highest, both
+      >>> from hog import play, always_roll, both, announce_lead_changes, say_scores
       >>> from dice import make_test_dice
       """,
       'teardown': '',

@@ -26,12 +26,12 @@ def take_turn(prev_rolls, move_history, goal, game_rules):
     fair_dice = dice.make_fair_dice(6)
     dice_results = []
 
-    hog_pile = game_rules["Hog Pile"]
+    pigs_on_prime = game_rules["Pigs on Prime"]
 
     try:
-        old_hog_pile = hog.hog_pile
-        if not hog_pile:
-            hog.hog_pile = lambda score0, score1: 0
+        old_pigs_on_prime = hog.pigs_on_prime
+        if not pigs_on_prime:
+            hog.pigs_on_prime = lambda score0, score1: 0
 
         def logged_dice():
             if len(dice_results) < len(prev_rolls):
@@ -46,17 +46,15 @@ def take_turn(prev_rolls, move_history, goal, game_rules):
         who = 0
 
         commentary = hog.both(
-            hog.announce_highest(0),
-            hog.both(hog.announce_highest(1), hog.announce_lead_changes()),
+            hog.say_scores,
+            hog.announce_lead_changes,
         )
 
         def log(*logged_scores):
-            nonlocal final_message, commentary
-            f = io.StringIO()
-            with redirect_stdout(f):
-                commentary = commentary(*logged_scores)
-            final_message = f.getvalue()
-            return log
+            nonlocal final_message
+            leader, message = commentary(*logged_scores)
+            final_message = message
+            return leader, message
 
         move_cnt = 0
 
@@ -93,7 +91,7 @@ def take_turn(prev_rolls, move_history, goal, game_rules):
         else:
             game_over = True
     finally:
-        hog.hog_pile = old_hog_pile
+        hog.pigs_on_prime = old_pigs_on_prime
 
     return {
         "rolls": dice_results,
@@ -107,8 +105,8 @@ def take_turn(prev_rolls, move_history, goal, game_rules):
 @route
 def strategy(name, scores):
     STRATEGIES = {
-        "picky_piggy_strategy": hog.picky_piggy_strategy,
-        "hog_pile_strategy": hog.hog_pile_strategy,
+        "oink_points_strategy": hog.oink_points_strategy,
+        "pigs_on_prime_strategy": hog.pigs_on_prime_strategy,
         "final_strategy": hog.final_strategy,
     }
     return STRATEGIES[name](*scores[::-1])
@@ -126,17 +124,6 @@ def draw_dice_graphic(num, no_default=False):
     except ModuleNotFoundError:
         pass
     return default_graphics.dice[num]
-
-
-def safe(commentary):
-    def new_commentary(*args, **kwargs):
-        try:
-            result = commentary(*args, **kwargs)
-        except TypeError:
-            result = commentary
-        return safe(result)
-
-    return new_commentary
 
 
 def trace_play(play, strategy0, strategy1, score0, score1, dice, goal, say):
@@ -176,15 +163,17 @@ def trace_play(play, strategy0, strategy1, score0, score1, dice, goal, say):
         game_trace[-1]["dice_values"].append(roll)
         return roll
 
-    s0, s1 = play(
-        lambda a, b: mod_strategy(0, a, b),
-        lambda a, b: mod_strategy(1, a, b),
-        score0,
-        score1,
-        dice=mod_dice,
-        goal=goal,
-        say=safe(say),
-    )
+    f = io.StringIO()
+    with redirect_stdout(f):
+        s0, s1 = play(
+            lambda a, b: mod_strategy(0, a, b),
+            lambda a, b: mod_strategy(1, a, b),
+            score0,
+            score1,
+            dice=mod_dice,
+            goal=goal,
+            say=say,
+        )
     return s0, s1, game_trace
 
 

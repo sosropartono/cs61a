@@ -51,13 +51,12 @@ def trace_play(play, strategy0, strategy1, score0, score1, dice, goal, say):
     return s0, s1, game_trace
 
 def safe(commentary):
-    def new_commentary(*args, **kwargs):
+    def new_commentary(score0, score1, leader=None):
         try:
-            result = commentary(*args, **kwargs)
+            leader, message = commentary(score0, score1, leader)
         except TypeError as e:
             print("Error in commentary function")
-            result = commentary
-        return safe(result)
+        return leader, message
     return new_commentary
 
 def describe_game(hog, test_number, score0, score1, goal):

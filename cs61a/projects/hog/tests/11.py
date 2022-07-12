@@ -6,7 +6,7 @@ test = {
       'cases': [
         {
           'code': r"""
-          >>> hog_pile_strategy(2, 10, cutoff=10, num_rolls=6)
+          >>> pigs_on_prime_strategy(15, 34, threshold=3, num_rolls=6)
           962aea5f59fc55bd65ccacf4603c8f22
           # locked
           """,
@@ -16,7 +16,7 @@ test = {
         },
         {
           'code': r"""
-          >>> hog_pile_strategy(30, 54, cutoff=10, num_rolls=6)
+          >>> pigs_on_prime_strategy(30, 54, threshold=10, num_rolls=6)
           327b19ffebddf93982e1ad2a4a6486f4
           # locked
           """,
@@ -26,7 +26,7 @@ test = {
         },
         {
           'code': r"""
-          >>> hog_pile_strategy(20, 36, cutoff=7, num_rolls=6)
+          >>> pigs_on_prime_strategy(19, 32, threshold=7, num_rolls=6)
           962aea5f59fc55bd65ccacf4603c8f22
           # locked
           """,
@@ -36,7 +36,7 @@ test = {
         },
         {
           'code': r"""
-          >>> hog_pile_strategy(24, 5, cutoff=8, num_rolls=6)
+          >>> pigs_on_prime_strategy(24, 5, threshold=8, num_rolls=6)
           327b19ffebddf93982e1ad2a4a6486f4
           # locked
           """,
@@ -47,7 +47,7 @@ test = {
         {
           'code': r"""
           >>> from tests.check_strategy import check_strategy
-          >>> check_strategy(hog_pile_strategy)
+          >>> check_strategy(pigs_on_prime_strategy)
           """,
           'hidden': False,
           'locked': False,
@@ -65,7 +65,16 @@ test = {
       'cases': [
         {
           'code': r"""
-          >>> hog_pile_strategy(44, 47, 0, 4)
+          >>> pigs_on_prime_strategy(97, 22, 15, 7)
+          7
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> pigs_on_prime_strategy(36, 3, 3, 2)
           0
           """,
           'hidden': False,
@@ -74,7 +83,52 @@ test = {
         },
         {
           'code': r"""
-          >>> hog_pile_strategy(37, 12, 8, 10)
+          >>> pigs_on_prime_strategy(78, 14, 13, 6)
+          0
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> pigs_on_prime_strategy(46, 87, 5, 1)
+          0
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> pigs_on_prime_strategy(78, 64, 7, 10)
+          0
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> pigs_on_prime_strategy(0, 19, 14, 10)
+          0
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> pigs_on_prime_strategy(39, 10, 13, 10)
+          0
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> pigs_on_prime_strategy(34, 8, 11, 10)
           10
           """,
           'hidden': False,
@@ -83,52 +137,7 @@ test = {
         },
         {
           'code': r"""
-          >>> hog_pile_strategy(40, 15, 13, 9)
-          9
-          """,
-          'hidden': False,
-          'locked': False,
-          'multiline': False
-        },
-        {
-          'code': r"""
-          >>> hog_pile_strategy(24, 3, 8, 1)
-          1
-          """,
-          'hidden': False,
-          'locked': False,
-          'multiline': False
-        },
-        {
-          'code': r"""
-          >>> hog_pile_strategy(46, 55, 5, 2)
-          2
-          """,
-          'hidden': False,
-          'locked': False,
-          'multiline': False
-        },
-        {
-          'code': r"""
-          >>> hog_pile_strategy(99, 78, 15, 7)
-          7
-          """,
-          'hidden': False,
-          'locked': False,
-          'multiline': False
-        },
-        {
-          'code': r"""
-          >>> hog_pile_strategy(10, 73, 3, 5)
-          5
-          """,
-          'hidden': False,
-          'locked': False,
-          'multiline': False
-        },
-        {
-          'code': r"""
-          >>> hog_pile_strategy(47, 68, 3, 4)
+          >>> pigs_on_prime_strategy(0, 23, 9, 9)
           0
           """,
           'hidden': False,
@@ -137,214 +146,7 @@ test = {
         },
         {
           'code': r"""
-          >>> hog_pile_strategy(67, 84, 17, 10)
-          10
-          """,
-          'hidden': False,
-          'locked': False,
-          'multiline': False
-        },
-        {
-          'code': r"""
-          >>> hog_pile_strategy(92, 54, 1, 7)
-          0
-          """,
-          'hidden': False,
-          'locked': False,
-          'multiline': False
-        },
-        {
-          'code': r"""
-          >>> hog_pile_strategy(9, 15, 0, 2)
-          0
-          """,
-          'hidden': False,
-          'locked': False,
-          'multiline': False
-        },
-        {
-          'code': r"""
-          >>> hog_pile_strategy(25, 63, 16, 2)
-          2
-          """,
-          'hidden': False,
-          'locked': False,
-          'multiline': False
-        },
-        {
-          'code': r"""
-          >>> hog_pile_strategy(75, 27, 6, 2)
-          2
-          """,
-          'hidden': False,
-          'locked': False,
-          'multiline': False
-        },
-        {
-          'code': r"""
-          >>> hog_pile_strategy(82, 48, 10, 1)
-          1
-          """,
-          'hidden': False,
-          'locked': False,
-          'multiline': False
-        },
-        {
-          'code': r"""
-          >>> hog_pile_strategy(88, 12, 7, 10)
-          0
-          """,
-          'hidden': False,
-          'locked': False,
-          'multiline': False
-        },
-        {
-          'code': r"""
-          >>> hog_pile_strategy(72, 12, 5, 8)
-          0
-          """,
-          'hidden': False,
-          'locked': False,
-          'multiline': False
-        },
-        {
-          'code': r"""
-          >>> hog_pile_strategy(41, 69, 1, 5)
-          0
-          """,
-          'hidden': False,
-          'locked': False,
-          'multiline': False
-        },
-        {
-          'code': r"""
-          >>> hog_pile_strategy(15, 6, 16, 7)
-          7
-          """,
-          'hidden': False,
-          'locked': False,
-          'multiline': False
-        },
-        {
-          'code': r"""
-          >>> hog_pile_strategy(42, 19, 5, 2)
-          2
-          """,
-          'hidden': False,
-          'locked': False,
-          'multiline': False
-        },
-        {
-          'code': r"""
-          >>> hog_pile_strategy(93, 98, 8, 4)
-          4
-          """,
-          'hidden': False,
-          'locked': False,
-          'multiline': False
-        },
-        {
-          'code': r"""
-          >>> hog_pile_strategy(99, 90, 15, 10)
-          10
-          """,
-          'hidden': False,
-          'locked': False,
-          'multiline': False
-        },
-        {
-          'code': r"""
-          >>> hog_pile_strategy(73, 79, 4, 1)
-          1
-          """,
-          'hidden': False,
-          'locked': False,
-          'multiline': False
-        },
-        {
-          'code': r"""
-          >>> hog_pile_strategy(4, 44, 0, 5)
-          0
-          """,
-          'hidden': False,
-          'locked': False,
-          'multiline': False
-        },
-        {
-          'code': r"""
-          >>> hog_pile_strategy(83, 40, 9, 7)
-          7
-          """,
-          'hidden': False,
-          'locked': False,
-          'multiline': False
-        },
-        {
-          'code': r"""
-          >>> hog_pile_strategy(34, 3, 0, 8)
-          0
-          """,
-          'hidden': False,
-          'locked': False,
-          'multiline': False
-        },
-        {
-          'code': r"""
-          >>> hog_pile_strategy(4, 62, 15, 7)
-          7
-          """,
-          'hidden': False,
-          'locked': False,
-          'multiline': False
-        },
-        {
-          'code': r"""
-          >>> hog_pile_strategy(53, 62, 6, 1)
-          1
-          """,
-          'hidden': False,
-          'locked': False,
-          'multiline': False
-        },
-        {
-          'code': r"""
-          >>> hog_pile_strategy(19, 56, 8, 9)
-          9
-          """,
-          'hidden': False,
-          'locked': False,
-          'multiline': False
-        },
-        {
-          'code': r"""
-          >>> hog_pile_strategy(1, 5, 0, 4)
-          0
-          """,
-          'hidden': False,
-          'locked': False,
-          'multiline': False
-        },
-        {
-          'code': r"""
-          >>> hog_pile_strategy(85, 34, 8, 1)
-          0
-          """,
-          'hidden': False,
-          'locked': False,
-          'multiline': False
-        },
-        {
-          'code': r"""
-          >>> hog_pile_strategy(37, 37, 13, 5)
-          5
-          """,
-          'hidden': False,
-          'locked': False,
-          'multiline': False
-        },
-        {
-          'code': r"""
-          >>> hog_pile_strategy(82, 87, 16, 3)
+          >>> pigs_on_prime_strategy(56, 0, 9, 3)
           3
           """,
           'hidden': False,
@@ -353,7 +155,43 @@ test = {
         },
         {
           'code': r"""
-          >>> hog_pile_strategy(87, 43, 5, 7)
+          >>> pigs_on_prime_strategy(26, 62, 13, 6)
+          6
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> pigs_on_prime_strategy(1, 69, 11, 5)
+          5
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> pigs_on_prime_strategy(25, 72, 11, 6)
+          0
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> pigs_on_prime_strategy(43, 15, 0, 5)
+          0
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> pigs_on_prime_strategy(13, 15, 18, 7)
           7
           """,
           'hidden': False,
@@ -362,7 +200,34 @@ test = {
         },
         {
           'code': r"""
-          >>> hog_pile_strategy(20, 7, 2, 3)
+          >>> pigs_on_prime_strategy(61, 47, 1, 1)
+          0
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> pigs_on_prime_strategy(75, 51, 11, 6)
+          6
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> pigs_on_prime_strategy(41, 94, 3, 2)
+          0
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> pigs_on_prime_strategy(28, 50, 11, 3)
           3
           """,
           'hidden': False,
@@ -371,8 +236,8 @@ test = {
         },
         {
           'code': r"""
-          >>> hog_pile_strategy(33, 85, 4, 4)
-          4
+          >>> pigs_on_prime_strategy(46, 21, 18, 1)
+          1
           """,
           'hidden': False,
           'locked': False,
@@ -380,8 +245,8 @@ test = {
         },
         {
           'code': r"""
-          >>> hog_pile_strategy(73, 15, 12, 8)
-          8
+          >>> pigs_on_prime_strategy(40, 29, 9, 8)
+          0
           """,
           'hidden': False,
           'locked': False,
@@ -389,7 +254,16 @@ test = {
         },
         {
           'code': r"""
-          >>> hog_pile_strategy(5, 98, 8, 2)
+          >>> pigs_on_prime_strategy(57, 21, 1, 3)
+          0
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> pigs_on_prime_strategy(29, 50, 16, 2)
           2
           """,
           'hidden': False,
@@ -398,7 +272,7 @@ test = {
         },
         {
           'code': r"""
-          >>> hog_pile_strategy(15, 76, 3, 4)
+          >>> pigs_on_prime_strategy(40, 74, 5, 6)
           0
           """,
           'hidden': False,
@@ -407,34 +281,7 @@ test = {
         },
         {
           'code': r"""
-          >>> hog_pile_strategy(33, 75, 19, 5)
-          5
-          """,
-          'hidden': False,
-          'locked': False,
-          'multiline': False
-        },
-        {
-          'code': r"""
-          >>> hog_pile_strategy(9, 41, 0, 5)
-          0
-          """,
-          'hidden': False,
-          'locked': False,
-          'multiline': False
-        },
-        {
-          'code': r"""
-          >>> hog_pile_strategy(70, 91, 7, 6)
-          6
-          """,
-          'hidden': False,
-          'locked': False,
-          'multiline': False
-        },
-        {
-          'code': r"""
-          >>> hog_pile_strategy(64, 35, 12, 3)
+          >>> pigs_on_prime_strategy(51, 0, 10, 3)
           3
           """,
           'hidden': False,
@@ -443,7 +290,43 @@ test = {
         },
         {
           'code': r"""
-          >>> hog_pile_strategy(51, 92, 14, 8)
+          >>> pigs_on_prime_strategy(70, 7, 12, 2)
+          0
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> pigs_on_prime_strategy(50, 94, 1, 10)
+          0
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> pigs_on_prime_strategy(13, 79, 18, 1)
+          1
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> pigs_on_prime_strategy(40, 8, 19, 8)
+          0
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> pigs_on_prime_strategy(89, 32, 19, 8)
           8
           """,
           'hidden': False,
@@ -452,8 +335,8 @@ test = {
         },
         {
           'code': r"""
-          >>> hog_pile_strategy(68, 64, 17, 6)
-          6
+          >>> pigs_on_prime_strategy(21, 20, 7, 8)
+          8
           """,
           'hidden': False,
           'locked': False,
@@ -461,61 +344,7 @@ test = {
         },
         {
           'code': r"""
-          >>> hog_pile_strategy(20, 35, 17, 4)
-          4
-          """,
-          'hidden': False,
-          'locked': False,
-          'multiline': False
-        },
-        {
-          'code': r"""
-          >>> hog_pile_strategy(75, 30, 3, 1)
-          0
-          """,
-          'hidden': False,
-          'locked': False,
-          'multiline': False
-        },
-        {
-          'code': r"""
-          >>> hog_pile_strategy(61, 69, 8, 5)
-          5
-          """,
-          'hidden': False,
-          'locked': False,
-          'multiline': False
-        },
-        {
-          'code': r"""
-          >>> hog_pile_strategy(7, 6, 7, 9)
-          0
-          """,
-          'hidden': False,
-          'locked': False,
-          'multiline': False
-        },
-        {
-          'code': r"""
-          >>> hog_pile_strategy(0, 51, 17, 5)
-          5
-          """,
-          'hidden': False,
-          'locked': False,
-          'multiline': False
-        },
-        {
-          'code': r"""
-          >>> hog_pile_strategy(42, 45, 8, 6)
-          6
-          """,
-          'hidden': False,
-          'locked': False,
-          'multiline': False
-        },
-        {
-          'code': r"""
-          >>> hog_pile_strategy(48, 96, 11, 2)
+          >>> pigs_on_prime_strategy(92, 71, 16, 2)
           2
           """,
           'hidden': False,
@@ -524,25 +353,7 @@ test = {
         },
         {
           'code': r"""
-          >>> hog_pile_strategy(57, 96, 9, 6)
-          6
-          """,
-          'hidden': False,
-          'locked': False,
-          'multiline': False
-        },
-        {
-          'code': r"""
-          >>> hog_pile_strategy(28, 11, 13, 8)
-          8
-          """,
-          'hidden': False,
-          'locked': False,
-          'multiline': False
-        },
-        {
-          'code': r"""
-          >>> hog_pile_strategy(25, 29, 5, 7)
+          >>> pigs_on_prime_strategy(1, 5, 15, 6)
           0
           """,
           'hidden': False,
@@ -551,43 +362,7 @@ test = {
         },
         {
           'code': r"""
-          >>> hog_pile_strategy(69, 2, 15, 8)
-          8
-          """,
-          'hidden': False,
-          'locked': False,
-          'multiline': False
-        },
-        {
-          'code': r"""
-          >>> hog_pile_strategy(77, 26, 7, 9)
-          9
-          """,
-          'hidden': False,
-          'locked': False,
-          'multiline': False
-        },
-        {
-          'code': r"""
-          >>> hog_pile_strategy(85, 15, 0, 3)
-          0
-          """,
-          'hidden': False,
-          'locked': False,
-          'multiline': False
-        },
-        {
-          'code': r"""
-          >>> hog_pile_strategy(79, 86, 5, 7)
-          7
-          """,
-          'hidden': False,
-          'locked': False,
-          'multiline': False
-        },
-        {
-          'code': r"""
-          >>> hog_pile_strategy(35, 32, 14, 6)
+          >>> pigs_on_prime_strategy(71, 39, 2, 6)
           6
           """,
           'hidden': False,
@@ -596,268 +371,7 @@ test = {
         },
         {
           'code': r"""
-          >>> hog_pile_strategy(49, 44, 13, 8)
-          8
-          """,
-          'hidden': False,
-          'locked': False,
-          'multiline': False
-        },
-        {
-          'code': r"""
-          >>> hog_pile_strategy(77, 65, 6, 4)
-          4
-          """,
-          'hidden': False,
-          'locked': False,
-          'multiline': False
-        },
-        {
-          'code': r"""
-          >>> hog_pile_strategy(99, 18, 2, 1)
-          0
-          """,
-          'hidden': False,
-          'locked': False,
-          'multiline': False
-        },
-        {
-          'code': r"""
-          >>> hog_pile_strategy(18, 24, 17, 10)
-          10
-          """,
-          'hidden': False,
-          'locked': False,
-          'multiline': False
-        },
-        {
-          'code': r"""
-          >>> hog_pile_strategy(44, 11, 18, 1)
-          1
-          """,
-          'hidden': False,
-          'locked': False,
-          'multiline': False
-        },
-        {
-          'code': r"""
-          >>> hog_pile_strategy(68, 38, 17, 5)
-          5
-          """,
-          'hidden': False,
-          'locked': False,
-          'multiline': False
-        },
-        {
-          'code': r"""
-          >>> hog_pile_strategy(46, 63, 8, 6)
-          6
-          """,
-          'hidden': False,
-          'locked': False,
-          'multiline': False
-        },
-        {
-          'code': r"""
-          >>> hog_pile_strategy(20, 60, 19, 6)
-          6
-          """,
-          'hidden': False,
-          'locked': False,
-          'multiline': False
-        },
-        {
-          'code': r"""
-          >>> hog_pile_strategy(67, 53, 10, 6)
-          6
-          """,
-          'hidden': False,
-          'locked': False,
-          'multiline': False
-        },
-        {
-          'code': r"""
-          >>> hog_pile_strategy(63, 39, 4, 1)
-          1
-          """,
-          'hidden': False,
-          'locked': False,
-          'multiline': False
-        },
-        {
-          'code': r"""
-          >>> hog_pile_strategy(54, 75, 9, 8)
-          8
-          """,
-          'hidden': False,
-          'locked': False,
-          'multiline': False
-        },
-        {
-          'code': r"""
-          >>> hog_pile_strategy(78, 86, 18, 9)
-          9
-          """,
-          'hidden': False,
-          'locked': False,
-          'multiline': False
-        },
-        {
-          'code': r"""
-          >>> hog_pile_strategy(45, 11, 8, 9)
-          9
-          """,
-          'hidden': False,
-          'locked': False,
-          'multiline': False
-        },
-        {
-          'code': r"""
-          >>> hog_pile_strategy(88, 19, 14, 6)
-          6
-          """,
-          'hidden': False,
-          'locked': False,
-          'multiline': False
-        },
-        {
-          'code': r"""
-          >>> hog_pile_strategy(22, 18, 14, 1)
-          1
-          """,
-          'hidden': False,
-          'locked': False,
-          'multiline': False
-        },
-        {
-          'code': r"""
-          >>> hog_pile_strategy(30, 91, 9, 10)
-          10
-          """,
-          'hidden': False,
-          'locked': False,
-          'multiline': False
-        },
-        {
-          'code': r"""
-          >>> hog_pile_strategy(19, 81, 8, 1)
-          1
-          """,
-          'hidden': False,
-          'locked': False,
-          'multiline': False
-        },
-        {
-          'code': r"""
-          >>> hog_pile_strategy(33, 7, 0, 2)
-          0
-          """,
-          'hidden': False,
-          'locked': False,
-          'multiline': False
-        },
-        {
-          'code': r"""
-          >>> hog_pile_strategy(87, 95, 11, 6)
-          6
-          """,
-          'hidden': False,
-          'locked': False,
-          'multiline': False
-        },
-        {
-          'code': r"""
-          >>> hog_pile_strategy(69, 86, 8, 10)
-          10
-          """,
-          'hidden': False,
-          'locked': False,
-          'multiline': False
-        },
-        {
-          'code': r"""
-          >>> hog_pile_strategy(87, 61, 10, 4)
-          4
-          """,
-          'hidden': False,
-          'locked': False,
-          'multiline': False
-        },
-        {
-          'code': r"""
-          >>> hog_pile_strategy(47, 60, 6, 4)
-          0
-          """,
-          'hidden': False,
-          'locked': False,
-          'multiline': False
-        },
-        {
-          'code': r"""
-          >>> hog_pile_strategy(67, 65, 14, 4)
-          4
-          """,
-          'hidden': False,
-          'locked': False,
-          'multiline': False
-        },
-        {
-          'code': r"""
-          >>> hog_pile_strategy(3, 66, 3, 7)
-          0
-          """,
-          'hidden': False,
-          'locked': False,
-          'multiline': False
-        },
-        {
-          'code': r"""
-          >>> hog_pile_strategy(82, 23, 8, 8)
-          8
-          """,
-          'hidden': False,
-          'locked': False,
-          'multiline': False
-        },
-        {
-          'code': r"""
-          >>> hog_pile_strategy(42, 89, 14, 1)
-          1
-          """,
-          'hidden': False,
-          'locked': False,
-          'multiline': False
-        },
-        {
-          'code': r"""
-          >>> hog_pile_strategy(32, 13, 4, 4)
-          4
-          """,
-          'hidden': False,
-          'locked': False,
-          'multiline': False
-        },
-        {
-          'code': r"""
-          >>> hog_pile_strategy(20, 96, 12, 4)
-          4
-          """,
-          'hidden': False,
-          'locked': False,
-          'multiline': False
-        },
-        {
-          'code': r"""
-          >>> hog_pile_strategy(77, 59, 15, 7)
-          7
-          """,
-          'hidden': False,
-          'locked': False,
-          'multiline': False
-        },
-        {
-          'code': r"""
-          >>> hog_pile_strategy(88, 32, 15, 2)
+          >>> pigs_on_prime_strategy(59, 56, 14, 2)
           2
           """,
           'hidden': False,
@@ -866,7 +380,16 @@ test = {
         },
         {
           'code': r"""
-          >>> hog_pile_strategy(19, 30, 4, 7)
+          >>> pigs_on_prime_strategy(59, 61, 15, 6)
+          6
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> pigs_on_prime_strategy(5, 94, 16, 10)
           0
           """,
           'hidden': False,
@@ -875,8 +398,8 @@ test = {
         },
         {
           'code': r"""
-          >>> hog_pile_strategy(91, 29, 18, 4)
-          4
+          >>> pigs_on_prime_strategy(62, 70, 16, 6)
+          6
           """,
           'hidden': False,
           'locked': False,
@@ -884,7 +407,25 @@ test = {
         },
         {
           'code': r"""
-          >>> hog_pile_strategy(50, 46, 10, 3)
+          >>> pigs_on_prime_strategy(83, 9, 5, 6)
+          6
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> pigs_on_prime_strategy(96, 54, 5, 3)
+          0
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> pigs_on_prime_strategy(54, 8, 15, 3)
           3
           """,
           'hidden': False,
@@ -893,7 +434,52 @@ test = {
         },
         {
           'code': r"""
-          >>> hog_pile_strategy(42, 67, 18, 7)
+          >>> pigs_on_prime_strategy(13, 4, 3, 5)
+          5
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> pigs_on_prime_strategy(66, 25, 2, 8)
+          0
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> pigs_on_prime_strategy(56, 55, 8, 6)
+          0
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> pigs_on_prime_strategy(64, 21, 0, 5)
+          0
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> pigs_on_prime_strategy(71, 37, 12, 5)
+          5
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> pigs_on_prime_strategy(32, 20, 6, 7)
           7
           """,
           'hidden': False,
@@ -902,7 +488,34 @@ test = {
         },
         {
           'code': r"""
-          >>> hog_pile_strategy(37, 91, 4, 9)
+          >>> pigs_on_prime_strategy(36, 45, 8, 10)
+          10
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> pigs_on_prime_strategy(65, 72, 18, 5)
+          5
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> pigs_on_prime_strategy(82, 23, 2, 7)
+          0
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> pigs_on_prime_strategy(79, 12, 15, 9)
           9
           """,
           'hidden': False,
@@ -911,7 +524,16 @@ test = {
         },
         {
           'code': r"""
-          >>> hog_pile_strategy(59, 82, 0, 6)
+          >>> pigs_on_prime_strategy(2, 66, 16, 6)
+          6
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> pigs_on_prime_strategy(87, 71, 8, 7)
           0
           """,
           'hidden': False,
@@ -920,8 +542,8 @@ test = {
         },
         {
           'code': r"""
-          >>> hog_pile_strategy(22, 41, 19, 7)
-          7
+          >>> pigs_on_prime_strategy(92, 7, 13, 3)
+          3
           """,
           'hidden': False,
           'locked': False,
@@ -929,16 +551,7 @@ test = {
         },
         {
           'code': r"""
-          >>> hog_pile_strategy(84, 90, 6, 5)
-          0
-          """,
-          'hidden': False,
-          'locked': False,
-          'multiline': False
-        },
-        {
-          'code': r"""
-          >>> hog_pile_strategy(90, 35, 9, 4)
+          >>> pigs_on_prime_strategy(87, 38, 12, 4)
           4
           """,
           'hidden': False,
@@ -947,7 +560,7 @@ test = {
         },
         {
           'code': r"""
-          >>> hog_pile_strategy(90, 42, 1, 5)
+          >>> pigs_on_prime_strategy(1, 2, 5, 9)
           0
           """,
           'hidden': False,
@@ -956,8 +569,395 @@ test = {
         },
         {
           'code': r"""
-          >>> hog_pile_strategy(1, 35, 8, 10)
+          >>> pigs_on_prime_strategy(37, 49, 17, 10)
           10
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> pigs_on_prime_strategy(41, 55, 3, 7)
+          0
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> pigs_on_prime_strategy(57, 8, 13, 3)
+          3
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> pigs_on_prime_strategy(85, 75, 16, 8)
+          8
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> pigs_on_prime_strategy(73, 89, 5, 5)
+          0
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> pigs_on_prime_strategy(48, 54, 18, 4)
+          4
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> pigs_on_prime_strategy(96, 45, 1, 2)
+          0
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> pigs_on_prime_strategy(95, 63, 1, 9)
+          0
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> pigs_on_prime_strategy(59, 33, 15, 3)
+          3
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> pigs_on_prime_strategy(46, 50, 2, 4)
+          0
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> pigs_on_prime_strategy(96, 23, 11, 9)
+          0
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> pigs_on_prime_strategy(80, 63, 11, 6)
+          0
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> pigs_on_prime_strategy(3, 9, 15, 4)
+          4
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> pigs_on_prime_strategy(73, 2, 7, 2)
+          2
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> pigs_on_prime_strategy(5, 81, 1, 1)
+          0
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> pigs_on_prime_strategy(81, 73, 10, 6)
+          0
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> pigs_on_prime_strategy(79, 69, 12, 10)
+          10
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> pigs_on_prime_strategy(4, 67, 16, 10)
+          10
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> pigs_on_prime_strategy(80, 27, 2, 4)
+          4
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> pigs_on_prime_strategy(46, 18, 3, 7)
+          0
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> pigs_on_prime_strategy(25, 45, 9, 3)
+          3
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> pigs_on_prime_strategy(12, 35, 10, 8)
+          0
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> pigs_on_prime_strategy(36, 14, 12, 4)
+          0
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> pigs_on_prime_strategy(24, 30, 8, 8)
+          8
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> pigs_on_prime_strategy(82, 84, 18, 5)
+          5
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> pigs_on_prime_strategy(81, 76, 10, 7)
+          0
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> pigs_on_prime_strategy(75, 44, 6, 4)
+          0
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> pigs_on_prime_strategy(90, 31, 17, 4)
+          4
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> pigs_on_prime_strategy(27, 4, 10, 6)
+          6
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> pigs_on_prime_strategy(86, 7, 3, 9)
+          9
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> pigs_on_prime_strategy(91, 55, 7, 7)
+          7
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> pigs_on_prime_strategy(45, 14, 16, 2)
+          2
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> pigs_on_prime_strategy(78, 31, 10, 10)
+          0
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> pigs_on_prime_strategy(8, 92, 7, 2)
+          0
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> pigs_on_prime_strategy(7, 55, 8, 5)
+          5
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> pigs_on_prime_strategy(69, 93, 19, 3)
+          3
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> pigs_on_prime_strategy(40, 60, 5, 1)
+          0
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> pigs_on_prime_strategy(97, 51, 10, 10)
+          10
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> pigs_on_prime_strategy(9, 40, 17, 2)
+          0
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> pigs_on_prime_strategy(13, 79, 17, 5)
+          5
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> pigs_on_prime_strategy(57, 5, 2, 2)
+          2
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> pigs_on_prime_strategy(7, 32, 5, 7)
+          0
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> pigs_on_prime_strategy(96, 40, 15, 3)
+          3
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> pigs_on_prime_strategy(50, 59, 4, 1)
+          1
           """,
           'hidden': False,
           'locked': False,
