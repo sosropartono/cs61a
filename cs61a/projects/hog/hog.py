@@ -23,6 +23,19 @@ def roll_dice(num_rolls, dice=six_sided):
     assert num_rolls > 0, 'Must roll at least once.'
     # BEGIN PROBLEM 1
     "*** YOUR CODE HERE ***"
+    counter, sum, flag = 0, 0, False
+    while counter < num_rolls:
+        result = dice()
+        if result == 1:
+            flag = True
+            counter += 1
+        else:
+            sum += result
+            counter += 1
+
+    if flag == True:
+        return 1
+    return sum
     # END PROBLEM 1
 
 
@@ -34,6 +47,12 @@ def oink_points(player_score, opponent_score):
     """
     # BEGIN PROBLEM 2
     "*** YOUR CODE HERE ***"
+    ones = opponent_score % 10
+    tens = ((opponent_score - ones) // 10) % 10
+    calculated_score = 2 * tens - ones
+    if calculated_score <= 1:
+        return 1
+    return calculated_score
     # END PROBLEM 2
 
 
@@ -55,6 +74,10 @@ def take_turn(num_rolls, player_score, opponent_score, dice=six_sided, goal=GOAL
     assert max(player_score, opponent_score) < goal, 'The game should be over.'
     # BEGIN PROBLEM 3
     "*** YOUR CODE HERE ***"
+    if num_rolls == 0:
+        return oink_points(player_score, opponent_score)
+    else:
+        return roll_dice(num_rolls, dice)
     # END PROBLEM 3
 
 
@@ -79,6 +102,13 @@ def pigs_on_prime(player_score, opponent_score):
     """
     # BEGIN PROBLEM 4
     "*** YOUR CODE HERE ***"
+    next_prime = player_score + 1
+    if is_prime(player_score):
+        while not is_prime(next_prime):
+            next_prime += 1
+        return next_prime - player_score
+    else:
+        return 0
     # END PROBLEM 4
 
 
@@ -267,7 +297,8 @@ def run_experiments():
 
     #print('always_roll(8) win rate:', average_win_rate(always_roll(8)))
     #print('oink_points_strategy win rate:', average_win_rate(oink_points_strategy))
-    print('pigs_on_prime_strategy win rate:', average_win_rate(pigs_on_prime_strategy))
+    print('pigs_on_prime_strategy win rate:',
+          average_win_rate(pigs_on_prime_strategy))
     #print('final_strategy win rate:', average_win_rate(final_strategy))
     "*** You may add additional experiments as you wish ***"
 
