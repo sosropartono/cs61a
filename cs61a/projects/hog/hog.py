@@ -288,6 +288,12 @@ def make_averaged(original_function, total_samples=1000):
     """
     # BEGIN PROBLEM 8
     "*** YOUR CODE HERE ***"
+    def random_function(*args):
+        counter, sum = 0, 0
+        while counter < total_samples:
+            sum += original_function(*args)
+    return random_function(*args)
+
     # END PROBLEM 8
 
 
