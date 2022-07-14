@@ -149,10 +149,31 @@ def play(strategy0, strategy1, score0=0, score1=0, dice=six_sided,
     leader = None  # To be used in problem 7
     # BEGIN PROBLEM 5
     "*** YOUR CODE HERE ***"
+    while score0 < goal and score1 < goal:
+        if who == 0:
+            rolls = strategy0(score0, score1)
+            score0 += take_turn(rolls, score0, score1, dice, goal)
+            score0 += pigs_on_prime(score0, score1)
+            who = next_player(who)
+            leader, message = say(score0, score1, leader)
+            if message != None:
+                print(message)
+
+        elif who == 1:
+            rolls = strategy1(score1, score0)
+            score1 += take_turn(rolls,
+                                score1, score0, dice, goal)
+            score1 += pigs_on_prime(score1, score0)
+            who = next_player(who)
+            leader, message = say(score0, score1, leader)
+            if message != None:
+                print(message)
+
     # END PROBLEM 5
     # (note that the indentation for the problem 7 prompt (***YOUR CODE HERE***) might be misleading)
     # BEGIN PROBLEM 7
     "*** YOUR CODE HERE ***"
+
     # END PROBLEM 7
     return score0, score1
 
@@ -187,6 +208,20 @@ def announce_lead_changes(score0, score1, last_leader=None):
     """
     # BEGIN PROBLEM 6
     "*** YOUR CODE HERE ***"
+    difference = score1 - score0
+    leader = None
+    message = None
+    if difference < 0:
+        leader = 0
+        difference *= -1
+    elif difference > 0:
+        leader = 1
+    if leader == None:
+        message = None
+    elif leader != last_leader:
+        message = "Player " + str(leader) + \
+            " takes the lead by " + str(difference)
+    return leader, message
     # END PROBLEM 6
 
 
@@ -295,11 +330,11 @@ def run_experiments():
     print('Max scoring num rolls for six-sided dice:', six_sided_max)
     print('always_roll(6) win rate:', average_win_rate(always_roll(6)))
 
-    #print('always_roll(8) win rate:', average_win_rate(always_roll(8)))
-    #print('oink_points_strategy win rate:', average_win_rate(oink_points_strategy))
+    # print('always_roll(8) win rate:', average_win_rate(always_roll(8)))
+    # print('oink_points_strategy win rate:', average_win_rate(oink_points_strategy))
     print('pigs_on_prime_strategy win rate:',
           average_win_rate(pigs_on_prime_strategy))
-    #print('final_strategy win rate:', average_win_rate(final_strategy))
+    # print('final_strategy win rate:', average_win_rate(final_strategy))
     "*** You may add additional experiments as you wish ***"
 
 
