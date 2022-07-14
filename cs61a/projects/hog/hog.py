@@ -292,7 +292,9 @@ def make_averaged(original_function, total_samples=1000):
         counter, sum = 0, 0
         while counter < total_samples:
             sum += original_function(*args)
-    return random_function(*args)
+            counter += 1
+        return sum / total_samples
+    return random_function
 
     # END PROBLEM 8
 
