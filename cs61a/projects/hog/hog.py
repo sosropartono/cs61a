@@ -1,5 +1,6 @@
 """CS 61A Presents The Game of Hog."""
 
+from genericpath import samefile
 from dice import six_sided, four_sided, make_test_dice
 from ucb import main, trace, interact
 from math import sqrt
@@ -310,6 +311,18 @@ def max_scoring_num_rolls(dice=six_sided, total_samples=1000):
     """
     # BEGIN PROBLEM 9
     "*** YOUR CODE HERE ***"
+    maximum_avg = 0
+    lowest_i = 0
+    i = 1
+    while i <= 10:
+        newest_avg = make_averaged(roll_dice, total_samples)
+        new_avg = newest_avg(i, dice)
+        if maximum_avg < new_avg:
+            lowest_i = i
+            maximum_avg = new_avg
+        i += 1
+
+    return lowest_i
     # END PROBLEM 9
 
 
@@ -351,7 +364,9 @@ def oink_points_strategy(score, opponent_score, threshold=8, num_rolls=6):
     returns NUM_ROLLS otherwise.
     """
     # BEGIN PROBLEM 10
-    return 6  # Remove this line once implemented.
+    if oink_points(score, opponent_score) >= threshold:
+        return 0
+    return num_rolls
     # END PROBLEM 10
 
 
@@ -361,7 +376,10 @@ def pigs_on_prime_strategy(score, opponent_score, threshold=8, num_rolls=6):
     Otherwise, it returns NUM_ROLLS.
     """
     # BEGIN PROBLEM 11
-    return 6  # Remove this line once implemented.
+    hypo = score + oink_points(score, opponent_score)
+    if oink_points(score, opponent_score) >= threshold or is_prime(hypo):
+        return 0
+    return num_rolls
     # END PROBLEM 11
 
 
