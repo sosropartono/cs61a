@@ -8,10 +8,6 @@ def a_plus_abs_b(a, b):
     5
     >>> a_plus_abs_b(2, -3)
     5
-    >>> a_plus_abs_b(-1, 4)
-    3
-    >>> a_plus_abs_b(-1, -4)
-    3
     """
     if b < 0:
         f = sub
@@ -31,9 +27,9 @@ def a_plus_abs_b_syntax_check():
     # You don't need to edit this function. It's just here to check your work.
 
 
-def two_of_three(i, j, k):
-    """Return m*m + n*n, where m and n are the two smallest members of the
-    positive numbers i, j, and k.
+def two_of_three(x, y, z):
+    """Return a*a + b*b, where a and b are the two smallest members of the
+    positive numbers x, y, and z.
 
     >>> two_of_three(1, 2, 3)
     5
@@ -44,7 +40,7 @@ def two_of_three(i, j, k):
     >>> two_of_three(5, 5, 5)
     50
     """
-    return min(i*i+j*j, j*j+k*k, k*k+i*i)
+    return min(x*x+y*y, x*x+z*z, y*y+z*z)
 
 
 def two_of_three_syntax_check():
@@ -76,6 +72,63 @@ def largest_factor(n):
             return number
 
 
+def limited(x, z, limit):
+    """Logic that is common to invert and change."""
+    if x != 0:
+        return min(z/x, limit)
+    else:
+        return limit
+
+
+def invert_short(x, limit):
+    """Return 1/x, but with a limit.
+
+    >>> x = 0.2
+    >>> 1/x
+    5.0
+    >>> invert_short(x, 100)
+    5.0
+    >>> invert_short(x, 2)    # 2 is smaller than 5
+    2
+
+    >>> x = 0
+    >>> invert_short(x, 100)  # No error, even though 1/x divides by 0!
+    100
+    """
+    return limited(x, 1, limit)
+
+
+def change_short(x, y, limit):
+    """Return abs(y - x) as a fraction of x, but with a limit.
+
+    >>> x, y = 2, 5
+    >>> abs(y - x) / x
+    1.5
+    >>> change_short(x, y, 100)
+    1.5
+    >>> change_short(x, y, 1)    # 1 is smaller than 1.5
+    1
+
+    >>> x = 0
+    >>> change_short(x, y, 100)  # No error, even though abs(y - x) / x divides by 0!
+    100
+    """
+    return limited(x, abs(y - x), limit)
+
+
+def invert_and_change_syntax_check():
+    """Checks that definitions of invert_short and change_short are just return statements.
+
+    >>> # You aren't expected to understand the code of this test.
+    >>> import inspect, ast
+    >>> [type(x).__name__ for x in ast.parse(inspect.getsource(invert_short)).body[0].body]
+    ['Expr', 'Return']
+    >>> [type(x).__name__ for x in ast.parse(inspect.getsource(change_short)).body[0].body]
+    ['Expr', 'Return']
+    """
+    # You don't need to edit this function. It's just here to check your work.
+
+
 def hailstone(n):
     """Print the hailstone sequence starting at n and return its
     length.
@@ -90,10 +143,51 @@ def hailstone(n):
     1
     >>> a
     7
-    >>> b = hailstone(1)
-    1
-    >>> b
-    1
     """
     "*** YOUR CODE HERE ***"
-    
+    counter = 0
+    while n != 1:
+        if counter == 0:
+            print(n)
+            counter += 1
+        elif n % 2 == 0:
+            n = n//2
+            counter += 1
+            print(n)
+        else:
+            n = n * 3 + 1
+            counter += 1
+            print(n)
+    return counter
+
+
+"*** YOUR CODE HERE ***"
+quine = ''
+
+
+def quine_test():
+    """
+    >>> quine_test()
+    QUINE!
+    """
+    import contextlib
+    import io
+
+    f = io.StringIO()
+    with contextlib.redirect_stdout(f):
+        exec(quine)
+    quine_output = f.getvalue()
+    if quine == quine_output:
+        print("QUINE!")
+        return
+    print("Not a quine :(")
+    print("Code was:   %r" % quine)
+    print("Output was: %r" % quine_output)
+    print("Side by side:")
+    print(quine)
+    print("*" * 100)
+    print(quine_output)
+    print("*" * 100)
+
+
+invert_short(0, 100)

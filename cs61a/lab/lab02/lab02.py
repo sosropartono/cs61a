@@ -1,3 +1,6 @@
+from imghdr import what
+
+
 def lambda_curry2(func):
     """
     Returns a Curried version of a two-argument function FUNC.
@@ -104,6 +107,7 @@ def composite_identity(f, g):
     False
     """
     "*** YOUR CODE HERE ***"
+    return lambda x: f(g(x)) == g(f(x))
 
 
 def cycle(f1, f2, f3):
@@ -133,3 +137,24 @@ def cycle(f1, f2, f3):
     19
     """
     "*** YOUR CODE HERE ***"
+    def which_cycle(n):
+        def number_worked_on(x):
+            counter_n = n
+            counter = 1
+            cycle_count = 1
+            if counter_n == 0:
+                return x
+            while counter <= n:
+                if cycle_count == 1:
+                    x = f1(x)
+                if cycle_count == 2:
+                    x = f2(x)
+                if cycle_count == 3:
+                    x = f3(x)
+                counter += 1
+                cycle_count += 1
+                if cycle_count > 3:
+                    cycle_count = 1
+            return x
+        return number_worked_on
+    return which_cycle

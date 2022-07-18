@@ -1,6 +1,6 @@
 {
     "name": "Homework 1",
-    "endpoint": "cal/cs61a/su22/hw01",
+    "endpoint": "cal/cs61a/fa21/hw01",
     "src": [
         "hw01.py"
     ],
@@ -14,6 +14,9 @@
         "two_of_three",
         "two_of_three_syntax_check",
         "largest_factor",
+        "invert_short",
+        "change_short",
+        "invert_and_change_syntax_check",
         "hailstone"
     ],
     "protocols": [
