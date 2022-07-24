@@ -1,14 +1,8 @@
-
-from operator import add
-
-
-def something(function):
-    def something2(x):
-        def something3(y):
-
-            return function(x, y)
-        return something3
-    return something2
-
-
-print(something(add)(1)(2))
+def cascade(number):
+    if number < 10:
+        return number
+    else:
+        print(number)
+        return cascade(number//10)
+        print(number)
+        
