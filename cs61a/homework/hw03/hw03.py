@@ -1,3 +1,4 @@
+from operator import sub, mul
 HW_SOURCE_FILE = __file__
 
 
@@ -24,9 +25,11 @@ def num_eights(pos):
     """
     "*** YOUR CODE HERE ***"
     if pos == 0:
-        return 1
-    else:
+        return 0
+    elif(pos % 10 == 8):
         return 1 + num_eights(pos//10)
+    else:
+        return num_eights(pos//10)
 
 
 def pingpong(n):
@@ -63,6 +66,23 @@ def pingpong(n):
     True
     """
     "*** YOUR CODE HERE ***"
+    def helper(n, i, change):
+        if n == 0:
+            return 0
+        elif (i % 8 == 0 and change == 1):
+            return 1 + helper(n-1, i+1, 1-change)
+        elif (i % 8 == 0 and change == 0):
+            return helper(n-1, i+1, 1-change) - 1
+        elif(num_eights(i) > 0 and change == 1):
+            return 1 + helper(n-1, i+1, 1-change)
+        elif(num_eights(i) > 0 and change == 0):
+            return helper(n-1, i+1, 1-change) - 1
+        elif change == 1:
+            return 1 + helper(n-1, i+1, change)
+        elif change == 0:
+            return helper(n-1, i+1, change) - 1
+
+    return helper(n, 1, 1)
 
 
 def missing_digits(n):
@@ -93,6 +113,12 @@ def missing_digits(n):
     True
     """
     "*** YOUR CODE HERE ***"
+    if n % 10 == 0:
+        return 0
+    elif(n % 10 <= n//10 % 10+1) or n//10 == 0:
+        return missing_digits(n//10)
+    else:
+        return (n % 10 - (n//10 % 10)) - 1 + missing_digits(n//10)
 
 
 def ascending_coin(coin):
@@ -149,6 +175,28 @@ def count_coins(change):
     True
     """
     "*** YOUR CODE HERE ***"
+    def helper(change, necessary):
+        if change == 0:
+            return 1
+        elif change < 0:
+            return 0
+        if necessary == None:
+            return 0
+        else:
+            with_partition = helper(
+                change-necessary, necessary)
+            without_partition = helper(change, descending_coin(necessary))
+            return with_partition + without_partition
+    something = 0
+    if change >= 25:
+        something = 25
+    elif change < 25 and change >= 10:
+        something = 10
+    elif change < 10 and change >= 5:
+        something = 5
+    else:
+        something = 1
+    return helper(change, something)
 
 
 def print_move(origin, destination):
@@ -185,9 +233,6 @@ def move_stack(n, start, end):
     """
     assert 1 <= start <= 3 and 1 <= end <= 3 and start != end, "Bad start/end"
     "*** YOUR CODE HERE ***"
-
-
-from operator import sub, mul
 
 
 def make_anonymous_factorial():
