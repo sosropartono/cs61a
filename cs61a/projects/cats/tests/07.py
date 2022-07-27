@@ -1,50 +1,51 @@
 test = {
   'name': 'Problem 7',
-  'points': 2,
+  'points': 3,
   'suites': [
     {
       'cases': [
         {
           'code': r"""
-          >>> big_limit = 10
-          >>> minimum_mewtations("wird", "wiry", big_limit)
-          1
-          >>> minimum_mewtations("wird", "bird", big_limit)
-          1
-          >>> minimum_mewtations("wird", "wir", big_limit)
-          1
-          >>> minimum_mewtations("wird", "bwird", big_limit)
-          1
-          >>> minimum_mewtations("speling", "spelling", big_limit)
-          1
-          >>> minimum_mewtations("used", "use", big_limit)
-          1
-          >>> minimum_mewtations("hash", "ash", big_limit)
-          1
-          >>> minimum_mewtations("ash", "hash", big_limit)
-          1
-          >>> minimum_mewtations("roses", "arose", big_limit)     # roses -> aroses -> arose
-          2
-          >>> minimum_mewtations("tesng", "testing", big_limit)   # tesng -> testng -> testing
-          2
-          >>> minimum_mewtations("rlogcul", "logical", big_limit) # rlogcul -> logcul -> logicul -> logical
-          3
-          """,
-          'hidden': False,
-          'locked': False,
-          'multiline': False
-        },
-        {
-          'code': r"""
-          >>> big_limit = 10
-          >>> minimum_mewtations("cats", "scat", big_limit)
+          >>> limit = 10
+          >>> hidden_kittens("ccatgts", "cats", limit)
+          bfdc03a3c261c5dc71255ec79dd5977e
+          # locked
+          >>> hidden_kittens("ccatgts", "cats", 4)
+          bfdc03a3c261c5dc71255ec79dd5977e
+          # locked
+          >>> hidden_kittens("ccatgts", "cats", 3) > 3
+          f0a7036a7438d73054555da0482ad042
+          # locked
+          >>> hidden_kittens("ccatgtsaaaaaaaaaaaaaaaa", "cats", limit)
+          bfdc03a3c261c5dc71255ec79dd5977e
+          # locked
+          >>> hidden_kittens("123123123", "123", limit) # Hint: 123 appears 10 times within 123123123!
+          d9730cc1ae65aae2ba7ba73a9f3cd7fd
+          # locked
+          >>> hidden_kittens("123123123", "123", 5) > 5
+          f0a7036a7438d73054555da0482ad042
+          # locked
+          >>> hidden_kittens("kittens", "kittens", limit)
+          52f1b72ba99dddc798bb5cebce0be695
+          # locked
+          >>> hidden_kittens("hiddnehddi", "hidden", limit) > limit
+          f0a7036a7438d73054555da0482ad042
+          # locked
+          >>> hidden_kittens("big", "bigger", limit) > limit
+          f0a7036a7438d73054555da0482ad042
+          # locked
+          >>> big_limit = 20
+          >>> hidden_kittens("order matters", "ret", big_limit)
           45c27a29bbaeb163dec9a0eaed9c7c9c
           # locked
-          >>> minimum_mewtations("purng", "purring", big_limit)
-          45c27a29bbaeb163dec9a0eaed9c7c9c
+          >>> hidden_kittens("ret", "order matters", big_limit) > big_limit
+          f0a7036a7438d73054555da0482ad042
           # locked
-          >>> minimum_mewtations("ckiteus", "kittens", big_limit)
-          91711de69bc1d16e478231c51fac5db8
+          >>> hidden_kittens("abcdefghijklmnopqrstuvwxyz", "z", big_limit)
+          52f1b72ba99dddc798bb5cebce0be695
+          # locked
+          >>> hidden_kittens("abcdefghijklmnopqrstuvwxyz", "@", big_limit) > big_limit
+          f0a7036a7438d73054555da0482ad042
           # locked
           """,
           'hidden': False,
@@ -53,17 +54,19 @@ test = {
         },
         {
           'code': r"""
-          >>> small_words_list = ["spell", "nest", "test", "pest", "best", "bird", "wired",
-          ...                     "abstraction", "abstract", "wire", "peeling", "gestate",
-          ...                     "west", "spelling", "bastion"]
-          >>> autocorrect("speling", small_words_list, minimum_mewtations, 10)
-          'spelling'
-          >>> autocorrect("abstrction", small_words_list, minimum_mewtations, 10)
+          >>> small_words_list = ["spell", "nest", "test", "pest", "best", "bird", "wired","abstraction", "abstract", "peeling", "gestate", "west","spelling", "bastion"]
+          >>> autocorrect("sspelll", small_words_list, hidden_kittens, 10)
+          'spell'
+          >>> autocorrect("aabstracttion", small_words_list, hidden_kittens, 10)
           'abstraction'
-          >>> autocorrect("wird", small_words_list, minimum_mewtations, 10)
-          'bird'
-          >>> autocorrect("gest", small_words_list, minimum_mewtations, 10)
-          'nest'
+          >>> autocorrect("tests", small_words_list, hidden_kittens, 10)
+          'test'
+          >>> autocorrect("bbaajksstioon", small_words_list, hidden_kittens, 10)
+          'bbaajksstioon'
+          >>> autocorrect("baastyioon", small_words_list, hidden_kittens, 10)
+          'bastion'
+          >>> test.check('cats.py', 'hidden_kittens', ['While', 'For', 'ListComp'])
+          True
           """,
           'hidden': False,
           'locked': False,
@@ -75,7 +78,7 @@ test = {
           >>> import trace, io
           >>> from contextlib import redirect_stdout
           >>> with io.StringIO() as buf, redirect_stdout(buf):
-          ...     trace.Trace(trace=True).runfunc(minimum_mewtations, "someawe", "awesome", 3)
+          ...     trace.Trace(trace=True).runfunc(hidden_kittens, "awe", "awesome", 3)
           ...     output = buf.getvalue()
           >>> len([line for line in output.split('\n') if 'funcname' in line]) < 1000
           True
@@ -86,16 +89,7 @@ test = {
         },
         {
           'code': r"""
-          >>> sum([minimum_mewtations('eyed', 'ey', k) > k for k in range(4)])
-          2
-          """,
-          'hidden': False,
-          'locked': False,
-          'multiline': False
-        },
-        {
-          'code': r"""
-          >>> minimum_mewtations('place', 'york', 100)
+          >>> sum([hidden_kittens('rut', 'rzumt', k) > k for k in range(5)])
           5
           """,
           'hidden': False,
@@ -104,7 +98,52 @@ test = {
         },
         {
           'code': r"""
-          >>> minimum_mewtations('prep', 'ounce', 100)
+          >>> hidden_kittens('yo', 'yo', 100)
+          1
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> hidden_kittens('slurp', 'slurpm', 100)
+          101
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> hidden_kittens('nice', 'tie', 100)
+          101
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> sum([hidden_kittens('owen', 'owen', k) > k for k in range(4)])
+          1
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> hidden_kittens('donee', 'shush', 100)
+          101
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> sum([hidden_kittens('drest', 'drwt', k) > k for k in range(5)])
           5
           """,
           'hidden': False,
@@ -113,8 +152,8 @@ test = {
         },
         {
           'code': r"""
-          >>> minimum_mewtations('coed', 'coed', 100)
-          0
+          >>> hidden_kittens('cand', 'towy', 100)
+          101
           """,
           'hidden': False,
           'locked': False,
@@ -122,8 +161,8 @@ test = {
         },
         {
           'code': r"""
-          >>> sum([minimum_mewtations('goofy', 'oxyl', k) > k for k in range(5)])
-          4
+          >>> hidden_kittens('drawn', 'terry', 100)
+          101
           """,
           'hidden': False,
           'locked': False,
@@ -131,133 +170,7 @@ test = {
         },
         {
           'code': r"""
-          >>> sum([minimum_mewtations('silly', 'silly', k) > k for k in range(5)])
-          0
-          """,
-          'hidden': False,
-          'locked': False,
-          'multiline': False
-        },
-        {
-          'code': r"""
-          >>> sum([minimum_mewtations('grain', 'gz', k) > k for k in range(5)])
-          4
-          """,
-          'hidden': False,
-          'locked': False,
-          'multiline': False
-        },
-        {
-          'code': r"""
-          >>> minimum_mewtations('winna', 'woinna', 100)
-          1
-          """,
-          'hidden': False,
-          'locked': False,
-          'multiline': False
-        },
-        {
-          'code': r"""
-          >>> minimum_mewtations('baku', 'baku', 100)
-          0
-          """,
-          'hidden': False,
-          'locked': False,
-          'multiline': False
-        },
-        {
-          'code': r"""
-          >>> sum([minimum_mewtations('mark', 'laker', k) > k for k in range(5)])
-          4
-          """,
-          'hidden': False,
-          'locked': False,
-          'multiline': False
-        },
-        {
-          'code': r"""
-          >>> sum([minimum_mewtations('ethos', 'jzos', k) > k for k in range(5)])
-          3
-          """,
-          'hidden': False,
-          'locked': False,
-          'multiline': False
-        },
-        {
-          'code': r"""
-          >>> minimum_mewtations('lend', 'erne', 100)
-          3
-          """,
-          'hidden': False,
-          'locked': False,
-          'multiline': False
-        },
-        {
-          'code': r"""
-          >>> minimum_mewtations('skid', 'widd', 100)
-          3
-          """,
-          'hidden': False,
-          'locked': False,
-          'multiline': False
-        },
-        {
-          'code': r"""
-          >>> sum([minimum_mewtations('study', 'study', k) > k for k in range(5)])
-          0
-          """,
-          'hidden': False,
-          'locked': False,
-          'multiline': False
-        },
-        {
-          'code': r"""
-          >>> minimum_mewtations('scold', 'cq', 100)
-          4
-          """,
-          'hidden': False,
-          'locked': False,
-          'multiline': False
-        },
-        {
-          'code': r"""
-          >>> minimum_mewtations('flamy', 'fak', 100)
-          3
-          """,
-          'hidden': False,
-          'locked': False,
-          'multiline': False
-        },
-        {
-          'code': r"""
-          >>> sum([minimum_mewtations('dotal', 'dotl', k) > k for k in range(5)])
-          1
-          """,
-          'hidden': False,
-          'locked': False,
-          'multiline': False
-        },
-        {
-          'code': r"""
-          >>> minimum_mewtations('mince', 'mqince', 100)
-          1
-          """,
-          'hidden': False,
-          'locked': False,
-          'multiline': False
-        },
-        {
-          'code': r"""
-          >>> minimum_mewtations('ada', 'cdca', 100)
-          2
-          """,
-          'hidden': False,
-          'locked': False,
-          'multiline': False
-        },
-        {
-          'code': r"""
-          >>> sum([minimum_mewtations('minar', 'chain', k) > k for k in range(5)])
+          >>> sum([hidden_kittens('stour', 'shows', k) > k for k in range(5)])
           5
           """,
           'hidden': False,
@@ -266,70 +179,7 @@ test = {
         },
         {
           'code': r"""
-          >>> minimum_mewtations('tough', 'tojwh', 100)
-          2
-          """,
-          'hidden': False,
-          'locked': False,
-          'multiline': False
-        },
-        {
-          'code': r"""
-          >>> sum([minimum_mewtations('teet', 'home', k) > k for k in range(4)])
-          4
-          """,
-          'hidden': False,
-          'locked': False,
-          'multiline': False
-        },
-        {
-          'code': r"""
-          >>> sum([minimum_mewtations('mumps', 'tuts', k) > k for k in range(5)])
-          3
-          """,
-          'hidden': False,
-          'locked': False,
-          'multiline': False
-        },
-        {
-          'code': r"""
-          >>> sum([minimum_mewtations('heart', 'heart', k) > k for k in range(5)])
-          0
-          """,
-          'hidden': False,
-          'locked': False,
-          'multiline': False
-        },
-        {
-          'code': r"""
-          >>> minimum_mewtations('qoph', 'death', 100)
-          4
-          """,
-          'hidden': False,
-          'locked': False,
-          'multiline': False
-        },
-        {
-          'code': r"""
-          >>> minimum_mewtations('dheri', 'zbr', 100)
-          4
-          """,
-          'hidden': False,
-          'locked': False,
-          'multiline': False
-        },
-        {
-          'code': r"""
-          >>> sum([minimum_mewtations('keeve', 'keve', k) > k for k in range(5)])
-          1
-          """,
-          'hidden': False,
-          'locked': False,
-          'multiline': False
-        },
-        {
-          'code': r"""
-          >>> sum([minimum_mewtations('boort', 'stulm', k) > k for k in range(5)])
+          >>> sum([hidden_kittens('plash', 'cw', k) > k for k in range(5)])
           5
           """,
           'hidden': False,
@@ -338,7 +188,7 @@ test = {
         },
         {
           'code': r"""
-          >>> minimum_mewtations('jodel', 'jodeal', 100)
+          >>> hidden_kittens('cube', 'cube', 100)
           1
           """,
           'hidden': False,
@@ -347,34 +197,7 @@ test = {
         },
         {
           'code': r"""
-          >>> minimum_mewtations('dabba', 'fan', 100)
-          4
-          """,
-          'hidden': False,
-          'locked': False,
-          'multiline': False
-        },
-        {
-          'code': r"""
-          >>> sum([minimum_mewtations('cloak', 'wind', k) > k for k in range(5)])
-          5
-          """,
-          'hidden': False,
-          'locked': False,
-          'multiline': False
-        },
-        {
-          'code': r"""
-          >>> sum([minimum_mewtations('sung', 'guskg', k) > k for k in range(5)])
-          3
-          """,
-          'hidden': False,
-          'locked': False,
-          'multiline': False
-        },
-        {
-          'code': r"""
-          >>> minimum_mewtations('mon', 'moy', 100)
+          >>> hidden_kittens('envy', 'nv', 100)
           1
           """,
           'hidden': False,
@@ -383,169 +206,7 @@ test = {
         },
         {
           'code': r"""
-          >>> sum([minimum_mewtations('lover', 'lover', k) > k for k in range(5)])
-          0
-          """,
-          'hidden': False,
-          'locked': False,
-          'multiline': False
-        },
-        {
-          'code': r"""
-          >>> minimum_mewtations('omer', 'mr', 100)
-          2
-          """,
-          'hidden': False,
-          'locked': False,
-          'multiline': False
-        },
-        {
-          'code': r"""
-          >>> sum([minimum_mewtations('cibol', 'zibox', k) > k for k in range(5)])
-          2
-          """,
-          'hidden': False,
-          'locked': False,
-          'multiline': False
-        },
-        {
-          'code': r"""
-          >>> sum([minimum_mewtations('menu', 'exeat', k) > k for k in range(5)])
-          4
-          """,
-          'hidden': False,
-          'locked': False,
-          'multiline': False
-        },
-        {
-          'code': r"""
-          >>> minimum_mewtations('blvd', 'km', 100)
-          4
-          """,
-          'hidden': False,
-          'locked': False,
-          'multiline': False
-        },
-        {
-          'code': r"""
-          >>> sum([minimum_mewtations('sensa', 'sine', k) > k for k in range(5)])
-          3
-          """,
-          'hidden': False,
-          'locked': False,
-          'multiline': False
-        },
-        {
-          'code': r"""
-          >>> minimum_mewtations('enrol', 'lungy', 100)
-          5
-          """,
-          'hidden': False,
-          'locked': False,
-          'multiline': False
-        },
-        {
-          'code': r"""
-          >>> minimum_mewtations('octet', 'ctbs', 100)
-          3
-          """,
-          'hidden': False,
-          'locked': False,
-          'multiline': False
-        },
-        {
-          'code': r"""
-          >>> minimum_mewtations('manga', 'guama', 100)
-          4
-          """,
-          'hidden': False,
-          'locked': False,
-          'multiline': False
-        },
-        {
-          'code': r"""
-          >>> minimum_mewtations('trike', 'tskhikue', 100)
-          4
-          """,
-          'hidden': False,
-          'locked': False,
-          'multiline': False
-        },
-        {
-          'code': r"""
-          >>> minimum_mewtations('skete', 'skete', 100)
-          0
-          """,
-          'hidden': False,
-          'locked': False,
-          'multiline': False
-        },
-        {
-          'code': r"""
-          >>> minimum_mewtations('site', 'xdit', 100)
-          3
-          """,
-          'hidden': False,
-          'locked': False,
-          'multiline': False
-        },
-        {
-          'code': r"""
-          >>> minimum_mewtations('demob', 'ratwa', 100)
-          5
-          """,
-          'hidden': False,
-          'locked': False,
-          'multiline': False
-        },
-        {
-          'code': r"""
-          >>> minimum_mewtations('tinea', 'wreat', 100)
-          4
-          """,
-          'hidden': False,
-          'locked': False,
-          'multiline': False
-        },
-        {
-          'code': r"""
-          >>> minimum_mewtations('break', 'libs', 100)
-          5
-          """,
-          'hidden': False,
-          'locked': False,
-          'multiline': False
-        },
-        {
-          'code': r"""
-          >>> sum([minimum_mewtations('tubae', 'huqqe', k) > k for k in range(5)])
-          3
-          """,
-          'hidden': False,
-          'locked': False,
-          'multiline': False
-        },
-        {
-          'code': r"""
-          >>> sum([minimum_mewtations('run', 'tsuba', k) > k for k in range(5)])
-          4
-          """,
-          'hidden': False,
-          'locked': False,
-          'multiline': False
-        },
-        {
-          'code': r"""
-          >>> minimum_mewtations('shy', 'shy', 100)
-          0
-          """,
-          'hidden': False,
-          'locked': False,
-          'multiline': False
-        },
-        {
-          'code': r"""
-          >>> sum([minimum_mewtations('terma', 'tfrma', k) > k for k in range(5)])
+          >>> sum([hidden_kittens('panto', 'panto', k) > k for k in range(5)])
           1
           """,
           'hidden': False,
@@ -554,8 +215,8 @@ test = {
         },
         {
           'code': r"""
-          >>> minimum_mewtations('krama', 'kradmxk', 100)
-          3
+          >>> sum([hidden_kittens('herem', 'hwerem', k) > k for k in range(6)])
+          6
           """,
           'hidden': False,
           'locked': False,
@@ -563,7 +224,52 @@ test = {
         },
         {
           'code': r"""
-          >>> minimum_mewtations('jesse', 'jesqe', 100)
+          >>> sum([hidden_kittens('zanze', 'culm', k) > k for k in range(5)])
+          5
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> sum([hidden_kittens('kauri', 'kajr', k) > k for k in range(5)])
+          5
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> hidden_kittens('hiver', 'hicer', 100)
+          101
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> sum([hidden_kittens('tulip', 'qlulip', k) > k for k in range(6)])
+          6
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> sum([hidden_kittens('aside', 'ataxy', k) > k for k in range(5)])
+          5
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> sum([hidden_kittens('volt', 'vol', k) > k for k in range(4)])
           1
           """,
           'hidden': False,
@@ -572,8 +278,8 @@ test = {
         },
         {
           'code': r"""
-          >>> minimum_mewtations('essay', 'ssar', 100)
-          2
+          >>> hidden_kittens('sleep', 'sleop', 100)
+          101
           """,
           'hidden': False,
           'locked': False,
@@ -581,88 +287,7 @@ test = {
         },
         {
           'code': r"""
-          >>> minimum_mewtations('begun', 'begun', 100)
-          0
-          """,
-          'hidden': False,
-          'locked': False,
-          'multiline': False
-        },
-        {
-          'code': r"""
-          >>> minimum_mewtations('vii', 'vii', 100)
-          0
-          """,
-          'hidden': False,
-          'locked': False,
-          'multiline': False
-        },
-        {
-          'code': r"""
-          >>> sum([minimum_mewtations('rides', 'rides', k) > k for k in range(5)])
-          0
-          """,
-          'hidden': False,
-          'locked': False,
-          'multiline': False
-        },
-        {
-          'code': r"""
-          >>> minimum_mewtations('alga', 'alga', 100)
-          0
-          """,
-          'hidden': False,
-          'locked': False,
-          'multiline': False
-        },
-        {
-          'code': r"""
-          >>> minimum_mewtations('asker', 'akx', 100)
-          3
-          """,
-          'hidden': False,
-          'locked': False,
-          'multiline': False
-        },
-        {
-          'code': r"""
-          >>> minimum_mewtations('rocky', 'rociky', 100)
-          1
-          """,
-          'hidden': False,
-          'locked': False,
-          'multiline': False
-        },
-        {
-          'code': r"""
-          >>> minimum_mewtations('crain', 'ckci', 100)
-          3
-          """,
-          'hidden': False,
-          'locked': False,
-          'multiline': False
-        },
-        {
-          'code': r"""
-          >>> minimum_mewtations('kinch', 'kinch', 100)
-          0
-          """,
-          'hidden': False,
-          'locked': False,
-          'multiline': False
-        },
-        {
-          'code': r"""
-          >>> minimum_mewtations('bort', 'bort', 100)
-          0
-          """,
-          'hidden': False,
-          'locked': False,
-          'multiline': False
-        },
-        {
-          'code': r"""
-          >>> minimum_mewtations('deter', 'gale', 100)
+          >>> sum([hidden_kittens('cet', 'duad', k) > k for k in range(4)])
           4
           """,
           'hidden': False,
@@ -671,61 +296,7 @@ test = {
         },
         {
           'code': r"""
-          >>> minimum_mewtations('gaize', 'gaize', 100)
-          0
-          """,
-          'hidden': False,
-          'locked': False,
-          'multiline': False
-        },
-        {
-          'code': r"""
-          >>> minimum_mewtations('heme', 'hhtem', 100)
-          3
-          """,
-          'hidden': False,
-          'locked': False,
-          'multiline': False
-        },
-        {
-          'code': r"""
-          >>> minimum_mewtations('boats', 'bnoats', 100)
-          1
-          """,
-          'hidden': False,
-          'locked': False,
-          'multiline': False
-        },
-        {
-          'code': r"""
-          >>> minimum_mewtations('mown', 'yomn', 100)
-          2
-          """,
-          'hidden': False,
-          'locked': False,
-          'multiline': False
-        },
-        {
-          'code': r"""
-          >>> sum([minimum_mewtations('anana', 'waa', k) > k for k in range(5)])
-          3
-          """,
-          'hidden': False,
-          'locked': False,
-          'multiline': False
-        },
-        {
-          'code': r"""
-          >>> sum([minimum_mewtations('peasy', 'xuas', k) > k for k in range(5)])
-          3
-          """,
-          'hidden': False,
-          'locked': False,
-          'multiline': False
-        },
-        {
-          'code': r"""
-          >>> minimum_mewtations('pie', 'tizzy', 100)
+          >>> sum([hidden_kittens('opal', 'oral', k) > k for k in range(4)])
           4
           """,
           'hidden': False,
@@ -734,8 +305,8 @@ test = {
         },
         {
           'code': r"""
-          >>> sum([minimum_mewtations('quin', 'iupi', k) > k for k in range(4)])
-          3
+          >>> sum([hidden_kittens('pathy', 'pathy', k) > k for k in range(5)])
+          1
           """,
           'hidden': False,
           'locked': False,
@@ -743,7 +314,25 @@ test = {
         },
         {
           'code': r"""
-          >>> minimum_mewtations('among', 'sculp', 100)
+          >>> sum([hidden_kittens('drive', 'drgitb', k) > k for k in range(6)])
+          6
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> sum([hidden_kittens('bater', 'kbater', k) > k for k in range(6)])
+          6
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> sum([hidden_kittens('ward', 'crier', k) > k for k in range(5)])
           5
           """,
           'hidden': False,
@@ -752,7 +341,7 @@ test = {
         },
         {
           'code': r"""
-          >>> sum([minimum_mewtations('ja', 'a', k) > k for k in range(2)])
+          >>> hidden_kittens('massy', 'massy', 100)
           1
           """,
           'hidden': False,
@@ -761,8 +350,8 @@ test = {
         },
         {
           'code': r"""
-          >>> minimum_mewtations('aube', 'aube', 100)
-          0
+          >>> hidden_kittens('tonk', 'tobnhn', 100)
+          101
           """,
           'hidden': False,
           'locked': False,
@@ -770,7 +359,16 @@ test = {
         },
         {
           'code': r"""
-          >>> minimum_mewtations('mf', 'kf', 100)
+          >>> hidden_kittens('sith', 'demit', 100)
+          101
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> hidden_kittens('arty', 'at', 100)
           1
           """,
           'hidden': False,
@@ -779,7 +377,52 @@ test = {
         },
         {
           'code': r"""
-          >>> sum([minimum_mewtations('ta', 'jowl', k) > k for k in range(4)])
+          >>> sum([hidden_kittens('exist', 'ext', k) > k for k in range(5)])
+          1
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> hidden_kittens('plot', 'plkot', 100)
+          101
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> sum([hidden_kittens('wreak', 'wreak', k) > k for k in range(5)])
+          1
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> hidden_kittens('icon', 'ipnw', 100)
+          101
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> hidden_kittens('caza', 'scale', 100)
+          101
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> sum([hidden_kittens('rann', 'daw', k) > k for k in range(4)])
           4
           """,
           'hidden': False,
@@ -788,8 +431,8 @@ test = {
         },
         {
           'code': r"""
-          >>> sum([minimum_mewtations('downy', 'downy', k) > k for k in range(5)])
-          0
+          >>> hidden_kittens('natal', 'nttyl', 100)
+          101
           """,
           'hidden': False,
           'locked': False,
@@ -797,169 +440,7 @@ test = {
         },
         {
           'code': r"""
-          >>> minimum_mewtations('brook', 'sxook', 100)
-          2
-          """,
-          'hidden': False,
-          'locked': False,
-          'multiline': False
-        },
-        {
-          'code': r"""
-          >>> minimum_mewtations('brood', 'browao', 100)
-          3
-          """,
-          'hidden': False,
-          'locked': False,
-          'multiline': False
-        },
-        {
-          'code': r"""
-          >>> minimum_mewtations('unset', 'rocky', 100)
-          5
-          """,
-          'hidden': False,
-          'locked': False,
-          'multiline': False
-        },
-        {
-          'code': r"""
-          >>> sum([minimum_mewtations('pole', 'plec', k) > k for k in range(4)])
-          2
-          """,
-          'hidden': False,
-          'locked': False,
-          'multiline': False
-        },
-        {
-          'code': r"""
-          >>> sum([minimum_mewtations('dir', 'dir', k) > k for k in range(3)])
-          0
-          """,
-          'hidden': False,
-          'locked': False,
-          'multiline': False
-        },
-        {
-          'code': r"""
-          >>> sum([minimum_mewtations('rider', 'rider', k) > k for k in range(5)])
-          0
-          """,
-          'hidden': False,
-          'locked': False,
-          'multiline': False
-        },
-        {
-          'code': r"""
-          >>> minimum_mewtations('urate', 'ura', 100)
-          2
-          """,
-          'hidden': False,
-          'locked': False,
-          'multiline': False
-        },
-        {
-          'code': r"""
-          >>> minimum_mewtations('swift', 'gade', 100)
-          5
-          """,
-          'hidden': False,
-          'locked': False,
-          'multiline': False
-        },
-        {
-          'code': r"""
-          >>> minimum_mewtations('gucki', 'guiai', 100)
-          2
-          """,
-          'hidden': False,
-          'locked': False,
-          'multiline': False
-        },
-        {
-          'code': r"""
-          >>> sum([minimum_mewtations('dang', 'dqanf', k) > k for k in range(5)])
-          2
-          """,
-          'hidden': False,
-          'locked': False,
-          'multiline': False
-        },
-        {
-          'code': r"""
-          >>> minimum_mewtations('cruth', 'ashruth', 100)
-          3
-          """,
-          'hidden': False,
-          'locked': False,
-          'multiline': False
-        },
-        {
-          'code': r"""
-          >>> minimum_mewtations('aloof', 'alafof', 100)
-          2
-          """,
-          'hidden': False,
-          'locked': False,
-          'multiline': False
-        },
-        {
-          'code': r"""
-          >>> sum([minimum_mewtations('alive', 'alv', k) > k for k in range(5)])
-          2
-          """,
-          'hidden': False,
-          'locked': False,
-          'multiline': False
-        },
-        {
-          'code': r"""
-          >>> sum([minimum_mewtations('arow', 'arxgw', k) > k for k in range(5)])
-          2
-          """,
-          'hidden': False,
-          'locked': False,
-          'multiline': False
-        },
-        {
-          'code': r"""
-          >>> minimum_mewtations('lemon', 'sahib', 100)
-          5
-          """,
-          'hidden': False,
-          'locked': False,
-          'multiline': False
-        },
-        {
-          'code': r"""
-          >>> minimum_mewtations('moire', 'dean', 100)
-          5
-          """,
-          'hidden': False,
-          'locked': False,
-          'multiline': False
-        },
-        {
-          'code': r"""
-          >>> sum([minimum_mewtations('feaze', 'febzhc', k) > k for k in range(6)])
-          3
-          """,
-          'hidden': False,
-          'locked': False,
-          'multiline': False
-        },
-        {
-          'code': r"""
-          >>> sum([minimum_mewtations('socii', 'soib', k) > k for k in range(5)])
-          2
-          """,
-          'hidden': False,
-          'locked': False,
-          'multiline': False
-        },
-        {
-          'code': r"""
-          >>> minimum_mewtations('mashy', 'mash', 100)
+          >>> hidden_kittens('tji', 'j', 100)
           1
           """,
           'hidden': False,
@@ -968,8 +449,8 @@ test = {
         },
         {
           'code': r"""
-          >>> minimum_mewtations('a', 'a', 100)
-          0
+          >>> hidden_kittens('input', 'input', 100)
+          1
           """,
           'hidden': False,
           'locked': False,
@@ -977,8 +458,530 @@ test = {
         },
         {
           'code': r"""
-          >>> sum([minimum_mewtations('salol', 'salol', k) > k for k in range(5)])
-          0
+          >>> hidden_kittens('lysin', 'lzsbun', 100)
+          101
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> hidden_kittens('bed', 'bc', 100)
+          101
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> hidden_kittens('topsl', 'topsl', 100)
+          1
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> sum([hidden_kittens('becap', 'becap', k) > k for k in range(5)])
+          1
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> hidden_kittens('tiny', 'sizes', 100)
+          101
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> hidden_kittens('plots', 'gplots', 100)
+          101
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> hidden_kittens('plote', 'plot', 100)
+          1
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> sum([hidden_kittens('libra', 'unact', k) > k for k in range(5)])
+          5
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> sum([hidden_kittens('shed', 'tshged', k) > k for k in range(6)])
+          6
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> sum([hidden_kittens('lunes', 'lunes', k) > k for k in range(5)])
+          1
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> hidden_kittens('shooi', 'sgcoi', 100)
+          101
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> hidden_kittens('cahow', 'cahow', 100)
+          1
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> sum([hidden_kittens('watch', 'wotchj', k) > k for k in range(6)])
+          6
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> hidden_kittens('jeans', 'anps', 100)
+          101
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> hidden_kittens('floey', 'uvea', 100)
+          101
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> hidden_kittens('pew', 'pe', 100)
+          1
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> sum([hidden_kittens('tec', 'gtec', k) > k for k in range(4)])
+          4
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> sum([hidden_kittens('chef', 'drib', k) > k for k in range(4)])
+          4
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> sum([hidden_kittens('sowel', 'evert', k) > k for k in range(5)])
+          5
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> sum([hidden_kittens('zebu', 'eu', k) > k for k in range(4)])
+          1
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> hidden_kittens('magma', 'mahgfma', 100)
+          101
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> hidden_kittens('shood', 'ketal', 100)
+          101
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> sum([hidden_kittens('stall', 'ftall', k) > k for k in range(5)])
+          5
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> sum([hidden_kittens('towd', 'owz', k) > k for k in range(4)])
+          4
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> sum([hidden_kittens('doty', 'dsto', k) > k for k in range(4)])
+          4
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> hidden_kittens('prime', 'huso', 100)
+          101
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> sum([hidden_kittens('raspy', 'eraiepy', k) > k for k in range(7)])
+          7
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> sum([hidden_kittens('sight', 'szlht', k) > k for k in range(5)])
+          5
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> sum([hidden_kittens('scho', 'ho', k) > k for k in range(4)])
+          1
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> hidden_kittens('sher', 'sided', 100)
+          101
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> sum([hidden_kittens('glime', 'plane', k) > k for k in range(5)])
+          5
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> sum([hidden_kittens('canon', 'dcvanon', k) > k for k in range(7)])
+          7
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> sum([hidden_kittens('soon', 'o', k) > k for k in range(4)])
+          2
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> sum([hidden_kittens('would', 'wuold', k) > k for k in range(5)])
+          5
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> hidden_kittens('yeat', 'yawt', 100)
+          101
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> sum([hidden_kittens('lexus', 'lexrs', k) > k for k in range(5)])
+          5
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> sum([hidden_kittens('randy', 'lose', k) > k for k in range(5)])
+          5
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> hidden_kittens('thee', 'thaee', 100)
+          101
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> hidden_kittens('pilot', 'pilot', 100)
+          1
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> hidden_kittens('irk', 'hokey', 100)
+          101
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> sum([hidden_kittens('foody', 'lough', k) > k for k in range(5)])
+          5
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> hidden_kittens('mensa', 'mrvs', 100)
+          101
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> sum([hidden_kittens('spung', 'pxkg', k) > k for k in range(5)])
+          5
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> hidden_kittens('db', 'db', 100)
+          1
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> sum([hidden_kittens('beala', 'beamff', k) > k for k in range(6)])
+          6
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> sum([hidden_kittens('bepun', 'bpun', k) > k for k in range(5)])
+          1
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> sum([hidden_kittens('film', 'fblu', k) > k for k in range(4)])
+          4
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> sum([hidden_kittens('espn', 'esp', k) > k for k in range(4)])
+          1
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> sum([hidden_kittens('hondo', 'gkondo', k) > k for k in range(6)])
+          6
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> hidden_kittens('reps', 'gata', 100)
+          101
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> sum([hidden_kittens('tirr', 'ir', k) > k for k in range(4)])
+          2
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> hidden_kittens('slote', 'svoltj', 100)
+          101
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> sum([hidden_kittens('beeve', 'jegvd', k) > k for k in range(5)])
+          5
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> sum([hidden_kittens('evade', 'evade', k) > k for k in range(5)])
+          1
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> hidden_kittens('sinew', 'dinw', 100)
+          101
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> sum([hidden_kittens('goods', 'goos', k) > k for k in range(5)])
+          1
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> sum([hidden_kittens('kiley', 'kiley', k) > k for k in range(5)])
+          1
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> sum([hidden_kittens('score', 'score', k) > k for k in range(5)])
+          1
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> hidden_kittens('flags', 'faqs', 100)
+          101
           """,
           'hidden': False,
           'locked': False,
@@ -987,7 +990,8 @@ test = {
       ],
       'scored': True,
       'setup': r"""
-      >>> from cats import minimum_mewtations, autocorrect
+      >>> from cats import hidden_kittens, autocorrect
+      >>> import tests.construct_check as test
       """,
       'teardown': '',
       'type': 'doctest'

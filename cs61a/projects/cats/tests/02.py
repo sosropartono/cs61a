@@ -33,9 +33,9 @@ test = {
         {
           'code': r"""
           >>> about_dogs = about(['dog', 'dogs', 'pup', 'puppy'])
-          >>> choose(['Cute Dog!', 'That is a cat.', 'Nice pup!'], about_dogs, 0)
+          >>> pick(['Cute Dog!', 'That is a cat.', 'Nice pup!'], about_dogs, 0)
           'Cute Dog!'
-          >>> choose(['Cute Dog!', 'That is a cat.', 'Nice pup.'], about_dogs, 1)
+          >>> pick(['Cute Dog!', 'That is a cat.', 'Nice pup.'], about_dogs, 1)
           'Nice pup.'
           """,
           'hidden': False,
@@ -46,7 +46,7 @@ test = {
       'scored': True,
       'setup': r"""
       >>> from cats import about
-      >>> from cats import choose
+      >>> from cats import pick
       """,
       'teardown': '',
       'type': 'doctest'
@@ -75,18 +75,8 @@ test = {
         },
         {
           'code': r"""
-          >>> ab = about(['newsstand', 'stereochromy', 'quinaldine', 'invalidate', 'japingly', 'clothesline'])
-          >>> ab('stereochromy invalidate unewssTandq ste|reochromY/ Qstereochromy')
-          True
-          """,
-          'hidden': False,
-          'locked': False,
-          'multiline': False
-        },
-        {
-          'code': r"""
-          >>> ab = about(['unstatesmanlike', 'median', 'cueca', 'meroplankton', 'foremilk', 'nettlefish'])
-          >>> ab('stickiness imprecatory bcuecan mcuec<a KMEroplanktonV gmedianY nettlefishs')
+          >>> ab = about(['smopple', 'modernizer'])
+          >>> ab('tongsman smopplek ASmoppleg Bsm(<opPLeF SMopPlES')
           False
           """,
           'hidden': False,
@@ -95,8 +85,8 @@ test = {
         },
         {
           'code': r"""
-          >>> ab = about(['lamellule', 'unibranchiate', 'introspectional', 'squamigerous', 'sair', 'heterodromy', 'butylene', 'gromatics', 'sprayfully'])
-          >>> ab('answerer ksair JintrospectionaLm naphthosalol OsprayfuLly')
+          >>> ab = about(['equalizing', 'phrymaceous', 'fluidimeter', 'seeds', 'bridgemaking'])
+          >>> ab('xph+rymaceous hobbledehoyism zphrymaceousy ofluidimeter Lseeds?\\ interbank DsEe)dS consumer iatromathematical')
           False
           """,
           'hidden': False,
@@ -105,8 +95,8 @@ test = {
         },
         {
           'code': r"""
-          >>> ab = about(['gentlewomanly', 'titillating', 'counterquip', 'lotto', 'rejoicement', 'acouometer', 'wauns', 'comitatus', 'recidivous'])
-          >>> ab('comitatu]s counterquip lanolin acouometer redawn laminose acou.omet%er dcomitatuS comitatus')
+          >>> ab = about(['seeingly', 'essexite'])
+          >>> ab('essexite clupeine habeas disrupture faceable phototypography LseeIngly seeingly')
           True
           """,
           'hidden': False,
@@ -115,8 +105,28 @@ test = {
         },
         {
           'code': r"""
-          >>> ab = about(['musiclike', 'nonregarding', 'oxypropionic', 'postvide', 'muncheel', 'reburial', 'interfinger', 'masterman'])
-          >>> ab('keratometer AnonReGardingY muNcheeLC proreduction ZoxyprOpionic musI_c|likeG RnoNr-egarding Nnonregardingj')
+          >>> ab = about(['probatively', 'unabatedly', 'reundergo', 'unweld', 'handgun', 'hydrometra', 'recessionary', 'grippotoxin'])
+          >>> ab('DreuNdergo reundergo unabAtedlYM grippotoxin Lre<und!ergoy')
+          True
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> ab = about(['elysia'])
+          >>> ab('hewlett el=ysiA` pamphletic elysia te#Lysiac')
+          True
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> ab = about(['entomical'])
+          >>> ab('obduction polyacid en\\tomical{w entoMicAlP entO[m]icalP befrill zentom[icalr centomi_CAl')
           False
           """,
           'hidden': False,
@@ -125,8 +135,58 @@ test = {
         },
         {
           'code': r"""
-          >>> ab = about(['antinoise', 'archcupbearer', 'opisthotonoid', 'nuggety'])
-          >>> ab('rokey Farchcu$pbeare\\r furunculoid nonreactive uopisthotoNoid')
+          >>> ab = about(['choirwise', 'uncircumstantial', 'glassine', 'supplies', 'underivedly', 'henter', 'undeserving', 'uncope'])
+          >>> ab('tazia uncope glassine glassineW eChoirwis<e& uncircumstaNTIal uninventiveness pentahexahedral')
+          True
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> ab = about(['epinaos', 'unpresented', 'homotypic'])
+          >>> ab('coenoecial synodist tipper unportentous sclerometer epinaos unpresented catnip homotypicy')
+          True
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> ab = about(['cuir'])
+          >>> ab('cuir polystomatous illiterately Hc)uI`re cCuir jc|ui!R cUir CUirG barycentric')
+          True
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> ab = about(['enterohelcosis', 'urodele', 'sporoid', 'auximone', 'nomenclatural', 'misappreciation', 'peepeye', 'nonuterine', 'antilacrosse'])
+          >>> ab('enteRoh<eLcos:ise peepeyep misappreciation enteROhel<co]sis CSporoid peepeyel desoxybenzoin')
+          True
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> ab = about(['excision', 'octobass', 'prevolitional', 'archtreasurership', 'metadiazine', 'overwomanize'])
+          >>> ab('Larchtreasurershipk octobass carder handclasp O`exCiSion ,excisiont scavenger')
+          True
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> ab = about(['nailless', 'singletree'])
+          >>> ab('qualificator accoy crystallogeny players clubfellow')
           False
           """,
           'hidden': False,
@@ -135,8 +195,8 @@ test = {
         },
         {
           'code': r"""
-          >>> ab = about(['sms', 'ultraplausible', 'clankety', 'tennisy'])
-          >>> ab('continues uLt+raplausiblEk clankety bargeboard ultraplausible')
+          >>> ab = about(['nonexpiry', 'toywoman', 'impercipient', 'overrude', 'hyperingenuity', 'piligerous', 'molybdocolic', 'toxicum', 'testator'])
+          >>> ab('nonexpiryV testator piligerous noNe,xpiry reconcentrate smolybdocolick')
           True
           """,
           'hidden': False,
@@ -145,8 +205,8 @@ test = {
         },
         {
           'code': r"""
-          >>> ab = about(['crural', 'accredit', 'deltation', 'esophagomalacia', 'gramineal'])
-          >>> ab("hebenon Ucr)ural s'acCr:editc precurtain aCcreDItj")
+          >>> ab = about(['misinstruction', 'durian', 'underriding', 'chillroom', 'unabsorb', 'chromolithographic', 'hemadynamometer', 'frailly', 'diana'])
+          >>> ab('dodoism wmisinstruction ghemadYnamomeTerg euphonious funderridin!Gm')
           False
           """,
           'hidden': False,
@@ -155,18 +215,8 @@ test = {
         },
         {
           'code': r"""
-          >>> ab = about(['basiradial', 'pseudoliterary', 'electroextraction', 'polymorphous'])
-          >>> ab('zbasiradial UPoLymorphousn captiousness basiradial |basIradial maddening po@L<ymorphoUs')
-          True
-          """,
-          'hidden': False,
-          'locked': False,
-          'multiline': False
-        },
-        {
-          'code': r"""
-          >>> ab = about(['unamenable', 'ratio', 'speciology', 'dimension', 'incenseless', 'fellside'])
-          >>> ab('nincenseLess wspec"iolog@y cdimeNsi/onY Jd>imensionZ M,uNamena&blej vspeciologyx')
+          >>> ab = about(['snideness', 'universalization', 'accroach'])
+          >>> ab('crock omophagous testamentate Aa=CcroacH<n AccROaChS')
           False
           """,
           'hidden': False,
@@ -175,8 +225,8 @@ test = {
         },
         {
           'code': r"""
-          >>> ab = about(['interlardment', 'supercargo', 'inquilinity', 'mackenboy', 'trauma'])
-          >>> ab('trAumA)T cleanable liquidation lesseeship traumag trauma perule tinamine interlardment')
+          >>> ab = about(['hecatontome', 'glioma', 'dispiteousness', 'dependably'])
+          >>> ab('Cd?ependab_ly adipocere ngliomaE glioMaV vigor dispiteousness')
           True
           """,
           'hidden': False,
@@ -185,18 +235,8 @@ test = {
         },
         {
           'code': r"""
-          >>> ab = about(['unintrigued'])
-          >>> ab('preverify unintrigued irrationable uniNtriguedZ abscise uninebriating overblow buniNTrigue{d adulterize')
-          True
-          """,
-          'hidden': False,
-          'locked': False,
-          'multiline': False
-        },
-        {
-          'code': r"""
-          >>> ab = about(['purblindly', 'chromo', 'casson', 'unpliableness', 'overweeningly', 'unsquandered', 'educationable'])
-          >>> ab('diapnotic chromod nectareous diffractive aeducationable DunpliablenEssa')
+          >>> ab = about(['spaceful', 'cautery', 'wiseness', 'yobi'])
+          >>> ab('SwiSenesS* chavicin wisene]ss}z embryoma Tsp|!acefUl')
           False
           """,
           'hidden': False,
@@ -205,18 +245,8 @@ test = {
         },
         {
           'code': r"""
-          >>> ab = about(['strigal', 'scrawler', 'yarding'])
-          >>> ab('Ostrigal trichology sTrIgal scRa?wLerV coeminency scrawler oscraWlerB oversqueak wscr>awler')
-          True
-          """,
-          'hidden': False,
-          'locked': False,
-          'multiline': False
-        },
-        {
-          'code': r"""
-          >>> ab = about(['pochay', 'negotiatrix', 'attaintment', 'concurringly', 'glyoxaline', 'terpin', 'kinetoscopic', 'chloralism', 'obvelation'])
-          >>> ab('EkinetoscopiCH cOncurringlyL gcoNCurr:inglys DcOncurrIngL}]y pocha,ye')
+          >>> ab = about(['hemicranic', 'hieromachy', 'investigatable', 'quadrigenarious', 'protonemal', 'cardiodysneuria', 'provoker', 'associated'])
+          >>> ab('quadrigenariousE Lpro-tonemalz mesorchial Ohierom]achyh dinveStigatable f')
           False
           """,
           'hidden': False,
@@ -225,8 +255,8 @@ test = {
         },
         {
           'code': r"""
-          >>> ab = about(['synizesis', 'marble', 'undeleted', 'subrogation', 'lownly', 'nebulosity', 'capricci', 'compelling', 'bluffer'])
-          >>> ab('cherubically RMarBle synizesis genuflexuous bluffer PundelEteD')
+          >>> ab = about(['tubuliporoid', 'malleability', 'scusation'])
+          >>> ab('RtubuLiporoiDA Dmalleability mAlLeabilit@yi malleabilIty scusAtioN bmalleability josh')
           True
           """,
           'hidden': False,
@@ -235,8 +265,8 @@ test = {
         },
         {
           'code': r"""
-          >>> ab = about(['supercargoship', 'keelblock', 'celiosalpingectomy', 'pronumber', 'costotomy', 'radknight'])
-          >>> ab('eceliosalpingEctomy su?percargO=shipF Ppronumb/(er pro[n]umberk AC@eliosalpingecToMyZ')
+          >>> ab = about(['shilling', 'shrubbiness', 'demoded', 'commentary', 'housewright', 'sinusoid'])
+          >>> ab('ridgepoled halogen sclerometric sclerochoroiditis odemodEdi opercle')
           False
           """,
           'hidden': False,
@@ -245,8 +275,8 @@ test = {
         },
         {
           'code': r"""
-          >>> ab = about(['campylometer', 'coalhole'])
-          >>> ab('ocoa]lhol"eN desaurin RcamPyLome<ter labefact burghbote tenodesis')
+          >>> ab = about(['beydom', 'ungraspable', 'owrelay', 'tangleproof', 'musterable', 'multivincular', 'recuperator', 'goto', 'turnsole'])
+          >>> ab('JrEcupeRatorJ ZgotO t|urnsoLe#K re#cuperatoRZ tAngleproOfu mmultiVincularl ibeydom beydomG')
           False
           """,
           'hidden': False,
@@ -255,8 +285,8 @@ test = {
         },
         {
           'code': r"""
-          >>> ab = about(['incendiarism', 'carbamide', 'families', 'subsequential'])
-          >>> ab('pantotactic Wfamilies dincendiarism. ifamiliesd finceNdiari#]smV')
+          >>> ab = about(['lithosis', 'bogland', 'interclash', 'widespread', 'thumbbird', 'gymnophiona'])
+          >>> ab('CI$nteRc{lash KthumbbirdI FlithosiS crinigerous ElithoSis vthumbBird')
           False
           """,
           'hidden': False,
@@ -265,8 +295,28 @@ test = {
         },
         {
           'code': r"""
-          >>> ab = about(['kitling', 'workhouse', 'scriver', 'chilicothe', 'anteprandial', 'metosteon'])
-          >>> ab("jkitlingM cortege Ochilicothe JwOrkh'ouse lchIl.icothee")
+          >>> ab = about(['diplosphenal', 'cholecystogram', 'maximization'])
+          >>> ab('diplosphenal cholecYstogramC otherhow gaulin Cmaxim}izaTio]nU fatuism cholecystogram maximization')
+          True
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> ab = about(['metatatic', 'eugenist', 'karyopyknosis', 'nightwork', 'short', 'insee', 'unmated', 'capacitation', 'constructivist'])
+          >>> ab('constructivist dnigHt-woR=kn WnighTworkd o\\k~aryopyknoSis karyopyknosis unrepresentative imetata(tic kaRy&opyknosis ichneumonized')
+          True
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> ab = about(['distressedly', 'gibbet', 'cannily', 'lune'])
+          >>> ab('luneW sesquitertia Wlune fluvioterrestrial wdistressedlyI')
           False
           """,
           'hidden': False,
@@ -275,8 +325,8 @@ test = {
         },
         {
           'code': r"""
-          >>> ab = about(['infanglement', 'cavern', 'autotriploid', 'brat'])
-          >>> ab('paUtotriploidY deferrer parnas infanglement PbratD')
+          >>> ab = about(['triplocaulescent', 'postprandially', 'helicogyrate', 'coccidology', 'circumradius', 'repairer', 'passingly'])
+          >>> ab('triplocaulescent VtriplocaulescentF postprandially coccidology ccocciDoloGyw bloated ttriplocaulescent ncoccidology repaiRerN')
           True
           """,
           'hidden': False,
@@ -285,8 +335,8 @@ test = {
         },
         {
           'code': r"""
-          >>> ab = about(['plimsoll', 'hanse', 'endognath', 'cluck', 'zoosporiferous', 'stegosaurian', 'enhanced', 'microscopics', 'patibulate'])
-          >>> ab('microscopics mhaNsef microscopiCs (st,egosaurian zoos)porI@ferousi')
+          >>> ab = about(['electrofused', 'incontinent', 'activize'])
+          >>> ab('assart acTi^vI]zeX unsulphonated activizep aincontinent Me}leCtrofused incontinent electrofused dactivized')
           True
           """,
           'hidden': False,
@@ -295,8 +345,8 @@ test = {
         },
         {
           'code': r"""
-          >>> ab = about(['saponify', 'bakerless', 'nonluminous', 'zonesthesia', 'argumentatively', 'haikal'])
-          >>> ab('kNonluminous vhaikalU mentohyoid anthropophagistic bha*ikalW')
+          >>> ab = about(['unhabitableness'])
+          >>> ab('arisen fibrochondroma afflatus drowsiness untopped unberth')
           False
           """,
           'hidden': False,
@@ -305,8 +355,8 @@ test = {
         },
         {
           'code': r"""
-          >>> ab = about(['overfrailty', 'affair', 'gelatinizability', 'hygiene'])
-          >>> ab('overfrailtY boverfrailty qaffa"ir/M hygiene gel,atiniZaBilitY overfraIlty#~ giganticidal moorup hygie%neD')
+          >>> ab = about(['tetragynian', 'persistently', 'becolme', 'seafare', 'bimillennium', 'valviform', 'thyridial', 'umbones', 'logitech'])
+          >>> ab('bi$millenNIu"mx XThyridial unpunishable predeprivation PersiSteNtLy')
           True
           """,
           'hidden': False,
@@ -315,8 +365,8 @@ test = {
         },
         {
           'code': r"""
-          >>> ab = about(['toys', 'uranophane', 'whereso'])
-          >>> ab('wher.E\'sOi sculpin uranophane santene matlockite uuRanophAne Wh"eres"ol')
+          >>> ab = about(['unwarrant'])
+          >>> ab('unWarrantx resort Junwarran<$TI unwarrantE subdepot reaggravation unwarrant')
           True
           """,
           'hidden': False,
@@ -325,8 +375,8 @@ test = {
         },
         {
           'code': r"""
-          >>> ab = about(['impercipient', 'ali', 'indult', 'palmitic', 'carbon'])
-          >>> ab('phenylation carbon blossomed solemn palmitic carB/on impercipient Ppalmi?ticf jimpercIpIent;')
+          >>> ab = about(['sinfonietta', 'trigon', 'effluviate', 'unhuman', 'energeia', 'slouch'])
+          >>> ab('tRigOnz sinfoniEtta trigon trichotomism benergeian lsinfonietta bullsucker effluviate')
           True
           """,
           'hidden': False,
@@ -335,8 +385,8 @@ test = {
         },
         {
           'code': r"""
-          >>> ab = about(['rubberneck', 'telangiectasy', 'unratable', 'dissolvableness', 'redheadedly', 'recluse'])
-          >>> ab('decurvature u.nratabl/eN YunRatable redheadedl@yo unRata.blem u{reclu^se Orec#lusea')
+          >>> ab = about(['tablespoon', 'anytime', 'ungotten', 'periostracal', 'laparogastrotomy', 'nucleonics', 'diaclase', 'wadmaking'])
+          >>> ab('risen tablespoonS bichord coumarinic e]tablespoon')
           False
           """,
           'hidden': False,
@@ -345,8 +395,18 @@ test = {
         },
         {
           'code': r"""
-          >>> ab = about(['nocturia', 'cataphyllum', 'alroot', 'unaffixed'])
-          >>> ab("$(alroott daLroot phenosafranine ja'lroot<m mnocturiAd sternotribe")
+          >>> ab = about(['boucherism', 'rutabaga'])
+          >>> ab('initiate boucherism baniya gnomological wirable superincumbently bouchEri(smg')
+          True
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> ab = about(['pyranyl', 'uncertainty', 'nl', 'introspectionist', 'teeting', 'unbroiled', 'plumosity', 'restock'])
+          >>> ab('Ynl nlS restockM Rnl_ r\\unbroiledH')
           False
           """,
           'hidden': False,
@@ -355,8 +415,8 @@ test = {
         },
         {
           'code': r"""
-          >>> ab = about(['undissenting', 'incorporable'])
-          >>> ab('camstone mundisseNting mitotically in)cOrpOr>ableL gundIssenting fibromyositis inc+oRpOra.bleE')
+          >>> ab = about(['dugong', 'cryptodiran', 'coll', 'staurolatry', 'allthing', 'cheatrie', 'inexpedient', 'ritelessness', 'blastoporal'])
+          >>> ab('zinexpediEntV Nritele/ssnessA schizocarp PblAsToporal unluxurious')
           False
           """,
           'hidden': False,
@@ -365,8 +425,8 @@ test = {
         },
         {
           'code': r"""
-          >>> ab = about(['accresce', 'during', 'unreproachableness', 'incomputable', 'sulphosuccinic', 'nephrotomy'])
-          >>> ab('convinced hnephroTomy accresce YUnreproacHablenEsS oaccresCe VDu_ring IunreproaChablenessu sulphosuccinic xunrepRoaChablenessA')
+          >>> ab = about(['quodlibetic', 'previdence', 'nonviscous', 'reduplicatively', 'arterioverter', 'discrepation'])
+          >>> ab('Upr)eviDEnce unvigilant discrepatIon arterioverteR UreduplicativelyE OdiscrEpation di~scRepaTion nonviscous arterioverter')
           True
           """,
           'hidden': False,
@@ -375,8 +435,8 @@ test = {
         },
         {
           'code': r"""
-          >>> ab = about(['unembraced', 'counterprotection', 'karyolysis', 'contuse', 'esophagomalacia', 'investigatorial'])
-          >>> ab('unembraced i=nVesTigator<ial pcon#tu[sE demonstrator astrochemistry apotelesmatical')
+          >>> ab = about(['semipervious', 'cactoid', 'quadrialate', 'preflattery', 'emancipation', 'recedent'])
+          >>> ab('eema@nciPation{T holochroal recedent chewstick cac,t_oid h\\semipervi@Ous cac&toid eManciPatIonb Urece]denTn')
           True
           """,
           'hidden': False,
@@ -385,8 +445,8 @@ test = {
         },
         {
           'code': r"""
-          >>> ab = about(['resay', 'benjy', 'ursolic'])
-          >>> ab('resaY ursoli|c%F resay benjy ursolic overquiet ur,SOl`ict filate')
+          >>> ab = about(['puboprostatic', 'tumescent', 'keraunograph', 'telecaster', 'selenigenous', 'phycomycete', 'executrix'])
+          >>> ab("plastidular tUmesC]ent selen'igenousE tumescent selen<igE;nOuS")
           True
           """,
           'hidden': False,
@@ -395,38 +455,8 @@ test = {
         },
         {
           'code': r"""
-          >>> ab = about(['meant', 'pantomime', 'fumatory', 'driftpiece', 'archaic', 'oreotragine', 'nystagmic', 'refute'])
-          >>> ab('driftpiecE< drIftpiecef hor\\eotragIneC dr#iftpiEcej qar+chai{c Ldriftp<iece MeaNtP helianthic comburivorous')
-          True
-          """,
-          'hidden': False,
-          'locked': False,
-          'multiline': False
-        },
-        {
-          'code': r"""
-          >>> ab = about(['uncurl', 'lobulose', 'parapsychical', 'revengement', 'unappendaged'])
-          >>> ab('paRapsycHicalU Xuncurlr revengement blobuloseH unappendagedz commemoratively IREvE,ngementG ZlObulose')
-          True
-          """,
-          'hidden': False,
-          'locked': False,
-          'multiline': False
-        },
-        {
-          'code': r"""
-          >>> ab = about(['lintwhite', 'colly'])
-          >>> ab('cooking feedable colly microphotograph colly collyU')
-          True
-          """,
-          'hidden': False,
-          'locked': False,
-          'multiline': False
-        },
-        {
-          'code': r"""
-          >>> ab = about(['subcouncil', 'digestment', 'hierocratic', 'vasculated', 'purana', 'semipinacolic', 'gramophonically', 'preaffiliate'])
-          >>> ab('litmus nastika Zd~igeStment PrEafFiliatez mgramOphOnicallyT charadrioid antipopular participiality')
+          >>> ab = about(['unsculptured', 'quagginess', 'indisputableness', 'breastrope'])
+          >>> ab('uNSculp:tureDy IBreastrope FindispuTaBlenessz nbreastr]opea nubile')
           False
           """,
           'hidden': False,
@@ -435,8 +465,8 @@ test = {
         },
         {
           'code': r"""
-          >>> ab = about(['swearingly', 'pimple', 'unbundled', 'bencite', 'unfrustrably', 'thirteenth'])
-          >>> ab('unbundled wb\\EnCiten lettsomite unfrustrably zunFrusTrably sweariNgly')
+          >>> ab = about(['intraperitoneally'])
+          >>> ab('leader shipbreaking nondidactic intraperitoneally intraperitOneallyh PIntraperito$neAllY sorgho Intraperi,toneallyp clerklike')
           True
           """,
           'hidden': False,
@@ -445,28 +475,8 @@ test = {
         },
         {
           'code': r"""
-          >>> ab = about(['undistinguishableness', 'squatwise', 'nonplastic', 'lucernal', 'holarctic', 'trinal'])
-          >>> ab("nonplAst$icG pulpal holarctic (Ho{larcTicw HundisTinguishabl<enessp sprightfully dicodeine squatW@'iSec")
-          True
-          """,
-          'hidden': False,
-          'locked': False,
-          'multiline': False
-        },
-        {
-          'code': r"""
-          >>> ab = about(['rhymemaking', 'nonassortment'])
-          >>> ab('l rhymemaking detin finableness tallish')
-          True
-          """,
-          'hidden': False,
-          'locked': False,
-          'multiline': False
-        },
-        {
-          'code': r"""
-          >>> ab = about(['noumenalism'])
-          >>> ab('thighed squaloid TnoumeNalism Fn`oumenal%ismE nouMenalIsMJ')
+          >>> ab = about(['siscowet', 'nevo', 'driftweed', 'chevronelly', 'victoryless', 'illustrations', 'figent'])
+          >>> ab('VFigentU uncommemorated cinchotine viceroy Odriftweed figen!ts zvictorylessQ Dillustrations')
           False
           """,
           'hidden': False,
@@ -475,8 +485,18 @@ test = {
         },
         {
           'code': r"""
-          >>> ab = about(['moly', 'boldness', 'uraniid', 'inherently', 'diphenol', 'dermoskeleton', 'mound'])
-          >>> ab('WdeRmosk^eleton inhere*ntLyP InheRentlyY nebuliferous SinhereNt~|Ly undervaluinglike NuraniidR vicecomes')
+          >>> ab = about(['holland', 'nursedom', 'epidictical', 'defortify', 'taraf'])
+          >>> ab('stomatal vep,iDIctica`l n]urS~eDom PepidICtic/a"lx defortify')
+          True
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> ab = about(['vegasite'])
+          >>> ab('vegaSitec vegasiteI forwarder drumheads Sveg<asiteT tannalbin')
           False
           """,
           'hidden': False,
@@ -485,8 +505,8 @@ test = {
         },
         {
           'code': r"""
-          >>> ab = about(['parkward'])
-          >>> ab('leatman threatfully xparkward>A nonulcerous casking albutannin ethnocracy untripe IparkW<ardC')
+          >>> ab = about(['tularemia', 'booming', 'retrothyroid', 'decarnate', 'lobbyism', 'playa', 'nonreception', 'amphictyonic', 'antiaesthetic'])
+          >>> ab('KtUlaremia Y{=booMing mlobBYIsm Tular?emiai jeremiad')
           False
           """,
           'hidden': False,
@@ -495,28 +515,8 @@ test = {
         },
         {
           'code': r"""
-          >>> ab = about(['probationism', 'pargeboard', 'liquidly', 'nongentile', 'metrification', 'unseamanship', 'despite'])
-          >>> ab('YpargEboardn uNseama>nship unseamanshipt unbejuggled unseamanship Hunseamanshipv bparGeBoardf')
-          True
-          """,
-          'hidden': False,
-          'locked': False,
-          'multiline': False
-        },
-        {
-          'code': r"""
-          >>> ab = about(['purloiner', 'cinnabarine', 'orlop', 'ovolo', 'waistcoateer'])
-          >>> ab('waistc;oateer cachaza ovarial cricothyreotomy orlopK')
-          True
-          """,
-          'hidden': False,
-          'locked': False,
-          'multiline': False
-        },
-        {
-          'code': r"""
-          >>> ab = about(['undersheriffship', 'remonetize', 'crustation', 'syntypicism', 'ne'])
-          >>> ab('syntypicismG bne phenological capercut l@syntypi>cism')
+          >>> ab = about(['metamerically'])
+          >>> ab('slopingness quidnunc priggish nonimpartment drillmaster entreaty nucleiform unimprovableness')
           False
           """,
           'hidden': False,
@@ -525,8 +525,8 @@ test = {
         },
         {
           'code': r"""
-          >>> ab = about(['photomezzotype', 'durian', 'precompletion', 'handhold'])
-          >>> ab('handhold hdurian phandhoLd unwoof lphotomezzotypeQ durian duriaNr recompress')
+          >>> ab = about(['scrofulism', 'missile', 'tillot', 'douser', 'twankingly', 'eccentrate', 'cacoglossia', 'miss'])
+          >>> ab("seccentrAteO dcaCoglossiaF C$acoglossi'AA cacoglossia galera")
           True
           """,
           'hidden': False,
@@ -535,38 +535,8 @@ test = {
         },
         {
           'code': r"""
-          >>> ab = about(['bloodstroke', 'dioestrous', 'heterochthonous', 'supraseptal', 'heading', 'serpuline'])
-          >>> ab('heteroCHtHonouS het[erochthonous$g unhazed gunj supraseptal RheteRochthonouSg')
-          True
-          """,
-          'hidden': False,
-          'locked': False,
-          'multiline': False
-        },
-        {
-          'code': r"""
-          >>> ab = about(['cyphella', 'actiniochrome', 'reassimilation', 'bandicoot', 'nettlefoot', 'macarism', 'usurp', 'thunderball'])
-          >>> ab('Thunderball aThuNderbal{li usurp pulasan smacarismC')
-          True
-          """,
-          'hidden': False,
-          'locked': False,
-          'multiline': False
-        },
-        {
-          'code': r"""
-          >>> ab = about(['pemphigoid'])
-          >>> ab("pemphigoid zpE=mph+igoid pemphigoid p'eMphigoi,dt disputatiousness root titulation")
-          True
-          """,
-          'hidden': False,
-          'locked': False,
-          'multiline': False
-        },
-        {
-          'code': r"""
-          >>> ab = about(['haematosepsis', 'apomecometry', 'yrs', 'briefly', 'urinometric', 'discernible', 'zooparasite', 'noneviction', 'overmultitude'])
-          >>> ab('discerNiblec uriNo\\metricO porpitoid fhaematosepSisn propaganda urIn?oMEtr$icZ QbrieFly settaine dis+cerniblem')
+          >>> ab = about(['encourager'])
+          >>> ab('stratagemical sizableness schnabel encouragerl mythopoeist EncOuragerD')
           False
           """,
           'hidden': False,
@@ -575,8 +545,8 @@ test = {
         },
         {
           'code': r"""
-          >>> ab = about(['lithosiid'])
-          >>> ab("glitho'siId crumlet demoniacal comparatival pylangial standpatism lithosiid fewness")
+          >>> ab = about(['unambiguously', 'standing', 'cameroon', 'unpretendingly', 'puppydom'])
+          >>> ab('mousekin unambiguousl*y standing unAmbigUously fpUppyDoma')
           True
           """,
           'hidden': False,
@@ -585,18 +555,8 @@ test = {
         },
         {
           'code': r"""
-          >>> ab = about(['uncomplimented', 'subside', 'pseudandry', 'saltcat', 'potting', 'anthoecological'])
-          >>> ab('expatiatory msubside pseudaNdry saltcat subside gpSeudandryv octillionth uncomplimented T<poT+ting')
-          True
-          """,
-          'hidden': False,
-          'locked': False,
-          'multiline': False
-        },
-        {
-          'code': r"""
-          >>> ab = about(['coconscious', 'diploglossate', 'fatalistic', 'ow', 'disquietedness', 'manufactural'])
-          >>> ab('plasmation XdisquietednessM ucocOnscious owm spryness Tma/nUfa+cturAlS weaverbird')
+          >>> ab = about(['megascleric', 'devisable'])
+          >>> ab('nephrorrhaphy cactiform loaferdom Umegascleric dividing Tmegas`cleric readoption devisableH')
           False
           """,
           'hidden': False,
@@ -605,78 +565,8 @@ test = {
         },
         {
           'code': r"""
-          >>> ab = about(['dianilid', 'strack', 'whacky', 'stationery', 'shee', 'rebutter'])
-          >>> ab("SsTra(c!k strack osteoporosis rstrackG ,strac'k shee Nrebut&tEr' smokelessly IsHee")
-          True
-          """,
-          'hidden': False,
-          'locked': False,
-          'multiline': False
-        },
-        {
-          'code': r"""
-          >>> ab = about(['heavenish', 'dysmetria', 'cl', 'posthexaplaric', 'dinglebird', 'waistcoathole'])
-          >>> ab('vwaIstcoathOle cl diminutal Ydinglebir|d received forger dinglebird Zhe-avenishm Ac~#LN')
-          True
-          """,
-          'hidden': False,
-          'locked': False,
-          'multiline': False
-        },
-        {
-          'code': r"""
-          >>> ab = about(['hectical', 'profanism', 'pachysalpingitis', 'overweather', 'polyfold', 'inpardonable', 'hypercivilization', 'chamberlainry'])
-          >>> ab('profaniSmm hypercivilization w|hyperciviLizatioN inpardonable mhecticaLR mpr{o:fanismW profAnIsmc')
-          True
-          """,
-          'hidden': False,
-          'locked': False,
-          'multiline': False
-        },
-        {
-          'code': r"""
-          >>> ab = about(['scleranth', 'perdricide', 'renably', 'sorn', 'glutting', 'equalist'])
-          >>> ab('Zrena_bl?y lgluttingx soRnu sorn gluttingY equal}istW')
-          True
-          """,
-          'hidden': False,
-          'locked': False,
-          'multiline': False
-        },
-        {
-          'code': r"""
-          >>> ab = about(['cardiectomy', 'mien', 'wellness', 'antitobacconist', 'zoosporangiophore', 'sarcogenous', 'davach'])
-          >>> ab("TantitobacConisTC esarcogenous zo'oSporangiophoren cardiectomy absohm zooSporangioph&orE, gcArdiectOmyW qantitobaCconisTH")
-          True
-          """,
-          'hidden': False,
-          'locked': False,
-          'multiline': False
-        },
-        {
-          'code': r"""
-          >>> ab = about(['unidealistic', 'pretermitter', 'automatist', 'nonactinic'])
-          >>> ab('sunidEalis,tic nonactinic vnonactinic pRetermitteR summulist inonactinic cnonactinicD automatist')
-          True
-          """,
-          'hidden': False,
-          'locked': False,
-          'multiline': False
-        },
-        {
-          'code': r"""
-          >>> ab = about(['prefacer', 'parasynetic'])
-          >>> ab("parAsyne^t(ic Parasynetick schoolgirlishness glucosamine pR'efacer patrice prefacer iprefaceR")
-          True
-          """,
-          'hidden': False,
-          'locked': False,
-          'multiline': False
-        },
-        {
-          'code': r"""
-          >>> ab = about(['toxic', 'sphaeristerium'])
-          >>> ab('lt#ox.icy pageless toxicc hydric mult')
+          >>> ab = about(['cardioarterial', 'statolatry', 'bossism'])
+          >>> ab('intercounty ost$atolaT)ry statolatrym Tbos(sisMm unsignatured brunch ZcardioArterialF')
           False
           """,
           'hidden': False,
@@ -685,8 +575,8 @@ test = {
         },
         {
           'code': r"""
-          >>> ab = about(['appositionally', 'earthly', 'orchiocatabasis', 'brangling'])
-          >>> ab('NBr`angling+q prunetol fearthlyY honeymoonshine JeArthlyk')
+          >>> ab = about(['dextrousness', 'whirley', 'coldly', 'compendiary', 'grovel'])
+          >>> ab('pseudoglioma co@ldlyt N<dEXtrous@nEss dextrousnessx coetaneously hydroelectricity abstruse')
           False
           """,
           'hidden': False,
@@ -695,8 +585,8 @@ test = {
         },
         {
           'code': r"""
-          >>> ab = about(['americium', 'polariscopy', 'malgovernment'])
-          >>> ab('Jamerici_um pOlariscopY EaMeriCium^ subvassal polariscopy_ hoghide heavenly carrageenin malgOVerNment')
+          >>> ab = about(['plowfoot', 'caducicorn', 'monociliated'])
+          >>> ab("sp'lowfOot ploW&fO.oT -{ploWfootL monOciliaTedp yplowfootA")
           True
           """,
           'hidden': False,
@@ -705,8 +595,8 @@ test = {
         },
         {
           'code': r"""
-          >>> ab = about(['brushed', 'removedness', 'peenge', 'equid', 'saltcatch'])
-          >>> ab('overmellowness appledrane removednessu wsalTC]at_chU foliar')
+          >>> ab = about(['plash', 'unbraceleted', 'runner', 'nickeline', 'cellulous', 'interlocutorily', 'ophthalmodynia', 'unthrone'])
+          >>> ab('aophthalmodyn`i|a Wun.bRa.celEtedz nIckeline{g cunbrac<eletedY uNthroneX')
           False
           """,
           'hidden': False,
@@ -715,8 +605,8 @@ test = {
         },
         {
           'code': r"""
-          >>> ab = about(['humicubation', 'hyperdulic', 'crimple', 'soother', 'overkind'])
-          >>> ab('oxidational nonelectrical hypostomial overkind qh#ypErDulick')
+          >>> ab = about(['sulphurage', 'audibility', 'deuteride', 'mimiambic', 'isoimmunity', 'rhinopharynx', 'refractively', 'nonseizure'])
+          >>> ab('i~soimmUniTy no}nseizure\\ gi"soimmunitY nonseizure bastionary usulph<u}raGet InonseIzur}ez imimiamb+ic odeuTeride')
           True
           """,
           'hidden': False,
@@ -725,8 +615,8 @@ test = {
         },
         {
           'code': r"""
-          >>> ab = about(['parapsidal', 'unattendance', 'expirable', 'wheelwright', 'rind', 'spermalist'])
-          >>> ab('unparallelness palatal orbitofrontal expirableb monospermal')
+          >>> ab = about(['whitecapper', 'uncontestable', 'millage', 'unbudging', 'hydrostatic', 'enterospasm', 'ectypography', 'eulamellibranch'])
+          >>> ab('HydrostaticH IuncoNtestablE=R renverse millagEt fascicle')
           False
           """,
           'hidden': False,
@@ -735,28 +625,8 @@ test = {
         },
         {
           'code': r"""
-          >>> ab = about(['oliguresis', 'plethoretical', 'plantlike', 'electrotechnology', 'superioress'])
-          >>> ab('superioress revalorize Nplant-Like plet-h&oretical oliguresis eOliguresis plethoretical electrotechnology')
-          True
-          """,
-          'hidden': False,
-          'locked': False,
-          'multiline': False
-        },
-        {
-          'code': r"""
-          >>> ab = about(['hubber', 'patrology', 'spermatophore', 'sapping'])
-          >>> ab('utterance phyma OhUbber$.J console usPermaTophore thysanourous hu}bber gs^permatophore')
-          True
-          """,
-          'hidden': False,
-          'locked': False,
-          'multiline': False
-        },
-        {
-          'code': r"""
-          >>> ab = about(['miskindle', 'deathbed', 'gangrenous'])
-          >>> ab('craniometer yes kdEathbedH AmIskindlE?a }misk;indleT unbetray characters ZdeathbEd divertedly')
+          >>> ab = about(['remissful', 'inyoite'])
+          >>> ab('waterlogged subpeduncle warriorhood Riny@oit,e wremis]sfUlm')
           False
           """,
           'hidden': False,
@@ -765,8 +635,8 @@ test = {
         },
         {
           'code': r"""
-          >>> ab = about(['nummi', 'undisparaged', 'polarly', 'baldachino', 'strumae', 'posttoxic', 'cavernous'])
-          >>> ab('equalist circumcentral unDIsparaGed perfumy strumaee strumae polygyn opolaRly')
+          >>> ab = about(['microbiological', 'ruddy', 'gobble', 'pozzuolana', 'adscript', 'ossypite'])
+          >>> ab('superadmiration ossypite nossy$pite adsCriptZ %gobble% pozzuolanau untempted')
           True
           """,
           'hidden': False,
@@ -775,8 +645,18 @@ test = {
         },
         {
           'code': r"""
-          >>> ab = about(['wraprascal', 'renominate', 'quondam', 'gullibility', 'staysail', 'unfleshly', 'styca'])
-          >>> ab('AuNflesHlyQ wrapRascalT unfle%shlyH womenkind cre@nominaTe')
+          >>> ab = about(['chromophilic', 'brabant', 'detailed', 'exulcerative', 'artillery', 'tachylytic', 'sinnable', 'clival'])
+          >>> ab('ITac/hylytic snavvle Jchro%moPhili<cJ boundedly artil{lery treacherousness Fsi@~nnablEh')
+          True
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> ab = about(['bounteousness', 'unimperious', 'twixt', 'benzolize', 'ebenaceous', 'buncal', 'cladoptosis', 'archvampire', 'palaeontographical'])
+          >>> ab('polariscopy unimperIousH cLa]dop&tosisk Pbenz]oli>ze frigatoon EebEnaceousw Barchvampire floorer')
           False
           """,
           'hidden': False,
@@ -785,8 +665,8 @@ test = {
         },
         {
           'code': r"""
-          >>> ab = about(['unprincipal', 'myrmicoid', 'nonofficial', 'prinky', 'metaphony', 'subacromial', 'mycetophilid', 'chemolyze'])
-          >>> ab('myrmicoiDV p:un.principal goosemouth rnonofficialB jingal rejerk')
+          >>> ab = about(['impedient', 'allochiral', 'hear', 'snur', 'myosarcomatous', 'dichlorohydrin'])
+          >>> ab('shakefork kh<ea$rq bromine ldichlor$ohydrIN snU,rb qhea|r sN-urX dhe>{Ar rdIchlorohydrin')
           False
           """,
           'hidden': False,
@@ -795,8 +675,8 @@ test = {
         },
         {
           'code': r"""
-          >>> ab = about(['empaistic', 'fibrinate', 'pillarlet', 'widdendream', 'underbuy', 'mopla', 'footplate', 'traveleress', 'gemmiparously'])
-          >>> ab('traveleress [Und!ErbuyQ fibri+-nateM footplatE heezy WidDeNdreAmI empaist~icl zGemmipaRouSly')
+          >>> ab = about(['sulphurproof', 'studiedly'])
+          >>> ab('solifluctional knowledgeably Hsulphurproof denationalization studiedly polyphyletic')
           True
           """,
           'hidden': False,
@@ -805,8 +685,8 @@ test = {
         },
         {
           'code': r"""
-          >>> ab = about(['impanate', 'undisinfected', 'unnapkined', 'stockwright', 'nonconcern', 'clandestineness', 'calcicolous'])
-          >>> ab('fImpanaTEd unnapkinedL Xim_"panate hypometropia gunnapkined')
+          >>> ab = about(['zygosporophore'])
+          >>> ab('metrosteresis malconduct married semiform gangling szygoSporOpho,rek underdraft')
           False
           """,
           'hidden': False,
@@ -815,8 +695,18 @@ test = {
         },
         {
           'code': r"""
-          >>> ab = about(['horrorsome', 'gastroblennorrhea', 'pouringly', 'procreatrix', 'demipriest'])
-          >>> ab('dittology HgastroblennorRhe:aA p)rocreat%rixF fproc[reatriXF horsekeeper altiloquent pprocreatriX!u')
+          >>> ab = about(['detinet'])
+          >>> ab('omnigerent alastrim acetosalicylic intersperse detinet macrocyst pathogermic')
+          True
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> ab = about(['monarchize', 'prankster', 'egomaniacal', 'deediness', 'cheeser', 'cumulation', 'endorsee', 'quinometry'])
+          >>> ab('jMon.archizeF ]egoManiacalW leucoplastid cumulatioNw localizable')
           False
           """,
           'hidden': False,
@@ -825,18 +715,8 @@ test = {
         },
         {
           'code': r"""
-          >>> ab = about(['baku', 'uncontentedness', 'teacher', 'upwrought', 'planetography', 'phenanthroline', 'apism', 'thwarteous', 'melodrame'])
-          >>> ab('upwroUghtJ uncontentedness Rba>kut zt~eac:her vplanetoGraphym xmelodramel')
-          True
-          """,
-          'hidden': False,
-          'locked': False,
-          'multiline': False
-        },
-        {
-          'code': r"""
-          >>> ab = about(['unstoried', 'funeralize'])
-          >>> ab('ineloquence revegetation OunstorIed nonomad spinulosociliate stercorary preimbue falbala multilobed')
+          >>> ab = about(['varicosed', 'ventilator'])
+          >>> ab('eventIlatorN Cvaricosedd reask ventil]atorb filiform Lvaricosed queak resinol')
           False
           """,
           'hidden': False,
@@ -845,68 +725,8 @@ test = {
         },
         {
           'code': r"""
-          >>> ab = about(['freedom', 'transmutationist', 'tomblet', 'wapp', 'matrix', 'pitfall', 'bardel', 'shieldlessness'])
-          >>> ab('amianthiform >pitfa[ll wappa freedom shieldlessnessF')
-          True
-          """,
-          'hidden': False,
-          'locked': False,
-          'multiline': False
-        },
-        {
-          'code': r"""
-          >>> ab = about(['angiocholecystitis', 'yoven', 'lovably', 'sheepmonger', 'molave', 'hate'])
-          >>> ab('grassworm sheepmonger psychagogos muckerism molave Mh`a}te')
-          True
-          """,
-          'hidden': False,
-          'locked': False,
-          'multiline': False
-        },
-        {
-          'code': r"""
-          >>> ab = about(['chaetophoraceous', 'virify', 'ferrohydrocyanic', 'wambly', 'hydrotechnic', 'capillose', 'unfaultfinding', 'monstricide'])
-          >>> ab('Wvirif*yc Tunfaultf>indin,gK Qchaetophoraceousn hydRotechnic capillOsee OwamblyK')
-          True
-          """,
-          'hidden': False,
-          'locked': False,
-          'multiline': False
-        },
-        {
-          'code': r"""
-          >>> ab = about(['lactase', 'pleionian', 'guige', 'tellureted', 'magistratically', 'playwrightry', 'paradoxicalness'])
-          >>> ab('ymAgistra,tically playwright+R+yk plEionI=#an guige tellureted teleutospore Wguige')
-          True
-          """,
-          'hidden': False,
-          'locked': False,
-          'multiline': False
-        },
-        {
-          'code': r"""
-          >>> ab = about(['overstalled', 'obstupefy', 'predeparture', 'craft'])
-          >>> ab('craft ob-s|tupefy predeparture crafT C:ra"ftf hypodorian W&crA*ft YPredepar,tureV')
-          True
-          """,
-          'hidden': False,
-          'locked': False,
-          'multiline': False
-        },
-        {
-          'code': r"""
-          >>> ab = about(['operated', 'cithara', 'apparent', 'natron'])
-          >>> ab('ocithArAz skilfish uninthroned o/peraTedD natron operated')
-          True
-          """,
-          'hidden': False,
-          'locked': False,
-          'multiline': False
-        },
-        {
-          'code': r"""
-          >>> ab = about(['translocate', 'contradictive', 'beseem'])
-          >>> ab('Ktranslocate beseemR KBes:eemr conjugative beseemX')
+          >>> ab = about(['ultradolichocephalic', 'kinetophone', 'supernaturalness'])
+          >>> ab('mesepithelial zkinetophone Oultra@Dolichocephalic ultrAdoLichocephaLicS tendant')
           False
           """,
           'hidden': False,
@@ -915,8 +735,8 @@ test = {
         },
         {
           'code': r"""
-          >>> ab = about(['agamid', 'septenar'])
-          >>> ab('pyromancer chilostome heliocentricity septenarv agamid dentists')
+          >>> ab = about(['somatoplasm'])
+          >>> ab('heartlet JsomAtoplasmT somatoplasm jigginess xanthophane wader tuttiman diabrosis')
           True
           """,
           'hidden': False,
@@ -925,18 +745,8 @@ test = {
         },
         {
           'code': r"""
-          >>> ab = about(['subscience'])
-          >>> ab('unpleasable copperplate preindependently offtake propugnaculum oysterous floe phyllosoma Ssubsciencew')
-          False
-          """,
-          'hidden': False,
-          'locked': False,
-          'multiline': False
-        },
-        {
-          'code': r"""
-          >>> ab = about(['optotype', 'raise', 'placentitis', 'virtualism', 'dirigibility'])
-          >>> ab('dirigibility optotype kraise"z Sd|irigibilityv ar-aiseN Nopto.^typeP virt\\ualism dirigib]ilityW halogenation')
+          >>> ab = about(['trackback'])
+          >>> ab('protiston asimmer vtraCkb-aCk imported trackback')
           True
           """,
           'hidden': False,
@@ -945,8 +755,18 @@ test = {
         },
         {
           'code': r"""
-          >>> ab = about(['clanjamphrey', 'belord', 'vermeology', 'wrive', 'phellodermal', 'weaponry', 'intrajugular'])
-          >>> ab('NweaPOnrY belord$)v wrive noncontroversial fbelOrdj Phe?lloderMal wr-ivel vermeology Wri[~ve')
+          >>> ab = about(['payable', 'jaunt', 'oleostearin', 'stitching'])
+          >>> ab('payablez feignedness kjaunt IstitchiNgO sti<tchin/gV')
+          False
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> ab = about(['oscillatory', 'geophyte', 'menthenone'])
+          >>> ab('Men*tH:enoney menthenone stalagmite conductometric assorter bardic')
           True
           """,
           'hidden': False,
@@ -955,8 +775,8 @@ test = {
         },
         {
           'code': r"""
-          >>> ab = about(['louseberry', 'catercorner', 'pelecan', 'impermanency', 'differentiate', 'trifold', 'snakewood', 'ichneumonid', 'acrophony'])
-          >>> ab('LtrifOldW DifferentiAte<h bournless amphioxus QDifferentiate(@y dpeLeCaNr')
+          >>> ab = about(['stookie', 'withsave', 'subchoroid', 'briefing', 'upbelch', 'plessimetric'])
+          >>> ab('filterableness KsubchoRoid StookieN bri[efingH hornyhead dragonlike')
           False
           """,
           'hidden': False,
@@ -965,8 +785,8 @@ test = {
         },
         {
           'code': r"""
-          >>> ab = about(['disensure', 'flashing', 'swarfer', 'threap'])
-          >>> ab('Fd(isenSu[rer sarcocyst spermatozoal flashingJ threap flashinG')
+          >>> ab = about(['battlewise', 'dare'])
+          >>> ab('sulphanilic chondrosis dar<e FDare Ab}attlewi+seb')
           True
           """,
           'hidden': False,
@@ -975,18 +795,8 @@ test = {
         },
         {
           'code': r"""
-          >>> ab = about(['unilocularity', 'fumigant', 'retaker'])
-          >>> ab('fagine f>umigantS retakerI reta|ker%Q guardian fumIgantY oology hypothetist OuniLocular#i#tyx')
-          False
-          """,
-          'hidden': False,
-          'locked': False,
-          'multiline': False
-        },
-        {
-          'code': r"""
-          >>> ab = about(['coast', 'stageably', 'rattlejack'])
-          >>> ab('insupportably coast velvetwork unwastable cOAst co+astm suprachoroidal impressiveness')
+          >>> ab = about(['muscoid', 'reliquidation', 'broad', 'tugging', 'retardant', 'preadequately'])
+          >>> ab('retarDAnt _muscoi+DY preaDEquAtely tugging disarticulation')
           True
           """,
           'hidden': False,
@@ -995,8 +805,8 @@ test = {
         },
         {
           'code': r"""
-          >>> ab = about(['yo', 'tympanism', 'untrigonometrical', 'unurging'])
-          >>> ab('centriscid Hyo TU"nurgin<gp tympanism uNtrigonometriCalh suNur-gin<gu')
+          >>> ab = about(['hexatomic', 'trophobiosis', 'parascenium', 'gibbet', 'laser'])
+          >>> ab('fideism trophobIosis gib{be$t OGibbetP giBbet nonperjury l|ase~r evincement philoxygenous')
           True
           """,
           'hidden': False,
@@ -1005,8 +815,8 @@ test = {
         },
         {
           'code': r"""
-          >>> ab = about(['gormed', 'spry', 'agrobiological', 'zaphara', 'unlessoned', 'nuclidic'])
-          >>> ab('Sagr#obiological[d gnuclidi!c disaccustomed ureteroradiography Kg|~ormedO')
+          >>> ab = about(['incommensurable'])
+          >>> ab('electroluminescence savanilla gastropleuritis telescope infectionist beetleheaded uncrude laryngograph')
           False
           """,
           'hidden': False,
@@ -1015,8 +825,8 @@ test = {
         },
         {
           'code': r"""
-          >>> ab = about(['ten', 'kittendom', 'supercatastrophe'])
-          >>> ab('valueless consumptional untreasured wsUperc,atAstrOpheR Gte^n telekinetic Rsupe+rcatastrophe At$:Eng')
+          >>> ab = about(['unexcusableness', 'bismuthyl', 'adapt'])
+          >>> ab('undittoed bipennated ton EAdapt bismUthylo TuNexcusableness trisomy')
           False
           """,
           'hidden': False,
@@ -1025,8 +835,8 @@ test = {
         },
         {
           'code': r"""
-          >>> ab = about(['exhibitions', 'durational', 'templarlikeness', 'boghole', 'tersulphate', 'slubby', 'lovesickness'])
-          >>> ab("duraTiOnalu Vtempla^/rlikenessG mesoscutellum YlovEsick\\ne'ssy Tslub(by(m t;bogholE~L")
+          >>> ab = about(['intransigency', 'improperly', 'angiophorous'])
+          >>> ab('haploid EangiophoroUsu firetrap tonlet SangiophOrouss imPro(Pe-rLyW Angiopho"rouss pintransigency dedimus')
           False
           """,
           'hidden': False,
@@ -1035,8 +845,8 @@ test = {
         },
         {
           'code': r"""
-          >>> ab = about(['blackishly', 'fungous', 'script', 'rais', 'cleeked'])
-          >>> ab('script Sfungo@u#s fcleeKEd fun_gous c#lEEk^edw Mcle#eK[eD tinampipi')
+          >>> ab = about(['penceless', 'bromothymol', 'reticuloramose', 'pseudonymuncule'])
+          >>> ab('ebromothYmOlj unliteral BromothyMolT pseudOnymuncule aerage pancratical vpe#nce$lEss pseudonyMunculE')
           True
           """,
           'hidden': False,
@@ -1045,8 +855,8 @@ test = {
         },
         {
           'code': r"""
-          >>> ab = about(['immusical', 'azimine', 'commentarialism', 'compelling'])
-          >>> ab('mcommeNtarialism merwoman crushed tcomment"aRialism strongyloid azimi(n:eG')
+          >>> ab = about(['beshag', 'monument', 'appressor', 'tutu', 'gentilize'])
+          >>> ab('northwestward ebeshagb monUmen@>tz sbeshA+g] qtuT<u@ mo=num#enth semiresolute')
           False
           """,
           'hidden': False,
@@ -1055,8 +865,18 @@ test = {
         },
         {
           'code': r"""
-          >>> ab = about(['carthame', 'ermelin', 'ungravelly', 'antilegomena', 'dichroitic'])
-          >>> ab('diChroitic mutsuddy unmissionary antilegomena ermelin')
+          >>> ab = about(['uncivilized', 'pairer', 'keratonyxis', 'chemitypy', 'checkroll', 'hymnographer', 'tootler', 'perithelium', 'monodelph'])
+          >>> ab('stoccata ZpeRitheliUmP tooTlerA hcHeckroLl k&eraTonyx$isB Hmonodelphn')
+          False
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> ab = about(['confidentiality', 'inclementness', 'plicator'])
+          >>> ab('dejectory xplicatoR` CConfid(entiAlity (p{licatorm qpliCatorn hincleMenTness pliCa*to;r plicator oinclemENtness')
           True
           """,
           'hidden': False,
@@ -1065,9 +885,189 @@ test = {
         },
         {
           'code': r"""
-          >>> ab = about(['autometric', 'stilted'])
-          >>> ab('BAutomet%ricJ MaUtOm`etric perissosyllabic Dauto%metr"icF esterellite aut}ometricF')
+          >>> ab = about(['sardius', 'tailings'])
+          >>> ab('protect ks-ardiusI dTaIlingsr bush CsardiusA sardiusK myxemia moroseness')
           False
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> ab = about(['bescorch', 'rodding', 'disawa', 'gastradenitis', 'cottabus', 'prescapularis', 'revaporization'])
+          >>> ab('sulfocyan expressionlessly rbes@cor;chx bescorch prEscapularisd r~odding- prescAPularis disawa rOddingB')
+          True
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> ab = about(['transmundane', 'macintosh'])
+          >>> ab('stransMundaneM dir athetoid prelectress transm]undanet unquarrelsome exsanguine Macinto}sho wtran&smundane')
+          False
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> ab = about(['dualistic', 'becense', 'hyperingenuity', 'pulpalgia', 'gummose'])
+          >>> ab('TgumMos#e Ygumm+?osE neuropore seconds YdualisticF tomin tgummosex')
+          False
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> ab = about(['tentacle', 'nonrestitution', 'interventional', 'demiditone', 'chrysophilite', 'idiosyncratically', 'teosinte'])
+          >>> ab('^tenTacle pluriparous alluvial wTEoSi.n}te chrysophilite cinereal')
+          True
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> ab = about(['clique', 'spuriae', 'introspectable', 'pyritology', 'marbleize', 'blooddrop', 'prickingly', 'ecole'])
+          >>> ab('gspuriAe c*l%iQue phosphuret sPUriaen blooDdropm lclique &bloo:ddrop blooddrop')
+          True
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> ab = about(['hiro'])
+          >>> ab('untakableness borderlander hiro moviedom atmosphereless')
+          True
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> ab = about(['disdiaclastic', 'tutoyer', 'fibrilliferous', 'undiscernedly', 'gloomily', 'ternarious', 'riven', 'concamerated'])
+          >>> ab("lTe'rna!riousP theophagous disdiaclastic QfIbrillifeRous ternarious micrography GloomilyD")
+          True
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> ab = about(['nonfanciful', 'aneuploidy', 'unrubified', 'dynamic', 'twistable', 'mesmerically', 'heyday', 'hipmold', 'epiprecoracoid'])
+          >>> ab('thiophenic munrubi_fied lunRubifiedO circumparallelogram xUnrub/ified Ldynam&ic predelinquently')
+          False
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> ab = about(['prorectorate', 'snappable', 'pholadoid', 'toxicodermatitis', 'gallification', 'survival', 'rakshasa', 'pungey'])
+          >>> ab('silly pholadoid snappable h"s\'nappableH R,aKs-hasa nsnappabLeW snapPable Lsnappab_le')
+          True
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> ab = about(['quadratical', 'principiate', 'archinfamy', 'cacomixle', 'endonuclear', 'writer'])
+          >>> ab('Eprincip*iat_eX ;caco[mixlel writ<eRE qUadraticale Ewriter awRiterK endonucle#arN writer Zwrit|er')
+          True
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> ab = about(['upraisal', 'mechanicalist', 'losing', 'emancipation', 'counterquarterly', 'oppress', 'dishonorable', 'liang', 'weirdly'])
+          >>> ab('JmeChANicalIst bLi.an`g preambular exemplifiable SCoun^ter^quaRteRly versed')
+          False
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> ab = about(['subframe', 'infinitude'])
+          >>> ab('P@iNf{IniTude triakisoctahedrid gyroscope underdoing hinfinitude kulang Minfinitude')
+          False
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> ab = about(['gmbh', 'isocheimal', 'overusually', 'supercargoship', 'contemptuous', 'undrawn', 'catchpollery', 'unfinishedness', 'coolie'])
+          >>> ab('unfinishednessA ZGmbh stoneweed ksuper[cargoshi>pw unf*inis)hednessu')
+          False
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> ab = about(['lazzarone', 'define'])
+          >>> ab('coffeegrowing glaz:zaronev coralloidal strombite faky')
+          False
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> ab = about(['either', 'ungenuine', 'dealable', 'pejorism', 'cointersecting', 'outerly'])
+          >>> ab('twal ouTe(rl!yB ungenuinel bianisidine ipeJoRism')
+          False
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> ab = about(['reinsertion', 'moted', 'narcoanesthesia', 'tanbur', 'sulphamidic', 'monopersulfuric', 'heartsickening', 'talkathon'])
+          >>> ab('organoid Kmoted precollege dtalkathOnQ BtalKaThon')
+          False
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> ab = about(['yond'])
+          >>> ab('refrustrate altered spiderflower N~yond(c yond rectocolonic caner')
+          True
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> ab = about(['randannite', 'overappraise', 'disdiapason', 'unclement', 'cesser', 'repatronize', 'sacerdotalist', 'atelectatic', 'plasma'])
+          >>> ab('mat~ElEctatic$ unclement ksacerdot@aliSt saCerdotaliStZ repatronizes rAndanNite}m')
+          True
           """,
           'hidden': False,
           'locked': False,

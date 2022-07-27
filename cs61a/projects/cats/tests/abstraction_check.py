@@ -58,7 +58,7 @@ class Match(Abstract):
         return '<Match {} {}>'.format(self.a, self.b)
 
 match = Match
-word_at = lambda u, v: u.a[v]
+get_word = lambda u, v: u.a[v]
 get_words = lambda u: u.a
 get_times = lambda u: u.b
 time = lambda u, v, w: u.b[v][w]
@@ -67,13 +67,13 @@ old = {}
 
 def swap_implementations(impl):
     # save other implementations
-    old['match'] = impl.match, impl.word_at, impl.get_words, impl.get_times, impl.time
+    old['match'] = impl.match, impl.get_word, impl.get_words, impl.get_times, impl.time
 
     # save our implementations
-    new_match = match, word_at, get_words, get_times, time
+    new_match = match, get_word, get_words, get_times, time
 
     # replace impl's implementations with ours
-    impl.match, impl.word_at, impl.get_words, impl.get_times, impl.time = match, word_at, get_words, get_times, time
+    impl.match, impl.get_word, impl.get_words, impl.get_times, impl.time = match, get_word, get_words, get_times, time
 
 def restore_implementations(impl):
-    impl.match, impl.word_at, impl.get_words, impl.get_times, impl.time = old['match']
+    impl.match, impl.get_word, impl.get_words, impl.get_times, impl.time = old['match']

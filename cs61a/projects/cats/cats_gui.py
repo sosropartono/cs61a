@@ -24,7 +24,7 @@ def request_paragraph(topics=None):
     paragraphs = cats.lines_from_file(PARAGRAPH_PATH)
     random.shuffle(paragraphs)
     select = cats.about(topics) if topics else lambda x: True
-    return cats.choose(paragraphs, select, 0)
+    return cats.pick(paragraphs, select, 0)
 
 
 @route
@@ -55,7 +55,7 @@ def autocorrect(word=""):
     candidates = [w for w, s in LETTER_SETS if similar(s, letters, SIMILARITY_LIMIT)]
 
     # Try various diff functions until one doesn't raise an exception.
-    for fn in [cats.final_diff, cats.minimum_mewtations, cats.feline_flips]:
+    for fn in [cats.final_diff, cats.hidden_kittens, cats.feline_fixes]:
         try:
             guess = cats.autocorrect(word, candidates, fn, SIMILARITY_LIMIT)
             return reformat(guess, raw_word)

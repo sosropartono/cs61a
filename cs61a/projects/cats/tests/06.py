@@ -1,40 +1,40 @@
 test = {
   'name': 'Problem 6',
-  'points': 2,
+  'points': 3,
   'suites': [
     {
       'cases': [
         {
           'code': r"""
           >>> big_limit = 10
-          >>> feline_flips("car", "cad", big_limit)
+          >>> feline_fixes("car", "cad", big_limit)
           52f1b72ba99dddc798bb5cebce0be695
           # locked
-          >>> feline_flips("this", "that", big_limit)
+          >>> feline_fixes("this", "that", big_limit)
           45c27a29bbaeb163dec9a0eaed9c7c9c
           # locked
-          >>> feline_flips("one", "two", big_limit)
+          >>> feline_fixes("one", "two", big_limit)
           91711de69bc1d16e478231c51fac5db8
           # locked
-          >>> feline_flips("from", "form", big_limit)
+          >>> feline_fixes("from", "form", big_limit)
           45c27a29bbaeb163dec9a0eaed9c7c9c
           # locked
-          >>> feline_flips("awe", "awesome", big_limit)
+          >>> feline_fixes("awe", "awesome", big_limit)
           bfdc03a3c261c5dc71255ec79dd5977e
           # locked
-          >>> feline_flips("someawe", "awesome", big_limit)
+          >>> feline_fixes("someawe", "awesome", big_limit)
           ca82d3ac444a7724c7a6f8a337e495f5
           # locked
-          >>> feline_flips("awful", "awesome", big_limit)
+          >>> feline_fixes("awful", "awesome", big_limit)
           f29bb7189bc0116caaaf05635899b49b
           # locked
-          >>> feline_flips("awful", "awesome", 3) > 3
+          >>> feline_fixes("awful", "awesome", 3) > 3
           f0a7036a7438d73054555da0482ad042
           # locked
-          >>> feline_flips("awful", "awesome", 4) > 4
+          >>> feline_fixes("awful", "awesome", 4) > 4
           f0a7036a7438d73054555da0482ad042
           # locked
-          >>> feline_flips("awful", "awesome", 5) > 5
+          >>> feline_fixes("awful", "awesome", 5) > 5
           81e16d9126cb46b28abbb0a979cb030a
           # locked
           """,
@@ -45,15 +45,15 @@ test = {
         {
           'code': r"""
           >>> big_limit = 10
-          >>> feline_flips("nice", "rice", big_limit)    # Substitute: n -> r
+          >>> feline_fixes("nice", "rice", big_limit)    # Substitute: n -> r
           1
-          >>> feline_flips("range", "rungs", big_limit)  # Substitute: a -> u, e -> s
+          >>> feline_fixes("range", "rungs", big_limit)  # Substitute: a -> u, e -> s
           2
-          >>> feline_flips("pill", "pillage", big_limit) # Don't substitute anything, length difference of 3.
+          >>> feline_fixes("pill", "pillage", big_limit) # Don't substitute anything, length difference of 3.
           3
-          >>> feline_flips("roses", "arose", big_limit)  # Substitute: r -> a, o -> r, s -> o, e -> s, s -> e
+          >>> feline_fixes("roses", "arose", big_limit)  # Substitute: r -> a, o -> r, s -> o, e -> s, s -> e
           5
-          >>> feline_flips("rose", "hello", big_limit)   # Substitute: r->h, o->e, s->l, e->l, length difference of 1.
+          >>> feline_fixes("rose", "hello", big_limit)   # Substitute: r->h, o->e, s->l, e->l, length difference of 1.
           5
           """,
           'hidden': False,
@@ -63,19 +63,19 @@ test = {
         {
           'code': r"""
           >>> big_limit = 10
-          >>> feline_flips("goodbye", "good", big_limit)
+          >>> feline_fixes("goodbye", "good", big_limit)
           3
-          >>> feline_flips("pront", "print", big_limit)
+          >>> feline_fixes("pront", "print", big_limit)
           1
-          >>> feline_flips("misspollid", "misspelled", big_limit)
+          >>> feline_fixes("misspollid", "misspelled", big_limit)
           2
-          >>> feline_flips("worry", "word", big_limit)
+          >>> feline_fixes("worry", "word", big_limit)
           2
-          >>> feline_flips("first", "flashy", big_limit)
+          >>> feline_fixes("first", "flashy", big_limit)
           4
-          >>> feline_flips("hash", "ash", big_limit)
+          >>> feline_fixes("hash", "ash", big_limit)
           4
-          >>> feline_flips("ash", "hash", big_limit)
+          >>> feline_fixes("ash", "hash", big_limit)
           4
           """,
           'hidden': False,
@@ -87,16 +87,16 @@ test = {
           >>> small_words_list = ["spell", "nest", "test", "pest", "best", "bird", "wired",
           ...                     "abstraction", "abstract", "peeling", "gestate", "west",
           ...                     "spelling", "bastion"]
-          >>> autocorrect("speling", small_words_list, feline_flips, 10)
+          >>> autocorrect("speling", small_words_list, feline_fixes, 10)
           'peeling'
-          >>> autocorrect("abstrction", small_words_list, feline_flips, 10)
+          >>> autocorrect("abstrction", small_words_list, feline_fixes, 10)
           'abstract'
-          >>> autocorrect("wird", small_words_list, feline_flips, 10)
+          >>> autocorrect("wird", small_words_list, feline_fixes, 10)
           'bird'
-          >>> autocorrect("gest", small_words_list, feline_flips, 10)
+          >>> autocorrect("gest", small_words_list, feline_fixes, 10)
           'nest'
           >>> # ban iteration, list comprehensions
-          >>> test.check('cats.py', 'feline_flips', ['While', 'For', 'ListComp'])
+          >>> test.check('cats.py', 'feline_fixes', ['While', 'For', 'ListComp'])
           True
           """,
           'hidden': False,
@@ -109,7 +109,7 @@ test = {
           >>> import trace, io
           >>> from contextlib import redirect_stdout
           >>> with io.StringIO() as buf, redirect_stdout(buf):
-          ...     trace.Trace(trace=True).runfunc(feline_flips, "someaweqwertyuio", "awesomeasdfghjkl", 3)
+          ...     trace.Trace(trace=True).runfunc(feline_fixes, "someaweqwertyuio", "awesomeasdfghjkl", 3)
           ...     output = buf.getvalue()
           >>> len([line for line in output.split('\n') if 'funcname' in line]) < 10
           True
@@ -120,7 +120,7 @@ test = {
         },
         {
           'code': r"""
-          >>> sum([feline_flips('eyed', 'ey', k) > k for k in range(4)])
+          >>> feline_fixes('rut', 'ruhw', 100)
           2
           """,
           'hidden': False,
@@ -129,25 +129,7 @@ test = {
         },
         {
           'code': r"""
-          >>> feline_flips('place', 'york', 100)
-          5
-          """,
-          'hidden': False,
-          'locked': False,
-          'multiline': False
-        },
-        {
-          'code': r"""
-          >>> feline_flips('prep', 'ounce', 100)
-          5
-          """,
-          'hidden': False,
-          'locked': False,
-          'multiline': False
-        },
-        {
-          'code': r"""
-          >>> feline_flips('coed', 'coed', 100)
+          >>> feline_fixes('yo', 'yo', 100)
           0
           """,
           'hidden': False,
@@ -156,25 +138,7 @@ test = {
         },
         {
           'code': r"""
-          >>> sum([feline_flips('goofy', 'oxyl', k) > k for k in range(5)])
-          5
-          """,
-          'hidden': False,
-          'locked': False,
-          'multiline': False
-        },
-        {
-          'code': r"""
-          >>> sum([feline_flips('silly', 'silly', k) > k for k in range(5)])
-          0
-          """,
-          'hidden': False,
-          'locked': False,
-          'multiline': False
-        },
-        {
-          'code': r"""
-          >>> feline_flips('grain', 'graiq', 100)
+          >>> sum([feline_fixes('slurp', 'slurpn', k) > k for k in range(6)])
           1
           """,
           'hidden': False,
@@ -183,8 +147,8 @@ test = {
         },
         {
           'code': r"""
-          >>> feline_flips('winna', 'wonnai', 100)
-          2
+          >>> feline_fixes('nice', 'nica', 100)
+          1
           """,
           'hidden': False,
           'locked': False,
@@ -192,7 +156,7 @@ test = {
         },
         {
           'code': r"""
-          >>> feline_flips('baku', 'baku', 100)
+          >>> sum([feline_fixes('owen', 'owen', k) > k for k in range(4)])
           0
           """,
           'hidden': False,
@@ -201,7 +165,25 @@ test = {
         },
         {
           'code': r"""
-          >>> sum([feline_flips('mark', 'laker', k) > k for k in range(5)])
+          >>> feline_fixes('donee', 'shush', 100)
+          5
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> sum([feline_fixes('drest', 'dresm', k) > k for k in range(5)])
+          1
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> feline_fixes('cand', 'towy', 100)
           4
           """,
           'hidden': False,
@@ -210,8 +192,8 @@ test = {
         },
         {
           'code': r"""
-          >>> feline_flips('ethos', 'erhoi', 100)
-          2
+          >>> feline_fixes('drawn', 'terry', 100)
+          5
           """,
           'hidden': False,
           'locked': False,
@@ -219,7 +201,7 @@ test = {
         },
         {
           'code': r"""
-          >>> feline_flips('lend', 'erne', 100)
+          >>> sum([feline_fixes('stour', 'shows', k) > k for k in range(5)])
           3
           """,
           'hidden': False,
@@ -228,8 +210,8 @@ test = {
         },
         {
           'code': r"""
-          >>> feline_flips('skid', 'skd', 100)
-          2
+          >>> sum([feline_fixes('plash', 'cw', k) > k for k in range(5)])
+          5
           """,
           'hidden': False,
           'locked': False,
@@ -237,7 +219,7 @@ test = {
         },
         {
           'code': r"""
-          >>> sum([feline_flips('study', 'study', k) > k for k in range(5)])
+          >>> feline_fixes('cube', 'cube', 100)
           0
           """,
           'hidden': False,
@@ -246,7 +228,7 @@ test = {
         },
         {
           'code': r"""
-          >>> sum([feline_flips('scold', 'scql', k) > k for k in range(5)])
+          >>> sum([feline_fixes('envy', 'en', k) > k for k in range(4)])
           2
           """,
           'hidden': False,
@@ -255,79 +237,7 @@ test = {
         },
         {
           'code': r"""
-          >>> feline_flips('flamy', 'flam', 100)
-          1
-          """,
-          'hidden': False,
-          'locked': False,
-          'multiline': False
-        },
-        {
-          'code': r"""
-          >>> feline_flips('dotal', 'dota', 100)
-          1
-          """,
-          'hidden': False,
-          'locked': False,
-          'multiline': False
-        },
-        {
-          'code': r"""
-          >>> feline_flips('mince', 'mincew', 100)
-          1
-          """,
-          'hidden': False,
-          'locked': False,
-          'multiline': False
-        },
-        {
-          'code': r"""
-          >>> sum([feline_flips('ada', 'adasi', k) > k for k in range(5)])
-          2
-          """,
-          'hidden': False,
-          'locked': False,
-          'multiline': False
-        },
-        {
-          'code': r"""
-          >>> sum([feline_flips('minar', 'chain', k) > k for k in range(5)])
-          5
-          """,
-          'hidden': False,
-          'locked': False,
-          'multiline': False
-        },
-        {
-          'code': r"""
-          >>> feline_flips('tough', 'tojwh', 100)
-          2
-          """,
-          'hidden': False,
-          'locked': False,
-          'multiline': False
-        },
-        {
-          'code': r"""
-          >>> sum([feline_flips('teet', 'home', k) > k for k in range(4)])
-          4
-          """,
-          'hidden': False,
-          'locked': False,
-          'multiline': False
-        },
-        {
-          'code': r"""
-          >>> sum([feline_flips('mumps', 'tuts', k) > k for k in range(5)])
-          4
-          """,
-          'hidden': False,
-          'locked': False,
-          'multiline': False
-        },
-        {
-          'code': r"""
-          >>> sum([feline_flips('heart', 'heart', k) > k for k in range(5)])
+          >>> sum([feline_fixes('panto', 'panto', k) > k for k in range(5)])
           0
           """,
           'hidden': False,
@@ -336,7 +246,16 @@ test = {
         },
         {
           'code': r"""
-          >>> feline_flips('qoph', 'death', 100)
+          >>> sum([feline_fixes('herem', 'herem', k) > k for k in range(5)])
+          0
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> sum([feline_fixes('zanze', 'culm', k) > k for k in range(5)])
           5
           """,
           'hidden': False,
@@ -345,8 +264,8 @@ test = {
         },
         {
           'code': r"""
-          >>> feline_flips('dheri', 'eh', 100)
-          4
+          >>> sum([feline_fixes('kauri', 'kourj', k) > k for k in range(5)])
+          2
           """,
           'hidden': False,
           'locked': False,
@@ -354,7 +273,7 @@ test = {
         },
         {
           'code': r"""
-          >>> sum([feline_flips('keeve', 'keev', k) > k for k in range(5)])
+          >>> feline_fixes('hiver', 'hicer', 100)
           1
           """,
           'hidden': False,
@@ -363,8 +282,8 @@ test = {
         },
         {
           'code': r"""
-          >>> sum([feline_flips('boort', 'stulm', k) > k for k in range(5)])
-          5
+          >>> sum([feline_fixes('tulip', 'lulipi', k) > k for k in range(6)])
+          2
           """,
           'hidden': False,
           'locked': False,
@@ -372,16 +291,7 @@ test = {
         },
         {
           'code': r"""
-          >>> sum([feline_flips('jodel', 'jodelu', k) > k for k in range(6)])
-          1
-          """,
-          'hidden': False,
-          'locked': False,
-          'multiline': False
-        },
-        {
-          'code': r"""
-          >>> feline_flips('dabba', 'fan', 100)
+          >>> sum([feline_fixes('aside', 'ataxy', k) > k for k in range(5)])
           4
           """,
           'hidden': False,
@@ -390,7 +300,70 @@ test = {
         },
         {
           'code': r"""
-          >>> sum([feline_flips('cloak', 'wind', k) > k for k in range(5)])
+          >>> feline_fixes('volt', 'vol', 100)
+          1
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> feline_fixes('sleep', 'sleop', 100)
+          1
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> sum([feline_fixes('cet', 'duad', k) > k for k in range(4)])
+          4
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> sum([feline_fixes('opal', 'oral', k) > k for k in range(4)])
+          1
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> sum([feline_fixes('pathy', 'pathy', k) > k for k in range(5)])
+          0
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> feline_fixes('drive', 'dritebcx', 100)
+          4
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> sum([feline_fixes('bater', 'bateri', k) > k for k in range(6)])
+          1
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> sum([feline_fixes('ward', 'crier', k) > k for k in range(5)])
           5
           """,
           'hidden': False,
@@ -399,7 +372,16 @@ test = {
         },
         {
           'code': r"""
-          >>> sum([feline_flips('sung', 'gukgg', k) > k for k in range(5)])
+          >>> feline_fixes('massy', 'massy', 100)
+          0
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> feline_fixes('tonk', 'tonhbx', 100)
           3
           """,
           'hidden': False,
@@ -408,43 +390,7 @@ test = {
         },
         {
           'code': r"""
-          >>> feline_flips('mon', 'moy', 100)
-          1
-          """,
-          'hidden': False,
-          'locked': False,
-          'multiline': False
-        },
-        {
-          'code': r"""
-          >>> sum([feline_flips('lover', 'lover', k) > k for k in range(5)])
-          0
-          """,
-          'hidden': False,
-          'locked': False,
-          'multiline': False
-        },
-        {
-          'code': r"""
-          >>> sum([feline_flips('omer', 'omev', k) > k for k in range(4)])
-          1
-          """,
-          'hidden': False,
-          'locked': False,
-          'multiline': False
-        },
-        {
-          'code': r"""
-          >>> feline_flips('cibol', 'iib', 100)
-          3
-          """,
-          'hidden': False,
-          'locked': False,
-          'multiline': False
-        },
-        {
-          'code': r"""
-          >>> sum([feline_flips('menu', 'exeat', k) > k for k in range(5)])
+          >>> feline_fixes('sith', 'demit', 100)
           5
           """,
           'hidden': False,
@@ -453,7 +399,133 @@ test = {
         },
         {
           'code': r"""
-          >>> feline_flips('blvd', 'km', 100)
+          >>> feline_fixes('arty', 'ar', 100)
+          2
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> feline_fixes('exist', 'exisp', 100)
+          1
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> sum([feline_fixes('plot', 'plotf', k) > k for k in range(5)])
+          1
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> sum([feline_fixes('wreak', 'wreak', k) > k for k in range(5)])
+          0
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> feline_fixes('icon', 'ipog', 100)
+          2
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> feline_fixes('caza', 'scale', 100)
+          5
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> sum([feline_fixes('rann', 'daw', k) > k for k in range(4)])
+          3
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> feline_fixes('natal', 'natalj', 100)
+          1
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> sum([feline_fixes('tji', 'tjv', k) > k for k in range(3)])
+          1
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> feline_fixes('input', 'input', 100)
+          0
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> sum([feline_fixes('lysin', 'lzsunl', k) > k for k in range(6)])
+          3
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> feline_fixes('bed', 'bey', 100)
+          1
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> feline_fixes('topsl', 'topsl', 100)
+          0
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> sum([feline_fixes('becap', 'becap', k) > k for k in range(5)])
+          0
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> feline_fixes('tiny', 'sizes', 100)
           4
           """,
           'hidden': False,
@@ -462,8 +534,8 @@ test = {
         },
         {
           'code': r"""
-          >>> sum([feline_flips('sensa', 'sine', k) > k for k in range(5)])
-          3
+          >>> sum([feline_fixes('plots', 'plotss', k) > k for k in range(6)])
+          1
           """,
           'hidden': False,
           'locked': False,
@@ -471,7 +543,16 @@ test = {
         },
         {
           'code': r"""
-          >>> feline_flips('enrol', 'lungy', 100)
+          >>> sum([feline_fixes('plote', 'plot', k) > k for k in range(5)])
+          1
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> sum([feline_fixes('libra', 'unact', k) > k for k in range(5)])
           5
           """,
           'hidden': False,
@@ -480,7 +561,52 @@ test = {
         },
         {
           'code': r"""
-          >>> sum([feline_flips('octet', 'sct', k) > k for k in range(5)])
+          >>> sum([feline_fixes('shed', 'shetg', k) > k for k in range(5)])
+          2
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> sum([feline_fixes('lunes', 'lunes', k) > k for k in range(5)])
+          0
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> feline_fixes('shooi', 'sgcoi', 100)
+          2
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> feline_fixes('cahow', 'cahow', 100)
+          0
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> sum([feline_fixes('watch', 'watch', k) > k for k in range(5)])
+          0
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> feline_fixes('jeans', 'uefnp', 100)
           3
           """,
           'hidden': False,
@@ -489,7 +615,34 @@ test = {
         },
         {
           'code': r"""
-          >>> feline_flips('manga', 'guama', 100)
+          >>> feline_fixes('floey', 'uvea', 100)
+          5
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> sum([feline_fixes('pew', 'pe', k) > k for k in range(3)])
+          1
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> sum([feline_fixes('tec', 'teca', k) > k for k in range(4)])
+          1
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> sum([feline_fixes('chef', 'drib', k) > k for k in range(4)])
           4
           """,
           'hidden': False,
@@ -498,7 +651,16 @@ test = {
         },
         {
           'code': r"""
-          >>> sum([feline_flips('trike', 'trikgw', k) > k for k in range(6)])
+          >>> sum([feline_fixes('sowel', 'evert', k) > k for k in range(5)])
+          5
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> sum([feline_fixes('zebu', 'zbb', k) > k for k in range(4)])
           2
           """,
           'hidden': False,
@@ -507,16 +669,7 @@ test = {
         },
         {
           'code': r"""
-          >>> feline_flips('skete', 'skete', 100)
-          0
-          """,
-          'hidden': False,
-          'locked': False,
-          'multiline': False
-        },
-        {
-          'code': r"""
-          >>> feline_flips('site', 'dity', 100)
+          >>> feline_fixes('magma', 'magmasm', 100)
           2
           """,
           'hidden': False,
@@ -525,7 +678,7 @@ test = {
         },
         {
           'code': r"""
-          >>> feline_flips('demob', 'ratwa', 100)
+          >>> feline_fixes('shood', 'ketal', 100)
           5
           """,
           'hidden': False,
@@ -534,7 +687,34 @@ test = {
         },
         {
           'code': r"""
-          >>> feline_flips('tinea', 'wreat', 100)
+          >>> sum([feline_fixes('stall', 'ftall', k) > k for k in range(5)])
+          1
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> sum([feline_fixes('towd', 'tow', k) > k for k in range(4)])
+          1
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> sum([feline_fixes('doty', 'dsto', k) > k for k in range(4)])
+          2
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> feline_fixes('prime', 'huso', 100)
           5
           """,
           'hidden': False,
@@ -543,16 +723,7 @@ test = {
         },
         {
           'code': r"""
-          >>> feline_flips('break', 'libs', 100)
-          5
-          """,
-          'hidden': False,
-          'locked': False,
-          'multiline': False
-        },
-        {
-          'code': r"""
-          >>> sum([feline_flips('tubae', 'huqqe', k) > k for k in range(5)])
+          >>> sum([feline_fixes('raspy', 'raeiya', k) > k for k in range(6)])
           3
           """,
           'hidden': False,
@@ -561,34 +732,7 @@ test = {
         },
         {
           'code': r"""
-          >>> sum([feline_flips('run', 'tsuba', k) > k for k in range(5)])
-          5
-          """,
-          'hidden': False,
-          'locked': False,
-          'multiline': False
-        },
-        {
-          'code': r"""
-          >>> feline_flips('shy', 'shy', 100)
-          0
-          """,
-          'hidden': False,
-          'locked': False,
-          'multiline': False
-        },
-        {
-          'code': r"""
-          >>> sum([feline_flips('terma', 'tfrma', k) > k for k in range(5)])
-          1
-          """,
-          'hidden': False,
-          'locked': False,
-          'multiline': False
-        },
-        {
-          'code': r"""
-          >>> feline_flips('krama', 'kramakd', 100)
+          >>> sum([feline_fixes('sight', 'szghtw', k) > k for k in range(6)])
           2
           """,
           'hidden': False,
@@ -597,16 +741,7 @@ test = {
         },
         {
           'code': r"""
-          >>> sum([feline_flips('jesse', 'messe', k) > k for k in range(5)])
-          1
-          """,
-          'hidden': False,
-          'locked': False,
-          'multiline': False
-        },
-        {
-          'code': r"""
-          >>> feline_flips('essay', 'hssa', 100)
+          >>> feline_fixes('scho', 'sc', 100)
           2
           """,
           'hidden': False,
@@ -615,43 +750,7 @@ test = {
         },
         {
           'code': r"""
-          >>> feline_flips('begun', 'begun', 100)
-          0
-          """,
-          'hidden': False,
-          'locked': False,
-          'multiline': False
-        },
-        {
-          'code': r"""
-          >>> feline_flips('vii', 'vii', 100)
-          0
-          """,
-          'hidden': False,
-          'locked': False,
-          'multiline': False
-        },
-        {
-          'code': r"""
-          >>> sum([feline_flips('rides', 'rides', k) > k for k in range(5)])
-          0
-          """,
-          'hidden': False,
-          'locked': False,
-          'multiline': False
-        },
-        {
-          'code': r"""
-          >>> feline_flips('alga', 'alga', 100)
-          0
-          """,
-          'hidden': False,
-          'locked': False,
-          'multiline': False
-        },
-        {
-          'code': r"""
-          >>> sum([feline_flips('asker', 'ts', k) > k for k in range(5)])
+          >>> feline_fixes('sher', 'sided', 100)
           4
           """,
           'hidden': False,
@@ -660,16 +759,7 @@ test = {
         },
         {
           'code': r"""
-          >>> feline_flips('rocky', 'rockyp', 100)
-          1
-          """,
-          'hidden': False,
-          'locked': False,
-          'multiline': False
-        },
-        {
-          'code': r"""
-          >>> feline_flips('crain', 'cr', 100)
+          >>> sum([feline_fixes('glime', 'plane', k) > k for k in range(5)])
           3
           """,
           'hidden': False,
@@ -678,7 +768,7 @@ test = {
         },
         {
           'code': r"""
-          >>> feline_flips('kinch', 'kinch', 100)
+          >>> sum([feline_fixes('canon', 'canon', k) > k for k in range(5)])
           0
           """,
           'hidden': False,
@@ -687,7 +777,25 @@ test = {
         },
         {
           'code': r"""
-          >>> feline_flips('bort', 'bort', 100)
+          >>> sum([feline_fixes('soon', 'sb', k) > k for k in range(4)])
+          3
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> feline_fixes('would', 'douldtl', 100)
+          3
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> sum([feline_fixes('yeat', 'yeat', k) > k for k in range(4)])
           0
           """,
           'hidden': False,
@@ -696,7 +804,43 @@ test = {
         },
         {
           'code': r"""
-          >>> feline_flips('deter', 'gale', 100)
+          >>> sum([feline_fixes('lexus', 'lexrs', k) > k for k in range(5)])
+          1
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> sum([feline_fixes('randy', 'lose', k) > k for k in range(5)])
+          5
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> feline_fixes('thee', 'theea', 100)
+          1
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> feline_fixes('pilot', 'pilot', 100)
+          0
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> feline_fixes('irk', 'hokey', 100)
           4
           """,
           'hidden': False,
@@ -705,61 +849,7 @@ test = {
         },
         {
           'code': r"""
-          >>> feline_flips('gaize', 'gaize', 100)
-          0
-          """,
-          'hidden': False,
-          'locked': False,
-          'multiline': False
-        },
-        {
-          'code': r"""
-          >>> sum([feline_flips('heme', 'hemvn', k) > k for k in range(5)])
-          2
-          """,
-          'hidden': False,
-          'locked': False,
-          'multiline': False
-        },
-        {
-          'code': r"""
-          >>> feline_flips('boats', 'boatsz', 100)
-          1
-          """,
-          'hidden': False,
-          'locked': False,
-          'multiline': False
-        },
-        {
-          'code': r"""
-          >>> feline_flips('mown', 'yomn', 100)
-          2
-          """,
-          'hidden': False,
-          'locked': False,
-          'multiline': False
-        },
-        {
-          'code': r"""
-          >>> sum([feline_flips('anana', 'agan', k) > k for k in range(5)])
-          2
-          """,
-          'hidden': False,
-          'locked': False,
-          'multiline': False
-        },
-        {
-          'code': r"""
-          >>> feline_flips('peasy', 'aeasv', 100)
-          2
-          """,
-          'hidden': False,
-          'locked': False,
-          'multiline': False
-        },
-        {
-          'code': r"""
-          >>> feline_flips('pie', 'tizzy', 100)
+          >>> sum([feline_fixes('foody', 'lough', k) > k for k in range(5)])
           4
           """,
           'hidden': False,
@@ -768,7 +858,7 @@ test = {
         },
         {
           'code': r"""
-          >>> feline_flips('quin', 'quinffp', 100)
+          >>> sum([feline_fixes('mensa', 'ken', k) > k for k in range(5)])
           3
           """,
           'hidden': False,
@@ -777,8 +867,8 @@ test = {
         },
         {
           'code': r"""
-          >>> feline_flips('among', 'sculp', 100)
-          5
+          >>> sum([feline_fixes('spung', 'spu', k) > k for k in range(5)])
+          2
           """,
           'hidden': False,
           'locked': False,
@@ -786,16 +876,7 @@ test = {
         },
         {
           'code': r"""
-          >>> sum([feline_flips('ja', 'j', k) > k for k in range(2)])
-          1
-          """,
-          'hidden': False,
-          'locked': False,
-          'multiline': False
-        },
-        {
-          'code': r"""
-          >>> feline_flips('aube', 'aube', 100)
+          >>> feline_fixes('db', 'db', 100)
           0
           """,
           'hidden': False,
@@ -804,7 +885,7 @@ test = {
         },
         {
           'code': r"""
-          >>> feline_flips('mf', 'kf', 100)
+          >>> feline_fixes('beala', 'beama', 100)
           1
           """,
           'hidden': False,
@@ -813,7 +894,43 @@ test = {
         },
         {
           'code': r"""
-          >>> sum([feline_flips('ta', 'jowl', k) > k for k in range(4)])
+          >>> feline_fixes('bepun', 'bepu', 100)
+          1
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> sum([feline_fixes('film', 'fblu', k) > k for k in range(4)])
+          2
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> feline_fixes('espn', 'esp', 100)
+          1
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> sum([feline_fixes('hondo', 'hbndao', k) > k for k in range(6)])
+          3
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> feline_fixes('reps', 'gata', 100)
           4
           """,
           'hidden': False,
@@ -822,16 +939,7 @@ test = {
         },
         {
           'code': r"""
-          >>> sum([feline_flips('downy', 'downy', k) > k for k in range(5)])
-          0
-          """,
-          'hidden': False,
-          'locked': False,
-          'multiline': False
-        },
-        {
-          'code': r"""
-          >>> feline_flips('brook', 'sxook', 100)
+          >>> sum([feline_fixes('tirr', 'tsr', k) > k for k in range(4)])
           2
           """,
           'hidden': False,
@@ -840,88 +948,7 @@ test = {
         },
         {
           'code': r"""
-          >>> feline_flips('brood', 'broodd', 100)
-          1
-          """,
-          'hidden': False,
-          'locked': False,
-          'multiline': False
-        },
-        {
-          'code': r"""
-          >>> feline_flips('unset', 'rocky', 100)
-          5
-          """,
-          'hidden': False,
-          'locked': False,
-          'multiline': False
-        },
-        {
-          'code': r"""
-          >>> sum([feline_flips('pole', 'po', k) > k for k in range(4)])
-          2
-          """,
-          'hidden': False,
-          'locked': False,
-          'multiline': False
-        },
-        {
-          'code': r"""
-          >>> sum([feline_flips('dir', 'dir', k) > k for k in range(3)])
-          0
-          """,
-          'hidden': False,
-          'locked': False,
-          'multiline': False
-        },
-        {
-          'code': r"""
-          >>> sum([feline_flips('rider', 'rider', k) > k for k in range(5)])
-          0
-          """,
-          'hidden': False,
-          'locked': False,
-          'multiline': False
-        },
-        {
-          'code': r"""
-          >>> feline_flips('urate', 'uraxb', 100)
-          2
-          """,
-          'hidden': False,
-          'locked': False,
-          'multiline': False
-        },
-        {
-          'code': r"""
-          >>> feline_flips('swift', 'gade', 100)
-          5
-          """,
-          'hidden': False,
-          'locked': False,
-          'multiline': False
-        },
-        {
-          'code': r"""
-          >>> sum([feline_flips('gucki', 'gacki', k) > k for k in range(5)])
-          1
-          """,
-          'hidden': False,
-          'locked': False,
-          'multiline': False
-        },
-        {
-          'code': r"""
-          >>> sum([feline_flips('dang', 'dangb', k) > k for k in range(5)])
-          1
-          """,
-          'hidden': False,
-          'locked': False,
-          'multiline': False
-        },
-        {
-          'code': r"""
-          >>> sum([feline_flips('cruth', 'cruthibh', k) > k for k in range(8)])
+          >>> sum([feline_fixes('slote', 'svotjg', k) > k for k in range(6)])
           3
           """,
           'hidden': False,
@@ -930,52 +957,7 @@ test = {
         },
         {
           'code': r"""
-          >>> sum([feline_flips('aloof', 'alfofk', k) > k for k in range(6)])
-          2
-          """,
-          'hidden': False,
-          'locked': False,
-          'multiline': False
-        },
-        {
-          'code': r"""
-          >>> sum([feline_flips('alive', 'aoiv', k) > k for k in range(5)])
-          2
-          """,
-          'hidden': False,
-          'locked': False,
-          'multiline': False
-        },
-        {
-          'code': r"""
-          >>> sum([feline_flips('arow', 'arowlp', k) > k for k in range(6)])
-          2
-          """,
-          'hidden': False,
-          'locked': False,
-          'multiline': False
-        },
-        {
-          'code': r"""
-          >>> feline_flips('lemon', 'sahib', 100)
-          5
-          """,
-          'hidden': False,
-          'locked': False,
-          'multiline': False
-        },
-        {
-          'code': r"""
-          >>> feline_flips('moire', 'dean', 100)
-          5
-          """,
-          'hidden': False,
-          'locked': False,
-          'multiline': False
-        },
-        {
-          'code': r"""
-          >>> sum([feline_flips('feaze', 'feazefeb', k) > k for k in range(8)])
+          >>> sum([feline_fixes('beeve', 'jegvd', k) > k for k in range(5)])
           3
           """,
           'hidden': False,
@@ -984,25 +966,7 @@ test = {
         },
         {
           'code': r"""
-          >>> sum([feline_flips('socii', 'soci', k) > k for k in range(5)])
-          1
-          """,
-          'hidden': False,
-          'locked': False,
-          'multiline': False
-        },
-        {
-          'code': r"""
-          >>> feline_flips('mashy', 'mash', 100)
-          1
-          """,
-          'hidden': False,
-          'locked': False,
-          'multiline': False
-        },
-        {
-          'code': r"""
-          >>> feline_flips('a', 'a', 100)
+          >>> sum([feline_fixes('evade', 'evade', k) > k for k in range(5)])
           0
           """,
           'hidden': False,
@@ -1011,8 +975,44 @@ test = {
         },
         {
           'code': r"""
-          >>> sum([feline_flips('salol', 'salol', k) > k for k in range(5)])
+          >>> sum([feline_fixes('sinew', 'dineb', k) > k for k in range(5)])
+          2
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> feline_fixes('goods', 'good', 100)
+          1
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> sum([feline_fixes('kiley', 'kiley', k) > k for k in range(5)])
           0
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> sum([feline_fixes('score', 'score', k) > k for k in range(5)])
+          0
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> feline_fixes('flags', 'flaq', 100)
+          2
           """,
           'hidden': False,
           'locked': False,
@@ -1021,7 +1021,7 @@ test = {
       ],
       'scored': True,
       'setup': r"""
-      >>> from cats import feline_flips, autocorrect
+      >>> from cats import feline_fixes, autocorrect
       >>> import tests.construct_check as test
       """,
       'teardown': '',

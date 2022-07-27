@@ -10,7 +10,7 @@ from datetime import datetime
 ###########
 
 
-def choose(paragraphs, select, k):
+def pick(paragraphs, select, k):
     """Return the Kth paragraph from PARAGRAPHS for which SELECT called on the
     paragraph returns True. If there are fewer than K such paragraphs, return
     the empty string.
@@ -22,11 +22,11 @@ def choose(paragraphs, select, k):
 
     >>> ps = ['hi', 'how are you', 'fine']
     >>> s = lambda p: len(p) <= 4
-    >>> choose(ps, s, 0)
+    >>> pick(ps, s, 0)
     'hi'
-    >>> choose(ps, s, 1)
+    >>> pick(ps, s, 1)
     'fine'
-    >>> choose(ps, s, 2)
+    >>> pick(ps, s, 2)
     ''
     """
     # BEGIN PROBLEM 1
@@ -42,9 +42,9 @@ def about(topic):
         topic: a list of words related to a subject
 
     >>> about_dogs = about(['dog', 'dogs', 'pup', 'puppy'])
-    >>> choose(['Cute Dog!', 'That is a cat.', 'Nice pup!'], about_dogs, 0)
+    >>> pick(['Cute Dog!', 'That is a cat.', 'Nice pup!'], about_dogs, 0)
     'Cute Dog!'
-    >>> choose(['Cute Dog!', 'That is a cat.', 'Nice pup.'], about_dogs, 1)
+    >>> pick(['Cute Dog!', 'That is a cat.', 'Nice pup.'], about_dogs, 1)
     'Nice pup.'
     """
     assert all([lower(x) == x for x in topic]), 'topics should be lowercase.'
@@ -105,14 +105,14 @@ def wpm(typed, elapsed):
 # Phase 2 #
 ###########
 
-def autocorrect(typed_word, valid_words, diff_function, limit):
-    """Returns the element of VALID_WORDS that has the smallest difference
+def autocorrect(typed_word, word_list, diff_function, limit):
+    """Returns the element of WORD_LIST that has the smallest difference
     from TYPED_WORD. Instead returns TYPED_WORD if that difference is greater
     than LIMIT.
 
     Arguments:
         typed_word: a string representing a word that may contain typos
-        valid_words: a list of strings representing valid words
+        word_list: a list of strings representing reference words
         diff_function: a function quantifying the difference between two words
         limit: a number
 
@@ -128,26 +128,26 @@ def autocorrect(typed_word, valid_words, diff_function, limit):
     # END PROBLEM 5
 
 
-def feline_flips(start, goal, limit):
+def feline_fixes(typed, reference, limit):
     """A diff function for autocorrect that determines how many letters
-    in START need to be substituted to create GOAL, then adds the difference in
+    in TYPED need to be substituted to create REFERENCE, then adds the difference in
     their lengths and returns the result.
 
     Arguments:
-        start: a starting word
-        goal: a string representing a desired goal word
+        typed: a starting word
+        reference: a string representing a desired goal word
         limit: a number representing an upper bound on the number of chars that must change
 
     >>> big_limit = 10
-    >>> feline_flips("nice", "rice", big_limit)    # Substitute: n -> r
+    >>> feline_fixes("nice", "rice", big_limit)    # Substitute: n -> r
     1
-    >>> feline_flips("range", "rungs", big_limit)  # Substitute: a -> u, e -> s
+    >>> feline_fixes("range", "rungs", big_limit)  # Substitute: a -> u, e -> s
     2
-    >>> feline_flips("pill", "pillage", big_limit) # Don't substitute anything, length difference of 3.
+    >>> feline_fixes("pill", "pillage", big_limit) # Don't substitute anything, length difference of 3.
     3
-    >>> feline_flips("roses", "arose", big_limit)  # Substitute: r -> a, o -> r, s -> o, e -> s, s -> e
+    >>> feline_fixes("roses", "arose", big_limit)  # Substitute: r -> a, o -> r, s -> o, e -> s, s -> e
     5
-    >>> feline_flips("rose", "hello", big_limit)   # Substitute: r->h, o->e, s->l, e->l, length difference of 1.
+    >>> feline_fixes("rose", "hello", big_limit)   # Substitute: r->h, o->e, s->l, e->l, length difference of 1.
     5
     """
     # BEGIN PROBLEM 6
@@ -155,46 +155,31 @@ def feline_flips(start, goal, limit):
     # END PROBLEM 6
 
 
-def minimum_mewtations(start, goal, limit):
-    """A diff function that computes the edit distance from START to GOAL.
-    This function takes in a string START, a string GOAL, and a number LIMIT.
+def hidden_kittens(typed, reference, limit):
+    """A diff function that returns the number of times REFERENCE appears as a
+    (potentially non-continuous) substring of TYPED. If REFERENCE appears 0 or > LIMIT times
+    within TYPED, return a number greater than LIMIT.
 
     Arguments:
-        start: a starting word
-        goal: a goal word
-        limit: a number representing an upper bound on the number of edits
+        typed: a starting word
+        reference: a string representing a desired goal word
+        limit: a number representing an upper bound on the number of substrings found
 
-    >>> big_limit = 10
-    >>> minimum_mewtations("cats", "scat", big_limit)       # cats -> scats -> scat
-    2
-    >>> minimum_mewtations("purng", "purring", big_limit)   # purng -> purrng -> purring
-    2
-    >>> minimum_mewtations("ckiteus", "kittens", big_limit) # ckiteus -> kiteus -> kitteus -> kittens
-    3
+    >>> limit = 5
+    >>> hidden_kittens("ccatgts", "cats", limit)
+    4
+    >>> hidden_kittens("123123123", "123", limit) > limit # 123 appears 10 times in 123123123
+    True
+    >>> hidden_kittens("hiddnehddi", "hidden", limit) > limit # hidden appears 0 times in hiddnehddi
+    True
     """
-    assert False, 'Remove this line'
-
-    if ______________:  # Fill in the condition
-        # BEGIN
-        "*** YOUR CODE HERE ***"
-        # END
-
-    elif ___________:  # Feel free to remove or add additional cases
-        # BEGIN
-        "*** YOUR CODE HERE ***"
-        # END
-
-    else:
-        add = ...  # Fill in these lines
-        remove = ...
-        substitute = ...
-        # BEGIN
-        "*** YOUR CODE HERE ***"
-        # END
+    # BEGIN PROBLEM 7
+    "*** YOUR CODE HERE ***"
+    # END PROBLEM 7
 
 
-def final_diff(start, goal, limit):
-    """A diff function that takes in a string START, a string GOAL, and a number LIMIT.
+def final_diff(typed, reference, limit):
+    """A diff function that takes in a string TYPED, a string REFERENCE, and a number LIMIT.
     If you implement this function, it will be used."""
     assert False, 'Remove this line to use your final_diff function.'
 
@@ -207,12 +192,12 @@ FINAL_DIFF_LIMIT = 6  # REPLACE THIS WITH YOUR LIMIT
 ###########
 
 
-def report_progress(sofar, prompt, user_id, upload):
+def report_progress(typed, prompt, user_id, upload):
     """Upload a report of your id and progress so far to the multiplayer server.
     Returns the progress so far.
 
     Arguments:
-        sofar: a list of the words input so far
+        typed: a list of the words typed so far
         prompt: a list of the words in the typing prompt
         user_id: a number representing the id of the current user
         upload: a function used to upload progress to the multiplayer server
@@ -221,9 +206,9 @@ def report_progress(sofar, prompt, user_id, upload):
     >>> # The above function displays progress in the format ID: __, Progress: __
     >>> print_progress({'id': 1, 'progress': 0.6})
     ID: 1 Progress: 0.6
-    >>> sofar = ['how', 'are', 'you']
+    >>> typed = ['how', 'are', 'you']
     >>> prompt = ['how', 'are', 'you', 'doing', 'today']
-    >>> report_progress(sofar, prompt, 2, print_progress)
+    >>> report_progress(typed, prompt, 2, print_progress)
     ID: 2 Progress: 0.6
     0.6
     >>> report_progress(['how', 'aree'], prompt, 3, print_progress)
@@ -236,7 +221,7 @@ def report_progress(sofar, prompt, user_id, upload):
 
 
 def time_per_word(words, times_per_player):
-    """Given timing data, return a match data abstraction, which contains a
+    """Given timing data, return a match dictionary, which contains a
     list of words and the amount of time each player took to type each word.
 
     Arguments:
@@ -247,9 +232,9 @@ def time_per_word(words, times_per_player):
 
     >>> p = [[75, 81, 84, 90, 92], [19, 29, 35, 36, 38]]
     >>> match = time_per_word(['collar', 'plush', 'blush', 'repute'], p)
-    >>> get_words(match)
+    >>> match["words"]
     ['collar', 'plush', 'blush', 'repute']
-    >>> get_times(match)
+    >>> match["times"]
     [[6, 3, 6, 2], [10, 6, 1, 2]]
     """
     # BEGIN PROBLEM 9
@@ -261,7 +246,7 @@ def fastest_words(match):
     """Return a list of lists of which words each player typed fastest.
 
     Arguments:
-        match: a match data abstraction as returned by time_per_word.
+        match: a match dictionary as returned by time_per_word.
 
     >>> p0 = [5, 1, 3]
     >>> p1 = [4, 1, 6]
@@ -272,15 +257,15 @@ def fastest_words(match):
     >>> p1
     [4, 1, 6]
     """
-    player_indices = range(len(get_times(match)))  # contains an *index* for each player
-    word_indices = range(len(get_words(match)))    # contains an *index* for each word
+    player_indices = range(len(match["times"]))  # contains an *index* for each player
+    word_indices = range(len(match["words"]))    # contains an *index* for each word
     # BEGIN PROBLEM 10
     "*** YOUR CODE HERE ***"
     # END PROBLEM 10
 
 
 def match(words, times):
-    """A data abstraction containing all words typed and their times.
+    """A dictionary containing all words typed and their times.
 
     Arguments:
         words: A list of strings, each string representing a word typed.
@@ -296,35 +281,25 @@ def match(words, times):
     assert all([type(t) == list for t in times]), 'times should be a list of lists'
     assert all([isinstance(i, (int, float)) for t in times for i in t]), 'times lists should contain numbers'
     assert all([len(t) == len(words) for t in times]), 'There should be one word per time.'
-    return [words, times]
+    return {"words": words, "times": times}
 
 
-def word_at(match, word_index):
-    """A selector function that gets the word with index word_index"""
-    assert 0 <= word_index < len(match[0]), "word_index out of range of words"
-    return match[0][word_index]
-
-
-def get_words(match):
-    """A selector function for all the words in the match"""
-    return match[0]
-
-
-def get_times(match):
-    """A selector function for all typing times for all players"""
-    return match[1]
+def get_word(match, word_index):
+    """A utility function that gets the word with index word_index"""
+    assert 0 <= word_index < len(match["words"]), "word_index out of range of words"
+    return match["words"][word_index]
 
 
 def time(match, player_num, word_index):
-    """A selector function for the time it took player_num to type the word at word_index"""
-    assert word_index < len(match[0]), "word_index out of range of words"
-    assert player_num < len(match[1]), "player_num out of range of players"
-    return match[1][player_num][word_index]
+    """A utility function for the time it took player_num to type the word at word_index"""
+    assert word_index < len(match["words"]), "word_index out of range of words"
+    assert player_num < len(match["times"]), "player_num out of range of players"
+    return match["times"][player_num][word_index]
 
 
 def match_string(match):
-    """A helper function that takes in a match object and returns a string representation of it"""
-    return "match(%s, %s)" % (match[0], match[1])
+    """A helper function that takes in a match dictionary and returns a string representation of it"""
+    return f"match({match['words']}, {match['times']})"
 
 
 enable_multiplayer = False  # Change to True when you're ready to race.
@@ -342,7 +317,7 @@ def run_typing_test(topics):
         select = about(topics)
     i = 0
     while True:
-        reference = choose(paragraphs, select, i)
+        reference = pick(paragraphs, select, i)
         if not reference:
             print('No more paragraphs about', topics, 'are available.')
             return

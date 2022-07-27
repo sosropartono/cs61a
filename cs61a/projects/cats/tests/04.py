@@ -76,8 +76,8 @@ test = {
         },
         {
           'code': r"""
-          >>> round(wpm('newsstand stereochromy quinaldine invalidate japingly', 18.95), 2)
-          33.56
+          >>> round(wpm('smopple', 52.11), 2)
+          1.61
           """,
           'hidden': False,
           'locked': False,
@@ -85,8 +85,8 @@ test = {
         },
         {
           'code': r"""
-          >>> round(wpm('unstatesmanlike median cueca meroplankton foremilk', 3.15), 2)
-          190.48
+          >>> round(wpm('equalizing phrymaceous fluidimeter seeds', 30.6), 2)
+          15.69
           """,
           'hidden': False,
           'locked': False,
@@ -94,8 +94,8 @@ test = {
         },
         {
           'code': r"""
-          >>> round(wpm('lamellule unibranchiate introspectional squamigerous sair heterodromy butylene gromatics', 11.27), 2)
-          93.7
+          >>> round(wpm('seeingly', 28.34), 2)
+          3.39
           """,
           'hidden': False,
           'locked': False,
@@ -103,8 +103,8 @@ test = {
         },
         {
           'code': r"""
-          >>> round(wpm('gentlewomanly titillating counterquip lotto rejoicement acouometer wauns comitatus', 2.58), 2)
-          381.4
+          >>> round(wpm('probatively unabatedly reundergo unweld handgun hydrometra recessionary', 10.84), 2)
+          78.6
           """,
           'hidden': False,
           'locked': False,
@@ -112,340 +112,7 @@ test = {
         },
         {
           'code': r"""
-          >>> round(wpm('musiclike nonregarding oxypropionic postvide muncheel reburial interfinger', 5.67), 2)
-          156.61
-          """,
-          'hidden': False,
-          'locked': False,
-          'multiline': False
-        },
-        {
-          'code': r"""
-          >>> round(wpm('antinoise archcupbearer opisthotonoid', 5.27), 2)
-          84.25
-          """,
-          'hidden': False,
-          'locked': False,
-          'multiline': False
-        },
-        {
-          'code': r"""
-          >>> round(wpm('cixiid sms ultraplausible clankety tennisy hybridist turrical pillarlike dumb', 18.54), 2)
-          49.84
-          """,
-          'hidden': False,
-          'locked': False,
-          'multiline': False
-        },
-        {
-          'code': r"""
-          >>> round(wpm('crural accredit deltation esophagomalacia', 21.76), 2)
-          22.61
-          """,
-          'hidden': False,
-          'locked': False,
-          'multiline': False
-        },
-        {
-          'code': r"""
-          >>> round(wpm('basiradial pseudoliterary electroextraction', 29.18), 2)
-          17.68
-          """,
-          'hidden': False,
-          'locked': False,
-          'multiline': False
-        },
-        {
-          'code': r"""
-          >>> round(wpm('unamenable ratio speciology dimension incenseless', 1.02), 2)
-          576.47
-          """,
-          'hidden': False,
-          'locked': False,
-          'multiline': False
-        },
-        {
-          'code': r"""
-          >>> round(wpm('interlardment supercargo inquilinity mackenboy trauma polyemia centuplication anthracoid megalomelia', 4.92), 2)
-          243.9
-          """,
-          'hidden': False,
-          'locked': False,
-          'multiline': False
-        },
-        {
-          'code': r"""
-          >>> round(wpm('casual artist unintrigued janitor lenard helminthagogue disfigurative runrig crutch', 24.56), 2)
-          40.55
-          """,
-          'hidden': False,
-          'locked': False,
-          'multiline': False
-        },
-        {
-          'code': r"""
-          >>> round(wpm('purblindly chromo casson unpliableness overweeningly unsquandered', 13.28), 2)
-          58.73
-          """,
-          'hidden': False,
-          'locked': False,
-          'multiline': False
-        },
-        {
-          'code': r"""
-          >>> round(wpm('strigal scrawler', 94.27), 2)
-          2.04
-          """,
-          'hidden': False,
-          'locked': False,
-          'multiline': False
-        },
-        {
-          'code': r"""
-          >>> round(wpm('pochay negotiatrix attaintment concurringly glyoxaline terpin kinetoscopic chloralism', 27.33), 2)
-          37.32
-          """,
-          'hidden': False,
-          'locked': False,
-          'multiline': False
-        },
-        {
-          'code': r"""
-          >>> round(wpm('synizesis marble undeleted subrogation lownly nebulosity capricci compelling', 86.87), 2)
-          10.5
-          """,
-          'hidden': False,
-          'locked': False,
-          'multiline': False
-        },
-        {
-          'code': r"""
-          >>> round(wpm('pectous kathal supercargoship keelblock celiosalpingectomy pronumber costotomy radknight autodetector', 43.75), 2)
-          27.7
-          """,
-          'hidden': False,
-          'locked': False,
-          'multiline': False
-        },
-        {
-          'code': r"""
-          >>> round(wpm('campylometer', 72.27), 2)
-          1.99
-          """,
-          'hidden': False,
-          'locked': False,
-          'multiline': False
-        },
-        {
-          'code': r"""
-          >>> round(wpm('incendiarism carbamide families', 6.98), 2)
-          53.3
-          """,
-          'hidden': False,
-          'locked': False,
-          'multiline': False
-        },
-        {
-          'code': r"""
-          >>> round(wpm('kitling workhouse scriver chilicothe anteprandial', 11.99), 2)
-          49.04
-          """,
-          'hidden': False,
-          'locked': False,
-          'multiline': False
-        },
-        {
-          'code': r"""
-          >>> round(wpm('infanglement cavern autotriploid', 80.48), 2)
-          4.77
-          """,
-          'hidden': False,
-          'locked': False,
-          'multiline': False
-        },
-        {
-          'code': r"""
-          >>> round(wpm('fiddley ungifted plimsoll hanse endognath cluck zoosporiferous stegosaurian enhanced', 10.14), 2)
-          99.41
-          """,
-          'hidden': False,
-          'locked': False,
-          'multiline': False
-        },
-        {
-          'code': r"""
-          >>> round(wpm('saponify bakerless nonluminous zonesthesia argumentatively', 3.93), 2)
-          177.1
-          """,
-          'hidden': False,
-          'locked': False,
-          'multiline': False
-        },
-        {
-          'code': r"""
-          >>> round(wpm('overfrailty affair gelatinizability', 62.1), 2)
-          6.76
-          """,
-          'hidden': False,
-          'locked': False,
-          'multiline': False
-        },
-        {
-          'code': r"""
-          >>> round(wpm('toys uranophane', 1.28), 2)
-          140.62
-          """,
-          'hidden': False,
-          'locked': False,
-          'multiline': False
-        },
-        {
-          'code': r"""
-          >>> round(wpm('impercipient ali indult palmitic', 1.98), 2)
-          193.94
-          """,
-          'hidden': False,
-          'locked': False,
-          'multiline': False
-        },
-        {
-          'code': r"""
-          >>> round(wpm('rubberneck telangiectasy unratable dissolvableness redheadedly', 1.99), 2)
-          373.87
-          """,
-          'hidden': False,
-          'locked': False,
-          'multiline': False
-        },
-        {
-          'code': r"""
-          >>> round(wpm('nocturia cataphyllum alroot', 55.08), 2)
-          5.88
-          """,
-          'hidden': False,
-          'locked': False,
-          'multiline': False
-        },
-        {
-          'code': r"""
-          >>> round(wpm('undissenting', 32.5), 2)
-          4.43
-          """,
-          'hidden': False,
-          'locked': False,
-          'multiline': False
-        },
-        {
-          'code': r"""
-          >>> round(wpm('accresce during unreproachableness incomputable sulphosuccinic', 30.41), 2)
-          24.47
-          """,
-          'hidden': False,
-          'locked': False,
-          'multiline': False
-        },
-        {
-          'code': r"""
-          >>> round(wpm('unembraced counterprotection karyolysis contuse esophagomalacia', 42.35), 2)
-          17.85
-          """,
-          'hidden': False,
-          'locked': False,
-          'multiline': False
-        },
-        {
-          'code': r"""
-          >>> round(wpm('resay benjy', 60.34), 2)
-          2.19
-          """,
-          'hidden': False,
-          'locked': False,
-          'multiline': False
-        },
-        {
-          'code': r"""
-          >>> round(wpm('meant pantomime fumatory driftpiece archaic oreotragine nystagmic', 55.27), 2)
-          14.11
-          """,
-          'hidden': False,
-          'locked': False,
-          'multiline': False
-        },
-        {
-          'code': r"""
-          >>> round(wpm('uncurl lobulose parapsychical revengement', 7.78), 2)
-          63.24
-          """,
-          'hidden': False,
-          'locked': False,
-          'multiline': False
-        },
-        {
-          'code': r"""
-          >>> round(wpm('lintwhite', 61.86), 2)
-          1.75
-          """,
-          'hidden': False,
-          'locked': False,
-          'multiline': False
-        },
-        {
-          'code': r"""
-          >>> round(wpm('myristicaceous clodpated subcouncil digestment hierocratic vasculated purana semipinacolic gramophonically', 27.71), 2)
-          45.9
-          """,
-          'hidden': False,
-          'locked': False,
-          'multiline': False
-        },
-        {
-          'code': r"""
-          >>> round(wpm('swearingly pimple unbundled bencite unfrustrably', 1.83), 2)
-          314.75
-          """,
-          'hidden': False,
-          'locked': False,
-          'multiline': False
-        },
-        {
-          'code': r"""
-          >>> round(wpm('undistinguishableness squatwise nonplastic lucernal holarctic', 1.45), 2)
-          504.83
-          """,
-          'hidden': False,
-          'locked': False,
-          'multiline': False
-        },
-        {
-          'code': r"""
-          >>> round(wpm('rhymemaking', 74.91), 2)
-          1.76
-          """,
-          'hidden': False,
-          'locked': False,
-          'multiline': False
-        },
-        {
-          'code': r"""
-          >>> round(wpm('uninterlocked scrotectomy noumenalism botryomycoma sphingometer sensibilize deconsecration impersonatrix sheer', 17.82), 2)
-          74.07
-          """,
-          'hidden': False,
-          'locked': False,
-          'multiline': False
-        },
-        {
-          'code': r"""
-          >>> round(wpm('moly boldness uraniid inherently diphenol dermoskeleton', 3.1), 2)
-          212.9
-          """,
-          'hidden': False,
-          'locked': False,
-          'multiline': False
-        },
-        {
-          'code': r"""
-          >>> round(wpm('', 47.32), 2)
+          >>> round(wpm('', 40.74), 2)
           0.0
           """,
           'hidden': False,
@@ -454,61 +121,7 @@ test = {
         },
         {
           'code': r"""
-          >>> round(wpm('probationism pargeboard liquidly nongentile metrification unseamanship', 3.43), 2)
-          244.9
-          """,
-          'hidden': False,
-          'locked': False,
-          'multiline': False
-        },
-        {
-          'code': r"""
-          >>> round(wpm('purloiner cinnabarine orlop ovolo', 6.79), 2)
-          58.32
-          """,
-          'hidden': False,
-          'locked': False,
-          'multiline': False
-        },
-        {
-          'code': r"""
-          >>> round(wpm('undersheriffship remonetize crustation syntypicism', 14.0), 2)
-          42.86
-          """,
-          'hidden': False,
-          'locked': False,
-          'multiline': False
-        },
-        {
-          'code': r"""
-          >>> round(wpm('photomezzotype durian precompletion', 1.6), 2)
-          262.5
-          """,
-          'hidden': False,
-          'locked': False,
-          'multiline': False
-        },
-        {
-          'code': r"""
-          >>> round(wpm('bloodstroke dioestrous heterochthonous supraseptal heading', 5.2), 2)
-          133.85
-          """,
-          'hidden': False,
-          'locked': False,
-          'multiline': False
-        },
-        {
-          'code': r"""
-          >>> round(wpm('cyphella actiniochrome reassimilation bandicoot nettlefoot macarism usurp', 64.94), 2)
-          13.49
-          """,
-          'hidden': False,
-          'locked': False,
-          'multiline': False
-        },
-        {
-          'code': r"""
-          >>> round(wpm('', 19.19), 2)
+          >>> round(wpm('', 24.25), 2)
           0.0
           """,
           'hidden': False,
@@ -517,8 +130,8 @@ test = {
         },
         {
           'code': r"""
-          >>> round(wpm('haematosepsis apomecometry yrs briefly urinometric discernible zooparasite noneviction', 30.92), 2)
-          33.38
+          >>> round(wpm('choirwise uncircumstantial glassine supplies underivedly henter undeserving', 14.91), 2)
+          60.36
           """,
           'hidden': False,
           'locked': False,
@@ -526,295 +139,7 @@ test = {
         },
         {
           'code': r"""
-          >>> round(wpm('', 2.67), 2)
-          0.0
-          """,
-          'hidden': False,
-          'locked': False,
-          'multiline': False
-        },
-        {
-          'code': r"""
-          >>> round(wpm('prophasis uncomplimented subside pseudandry saltcat potting anthoecological autoecy femininely', 69.26), 2)
-          16.29
-          """,
-          'hidden': False,
-          'locked': False,
-          'multiline': False
-        },
-        {
-          'code': r"""
-          >>> round(wpm('coconscious diploglossate fatalistic ow disquietedness', 69.53), 2)
-          9.32
-          """,
-          'hidden': False,
-          'locked': False,
-          'multiline': False
-        },
-        {
-          'code': r"""
-          >>> round(wpm('thunderousness carbomethoxyl dianilid strack whacky stationery shee rebutter yellows', 29.7), 2)
-          33.94
-          """,
-          'hidden': False,
-          'locked': False,
-          'multiline': False
-        },
-        {
-          'code': r"""
-          >>> round(wpm('heavenish dysmetria cl posthexaplaric dinglebird', 1.01), 2)
-          570.3
-          """,
-          'hidden': False,
-          'locked': False,
-          'multiline': False
-        },
-        {
-          'code': r"""
-          >>> round(wpm('hectical profanism pachysalpingitis overweather polyfold inpardonable hypercivilization', 10.71), 2)
-          97.48
-          """,
-          'hidden': False,
-          'locked': False,
-          'multiline': False
-        },
-        {
-          'code': r"""
-          >>> round(wpm('scleranth perdricide renably sorn glutting', 13.56), 2)
-          37.17
-          """,
-          'hidden': False,
-          'locked': False,
-          'multiline': False
-        },
-        {
-          'code': r"""
-          >>> round(wpm('cardiectomy mien wellness antitobacconist zoosporangiophore sarcogenous', 66.0), 2)
-          12.91
-          """,
-          'hidden': False,
-          'locked': False,
-          'multiline': False
-        },
-        {
-          'code': r"""
-          >>> round(wpm('unidealistic pretermitter automatist', 25.61), 2)
-          16.87
-          """,
-          'hidden': False,
-          'locked': False,
-          'multiline': False
-        },
-        {
-          'code': r"""
-          >>> round(wpm('prefacer', 41.63), 2)
-          2.31
-          """,
-          'hidden': False,
-          'locked': False,
-          'multiline': False
-        },
-        {
-          'code': r"""
-          >>> round(wpm('toxic', 40.9), 2)
-          1.47
-          """,
-          'hidden': False,
-          'locked': False,
-          'multiline': False
-        },
-        {
-          'code': r"""
-          >>> round(wpm('appositionally earthly orchiocatabasis', 77.97), 2)
-          5.85
-          """,
-          'hidden': False,
-          'locked': False,
-          'multiline': False
-        },
-        {
-          'code': r"""
-          >>> round(wpm('americium polariscopy', 22.8), 2)
-          11.05
-          """,
-          'hidden': False,
-          'locked': False,
-          'multiline': False
-        },
-        {
-          'code': r"""
-          >>> round(wpm('brushed removedness peenge equid', 28.63), 2)
-          13.41
-          """,
-          'hidden': False,
-          'locked': False,
-          'multiline': False
-        },
-        {
-          'code': r"""
-          >>> round(wpm('humicubation hyperdulic crimple soother', 21.24), 2)
-          22.03
-          """,
-          'hidden': False,
-          'locked': False,
-          'multiline': False
-        },
-        {
-          'code': r"""
-          >>> round(wpm('parapsidal unattendance expirable wheelwright rind', 18.64), 2)
-          32.19
-          """,
-          'hidden': False,
-          'locked': False,
-          'multiline': False
-        },
-        {
-          'code': r"""
-          >>> round(wpm('oliguresis plethoretical plantlike electrotechnology', 7.19), 2)
-          86.79
-          """,
-          'hidden': False,
-          'locked': False,
-          'multiline': False
-        },
-        {
-          'code': r"""
-          >>> round(wpm('hubber patrology spermatophore', 39.57), 2)
-          9.1
-          """,
-          'hidden': False,
-          'locked': False,
-          'multiline': False
-        },
-        {
-          'code': r"""
-          >>> round(wpm('miskindle deathbed', 34.88), 2)
-          6.19
-          """,
-          'hidden': False,
-          'locked': False,
-          'multiline': False
-        },
-        {
-          'code': r"""
-          >>> round(wpm('nummi undisparaged polarly baldachino strumae posttoxic', 32.51), 2)
-          20.3
-          """,
-          'hidden': False,
-          'locked': False,
-          'multiline': False
-        },
-        {
-          'code': r"""
-          >>> round(wpm('wraprascal renominate quondam gullibility staysail unfleshly', 3.19), 2)
-          225.71
-          """,
-          'hidden': False,
-          'locked': False,
-          'multiline': False
-        },
-        {
-          'code': r"""
-          >>> round(wpm('unprincipal myrmicoid nonofficial prinky metaphony subacromial mycetophilid', 53.22), 2)
-          16.91
-          """,
-          'hidden': False,
-          'locked': False,
-          'multiline': False
-        },
-        {
-          'code': r"""
-          >>> round(wpm('empaistic fibrinate pillarlet widdendream underbuy mopla footplate traveleress', 35.56), 2)
-          26.32
-          """,
-          'hidden': False,
-          'locked': False,
-          'multiline': False
-        },
-        {
-          'code': r"""
-          >>> round(wpm('impanate undisinfected unnapkined stockwright nonconcern clandestineness', 25.3), 2)
-          34.15
-          """,
-          'hidden': False,
-          'locked': False,
-          'multiline': False
-        },
-        {
-          'code': r"""
-          >>> round(wpm('toothy achromatism uintathere horrorsome gastroblennorrhea pouringly procreatrix demipriest accommodations', 51.48), 2)
-          24.71
-          """,
-          'hidden': False,
-          'locked': False,
-          'multiline': False
-        },
-        {
-          'code': r"""
-          >>> round(wpm('baku uncontentedness teacher upwrought planetography phenanthroline apism thwarteous', 30.62), 2)
-          32.92
-          """,
-          'hidden': False,
-          'locked': False,
-          'multiline': False
-        },
-        {
-          'code': r"""
-          >>> round(wpm('unstoried', 68.07), 2)
-          1.59
-          """,
-          'hidden': False,
-          'locked': False,
-          'multiline': False
-        },
-        {
-          'code': r"""
-          >>> round(wpm('freedom transmutationist tomblet wapp matrix pitfall bardel', 1.76), 2)
-          402.27
-          """,
-          'hidden': False,
-          'locked': False,
-          'multiline': False
-        },
-        {
-          'code': r"""
-          >>> round(wpm('angiocholecystitis yoven lovably sheepmonger molave', 58.85), 2)
-          10.4
-          """,
-          'hidden': False,
-          'locked': False,
-          'multiline': False
-        },
-        {
-          'code': r"""
-          >>> round(wpm('chaetophoraceous virify ferrohydrocyanic wambly hydrotechnic capillose unfaultfinding', 68.29), 2)
-          14.94
-          """,
-          'hidden': False,
-          'locked': False,
-          'multiline': False
-        },
-        {
-          'code': r"""
-          >>> round(wpm('lactase pleionian guige tellureted magistratically playwrightry', 47.94), 2)
-          15.77
-          """,
-          'hidden': False,
-          'locked': False,
-          'multiline': False
-        },
-        {
-          'code': r"""
-          >>> round(wpm('overstalled obstupefy predeparture', 88.07), 2)
-          4.63
-          """,
-          'hidden': False,
-          'locked': False,
-          'multiline': False
-        },
-        {
-          'code': r"""
-          >>> round(wpm('operated cithara apparent', 61.53), 2)
+          >>> round(wpm('epinaos unpresented', 46.73), 2)
           4.88
           """,
           'hidden': False,
@@ -823,25 +148,7 @@ test = {
         },
         {
           'code': r"""
-          >>> round(wpm('translocate contradictive', 70.62), 2)
-          4.25
-          """,
-          'hidden': False,
-          'locked': False,
-          'multiline': False
-        },
-        {
-          'code': r"""
-          >>> round(wpm('agamid', 23.9), 2)
-          3.01
-          """,
-          'hidden': False,
-          'locked': False,
-          'multiline': False
-        },
-        {
-          'code': r"""
-          >>> round(wpm('', 26.9), 2)
+          >>> round(wpm('', 4.28), 2)
           0.0
           """,
           'hidden': False,
@@ -850,8 +157,8 @@ test = {
         },
         {
           'code': r"""
-          >>> round(wpm('optotype raise placentitis virtualism', 2.27), 2)
-          195.59
+          >>> round(wpm('enterohelcosis urodele sporoid auximone nomenclatural misappreciation peepeye nonuterine', 24.14), 2)
+          43.74
           """,
           'hidden': False,
           'locked': False,
@@ -859,8 +166,8 @@ test = {
         },
         {
           'code': r"""
-          >>> round(wpm('clanjamphrey belord vermeology wrive phellodermal weaponry', 6.8), 2)
-          102.35
+          >>> round(wpm('excision octobass prevolitional archtreasurership metadiazine', 92.55), 2)
+          7.91
           """,
           'hidden': False,
           'locked': False,
@@ -868,8 +175,8 @@ test = {
         },
         {
           'code': r"""
-          >>> round(wpm('louseberry catercorner pelecan impermanency differentiate trifold snakewood ichneumonid', 52.02), 2)
-          20.07
+          >>> round(wpm('nailless', 1.39), 2)
+          69.06
           """,
           'hidden': False,
           'locked': False,
@@ -877,8 +184,8 @@ test = {
         },
         {
           'code': r"""
-          >>> round(wpm('disensure flashing swarfer', 7.66), 2)
-          40.73
+          >>> round(wpm('ringcraft nonexpiry toywoman impercipient overrude hyperingenuity piligerous molybdocolic toxicum', 2.72), 2)
+          427.94
           """,
           'hidden': False,
           'locked': False,
@@ -886,8 +193,8 @@ test = {
         },
         {
           'code': r"""
-          >>> round(wpm('unilocularity fumigant', 10.6), 2)
-          24.91
+          >>> round(wpm('misinstruction durian underriding chillroom unabsorb chromolithographic hemadynamometer frailly', 39.83), 2)
+          28.62
           """,
           'hidden': False,
           'locked': False,
@@ -895,8 +202,8 @@ test = {
         },
         {
           'code': r"""
-          >>> round(wpm('coast stageably', 23.86), 2)
-          7.54
+          >>> round(wpm('snideness universalization', 1.85), 2)
+          168.65
           """,
           'hidden': False,
           'locked': False,
@@ -904,8 +211,8 @@ test = {
         },
         {
           'code': r"""
-          >>> round(wpm('yo tympanism untrigonometrical', 1.01), 2)
-          356.44
+          >>> round(wpm('hecatontome glioma dispiteousness', 30.44), 2)
+          13.01
           """,
           'hidden': False,
           'locked': False,
@@ -913,8 +220,8 @@ test = {
         },
         {
           'code': r"""
-          >>> round(wpm('gormed spry agrobiological zaphara unlessoned', 93.55), 2)
-          5.77
+          >>> round(wpm('spaceful cautery wiseness', 31.29), 2)
+          9.59
           """,
           'hidden': False,
           'locked': False,
@@ -922,8 +229,8 @@ test = {
         },
         {
           'code': r"""
-          >>> round(wpm('ten kittendom', 48.59), 2)
-          3.21
+          >>> round(wpm('hemicranic hieromachy investigatable quadrigenarious protonemal cardiodysneuria provoker', 27.44), 2)
+          38.48
           """,
           'hidden': False,
           'locked': False,
@@ -931,8 +238,8 @@ test = {
         },
         {
           'code': r"""
-          >>> round(wpm('exhibitions durational templarlikeness boghole tersulphate slubby', 29.41), 2)
-          26.52
+          >>> round(wpm('tubuliporoid malleability', 8.5), 2)
+          35.29
           """,
           'hidden': False,
           'locked': False,
@@ -940,8 +247,8 @@ test = {
         },
         {
           'code': r"""
-          >>> round(wpm('blackishly fungous script rais', 1.07), 2)
-          336.45
+          >>> round(wpm('shilling shrubbiness demoded commentary housewright', 80.33), 2)
+          7.62
           """,
           'hidden': False,
           'locked': False,
@@ -949,8 +256,8 @@ test = {
         },
         {
           'code': r"""
-          >>> round(wpm('immusical azimine commentarialism', 2.55), 2)
-          155.29
+          >>> round(wpm('beydom ungraspable owrelay tangleproof musterable multivincular recuperator goto', 17.64), 2)
+          54.42
           """,
           'hidden': False,
           'locked': False,
@@ -958,8 +265,8 @@ test = {
         },
         {
           'code': r"""
-          >>> round(wpm('carthame ermelin ungravelly antilegomena', 60.78), 2)
-          7.9
+          >>> round(wpm('lithosis bogland interclash widespread thumbbird gymnophiona unfond parageusia neurographic', 69.98), 2)
+          15.6
           """,
           'hidden': False,
           'locked': False,
@@ -967,8 +274,701 @@ test = {
         },
         {
           'code': r"""
-          >>> round(wpm('autometric', 24.82), 2)
-          4.83
+          >>> round(wpm('diplosphenal cholecystogram', 5.07), 2)
+          63.91
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> round(wpm('metatatic eugenist karyopyknosis nightwork short insee unmated capacitation', 89.98), 2)
+          10.0
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> round(wpm('distressedly gibbet cannily', 47.12), 2)
+          6.88
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> round(wpm('triplocaulescent postprandially helicogyrate coccidology circumradius repairer', 82.31), 2)
+          11.37
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> round(wpm('electrofused incontinent', 38.96), 2)
+          7.39
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> round(wpm('', 47.25), 2)
+          0.0
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> round(wpm('tetragynian persistently becolme seafare bimillennium valviform thyridial umbones', 24.94), 2)
+          38.97
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> round(wpm('prissy unwarrant bareboned krennerite thwartover autoinduction moity pyrolaceous dosimetry', 15.13), 2)
+          71.38
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> round(wpm('sinfonietta trigon effluviate unhuman energeia', 1.11), 2)
+          497.3
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> round(wpm('tablespoon anytime ungotten periostracal laparogastrotomy nucleonics diaclase', 85.04), 2)
+          10.87
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> round(wpm('boucherism', 82.3), 2)
+          1.46
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> round(wpm('pyranyl uncertainty nl introspectionist teeting unbroiled plumosity', 21.89), 2)
+          36.73
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> round(wpm('dugong cryptodiran coll staurolatry allthing cheatrie inexpedient ritelessness', 1.1), 2)
+          850.91
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> round(wpm('quodlibetic previdence nonviscous reduplicatively arterioverter', 30.44), 2)
+          24.84
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> round(wpm('semipervious cactoid quadrialate preflattery emancipation', 31.83), 2)
+          21.49
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> round(wpm('puboprostatic tumescent keraunograph telecaster selenigenous phycomycete', 1.38), 2)
+          626.09
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> round(wpm('unsculptured quagginess indisputableness', 41.12), 2)
+          11.67
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> round(wpm('', 4.56), 2)
+          0.0
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> round(wpm('siscowet nevo driftweed chevronelly victoryless illustrations', 1.04), 2)
+          703.85
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> round(wpm('holland nursedom epidictical defortify', 86.07), 2)
+          5.3
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> round(wpm('', 4.99), 2)
+          0.0
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> round(wpm('tularemia booming retrothyroid decarnate lobbyism playa nonreception amphictyonic', 38.44), 2)
+          25.29
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> round(wpm('', 54.97), 2)
+          0.0
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> round(wpm('scrofulism missile tillot douser twankingly eccentrate cacoglossia', 76.76), 2)
+          10.32
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> round(wpm('', 47.24), 2)
+          0.0
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> round(wpm('unambiguously standing cameroon unpretendingly', 57.43), 2)
+          9.61
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> round(wpm('megascleric', 33.57), 2)
+          3.93
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> round(wpm('designee cardioarterial statolatry bossism latitudinal stringless hypsobathymetric coinfinity autotype', 27.29), 2)
+          44.85
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> round(wpm('dextrousness whirley coldly compendiary', 89.3), 2)
+          5.24
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> round(wpm('plowfoot caducicorn', 86.49), 2)
+          2.64
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> round(wpm('plash unbraceleted runner nickeline cellulous interlocutorily ophthalmodynia', 1.14), 2)
+          800.0
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> round(wpm('sulphurage audibility deuteride mimiambic isoimmunity rhinopharynx refractively', 12.32), 2)
+          76.95
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> round(wpm('whitecapper uncontestable millage unbudging hydrostatic enterospasm ectypography', 40.87), 2)
+          23.49
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> round(wpm('remissful', 57.91), 2)
+          1.86
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> round(wpm('microbiological ruddy gobble pozzuolana adscript', 32.88), 2)
+          17.52
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> round(wpm('monothelious chromophilic brabant detailed exulcerative artillery tachylytic sinnable clival', 26.63), 2)
+          41.46
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> round(wpm('leaverwood bounteousness unimperious twixt benzolize ebenaceous buncal cladoptosis archvampire', 1.2), 2)
+          940.0
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> round(wpm('impedient allochiral hear snur myosarcomatous', 32.74), 2)
+          16.49
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> round(wpm('sulphurproof', 25.08), 2)
+          5.74
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> round(wpm('', 6.8), 2)
+          0.0
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> round(wpm('', 47.77), 2)
+          0.0
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> round(wpm('monarchize prankster egomaniacal deediness cheeser cumulation endorsee', 71.5), 2)
+          11.75
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> round(wpm('varicosed', 17.62), 2)
+          6.13
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> round(wpm('ultradolichocephalic kinetophone', 13.09), 2)
+          29.34
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> round(wpm('', 1.36), 2)
+          0.0
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> round(wpm('', 52.75), 2)
+          0.0
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> round(wpm('payable jaunt oleostearin', 13.95), 2)
+          21.51
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> round(wpm('entropium oscillatory geophyte menthenone aerobatic begrease darklings ropable overcharity', 23.89), 2)
+          45.21
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> round(wpm('stookie withsave subchoroid briefing upbelch', 86.91), 2)
+          6.08
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> round(wpm('battlewise', 15.17), 2)
+          7.91
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> round(wpm('muscoid reliquidation broad tugging retardant', 68.87), 2)
+          7.84
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> round(wpm('hexatomic trophobiosis parascenium gibbet', 49.49), 2)
+          9.94
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> round(wpm('', 16.95), 2)
+          0.0
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> round(wpm('unexcusableness bismuthyl', 67.53), 2)
+          4.44
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> round(wpm('ab evolution intransigency improperly angiophorous urinogenital episodial clatty pamphletary', 30.93), 2)
+          35.69
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> round(wpm('penceless bromothymol reticuloramose', 34.55), 2)
+          12.5
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> round(wpm('beshag monument appressor tutu', 37.27), 2)
+          9.66
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> round(wpm('uncivilized pairer keratonyxis chemitypy checkroll hymnographer tootler perithelium', 5.52), 2)
+          180.43
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> round(wpm('confidentiality inclementness', 81.52), 2)
+          4.27
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> round(wpm('sardius', 12.9), 2)
+          6.51
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> round(wpm('bescorch rodding disawa gastradenitis cottabus prescapularis', 1.44), 2)
+          500.0
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> round(wpm('transmundane', 18.66), 2)
+          7.72
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> round(wpm('dualistic becense hyperingenuity pulpalgia', 46.99), 2)
+          10.73
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> round(wpm('tentacle nonrestitution interventional demiditone chrysophilite idiosyncratically', 47.79), 2)
+          20.34
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> round(wpm('clique spuriae introspectable pyritology marbleize blooddrop prickingly', 1.26), 2)
+          676.19
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> round(wpm('', 3.13), 2)
+          0.0
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> round(wpm('disdiaclastic tutoyer fibrilliferous undiscernedly gloomily ternarious riven', 74.44), 2)
+          12.25
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> round(wpm('nonfanciful aneuploidy unrubified dynamic twistable mesmerically heyday hipmold', 4.43), 2)
+          214.0
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> round(wpm('prorectorate snappable pholadoid toxicodermatitis gallification survival rakshasa', 5.32), 2)
+          182.71
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> round(wpm('quadratical principiate archinfamy cacomixle endonuclear', 77.93), 2)
+          8.62
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> round(wpm('upraisal mechanicalist losing emancipation counterquarterly oppress dishonorable liang', 98.11), 2)
+          10.52
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> round(wpm('subframe', 20.78), 2)
+          4.62
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> round(wpm('gmbh isocheimal overusually supercargoship contemptuous undrawn catchpollery unfinishedness', 83.77), 2)
+          13.04
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> round(wpm('lazzarone', 1.67), 2)
+          64.67
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> round(wpm('donary either ungenuine dealable pejorism cointersecting outerly rifter glimmering', 29.25), 2)
+          33.64
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> round(wpm('reinsertion moted narcoanesthesia tanbur sulphamidic monopersulfuric heartsickening', 29.4), 2)
+          33.88
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> round(wpm('', 54.09), 2)
+          0.0
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> round(wpm('randannite overappraise disdiapason unclement cesser repatronize sacerdotalist atelectatic', 1.11), 2)
+          972.97
           """,
           'hidden': False,
           'locked': False,
