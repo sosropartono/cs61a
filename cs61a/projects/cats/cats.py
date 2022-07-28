@@ -1,5 +1,6 @@
 """Typing test implementation"""
 
+from os import remove
 from utils import lower, split, remove_punctuation, lines_from_file
 from ucb import main, interact, trace
 from datetime import datetime
@@ -31,6 +32,10 @@ def pick(paragraphs, select, k):
     """
     # BEGIN PROBLEM 1
     "*** YOUR CODE HERE ***"
+    selected_para_array = [x for x in paragraphs if select(x) == True]
+    if k > len(selected_para_array) -1 or k < 0:
+        return ''
+    return selected_para_array[k]
     # END PROBLEM 1
 
 
@@ -50,6 +55,14 @@ def about(topic):
     assert all([lower(x) == x for x in topic]), 'topics should be lowercase.'
     # BEGIN PROBLEM 2
     "*** YOUR CODE HERE ***"
+    def helper(sentence):
+        word_arr = split(lower(remove_punctuation(sentence)))
+        for i in topic:
+            if i in word_arr:
+                return True
+        return False
+    return helper
+
     # END PROBLEM 2
 
 
@@ -80,6 +93,25 @@ def accuracy(typed, reference):
     reference_words = split(reference)
     # BEGIN PROBLEM 3
     "*** YOUR CODE HERE ***"
+    type_num = len(typed_words)
+    ref_num = len(reference_words)
+    if  type_num == 0 and ref_num > 0:
+        return 0.0
+    elif type_num == 0 and ref_num ==  0:
+        return 100.0 
+
+    typed_words = typed_words[:len(reference_words)]
+    reference_words = reference_words[:len(typed_words)]
+    iterator,total = 0, 0
+    total = 0
+    while iterator < len(reference_words):
+        if typed_words[iterator] == reference_words[iterator]:
+            total += 1
+        iterator +=1
+    return total/type_num * 100
+
+
+        
     # END PROBLEM 3
 
 

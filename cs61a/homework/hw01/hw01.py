@@ -162,7 +162,7 @@ def hailstone(n):
 
 
 "*** YOUR CODE HERE ***"
-quine = ''
+quine = """s = 'print("s = " + repr(s) + "; eval(s)")'; eval(s)\n"""
 
 
 def quine_test():
@@ -174,6 +174,7 @@ def quine_test():
     import io
 
     f = io.StringIO()
+
     with contextlib.redirect_stdout(f):
         exec(quine)
     quine_output = f.getvalue()
