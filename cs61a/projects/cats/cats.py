@@ -1,6 +1,7 @@
 """Typing test implementation"""
 
 from os import remove
+from pydoc import Helper
 from utils import lower, split, remove_punctuation, lines_from_file
 from ucb import main, interact, trace
 from datetime import datetime
@@ -199,7 +200,12 @@ def feline_fixes(typed, reference, limit):
     5
     """
     # BEGIN PROBLEM 6
-    assert False, 'Remove this line'
+    if typed == "" or reference == "" or limit < 0:
+        return abs(len(reference) - len(typed))
+    elif typed[0] != reference[0]:
+        return 1 + feline_fixes(typed[1:],reference[1:], limit-1)
+    else:
+        return feline_fixes(typed[1:],reference[1:], limit)
     # END PROBLEM 6
 
 
@@ -221,7 +227,28 @@ def hidden_kittens(typed, reference, limit):
     >>> hidden_kittens("hiddnehddi", "hidden", limit) > limit # hidden appears 0 times in hiddnehddi
     True
     """
-    # BEGIN PROBLEM 7
+
+    # BEGIN PROBLEM 7 if the amount of letters caught is equal to 
+
+
+
+    def helper(typed,reference, limit, not_matching):
+
+
+        if reference == "":
+            return 1
+        elif typed == "":
+            return 0
+        elif(typed[0] == reference[0]):
+            return helper(typed[1:], reference, limit,not_matching) + helper(typed[1:], reference[1:], limit, not_matching)
+        else:
+            return helper(typed[1:], reference, limit, not_matching + 1)
+
+    if helper(typed,reference, limit, len(typed)) <= 0 or helper(typed,reference,limit,len(typed)) > limit:
+        return limit + 1
+    else:
+        return helper(typed,reference,limit,len(typed))
+
     "*** YOUR CODE HERE ***"
     # END PROBLEM 7
 

@@ -8,48 +8,35 @@ test = {
           'code': r"""
           >>> limit = 10
           >>> hidden_kittens("ccatgts", "cats", limit)
-          bfdc03a3c261c5dc71255ec79dd5977e
-          # locked
+          4
           >>> hidden_kittens("ccatgts", "cats", 4)
-          bfdc03a3c261c5dc71255ec79dd5977e
-          # locked
+          4
           >>> hidden_kittens("ccatgts", "cats", 3) > 3
-          f0a7036a7438d73054555da0482ad042
-          # locked
+          True
           >>> hidden_kittens("ccatgtsaaaaaaaaaaaaaaaa", "cats", limit)
-          bfdc03a3c261c5dc71255ec79dd5977e
-          # locked
+          4
           >>> hidden_kittens("123123123", "123", limit) # Hint: 123 appears 10 times within 123123123!
-          d9730cc1ae65aae2ba7ba73a9f3cd7fd
-          # locked
+          10
           >>> hidden_kittens("123123123", "123", 5) > 5
-          f0a7036a7438d73054555da0482ad042
-          # locked
+          True
           >>> hidden_kittens("kittens", "kittens", limit)
-          52f1b72ba99dddc798bb5cebce0be695
-          # locked
+          1
           >>> hidden_kittens("hiddnehddi", "hidden", limit) > limit
-          f0a7036a7438d73054555da0482ad042
-          # locked
+          True
           >>> hidden_kittens("big", "bigger", limit) > limit
-          f0a7036a7438d73054555da0482ad042
-          # locked
+          True
           >>> big_limit = 20
           >>> hidden_kittens("order matters", "ret", big_limit)
-          45c27a29bbaeb163dec9a0eaed9c7c9c
-          # locked
+          2
           >>> hidden_kittens("ret", "order matters", big_limit) > big_limit
-          f0a7036a7438d73054555da0482ad042
-          # locked
+          True
           >>> hidden_kittens("abcdefghijklmnopqrstuvwxyz", "z", big_limit)
-          52f1b72ba99dddc798bb5cebce0be695
-          # locked
+          1
           >>> hidden_kittens("abcdefghijklmnopqrstuvwxyz", "@", big_limit) > big_limit
-          f0a7036a7438d73054555da0482ad042
-          # locked
+          True
           """,
           'hidden': False,
-          'locked': True,
+          'locked': False,
           'multiline': False
         },
         {
