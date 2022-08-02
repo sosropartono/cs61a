@@ -2,6 +2,8 @@
 
 from os import remove
 from pydoc import Helper
+from re import L
+from typing import Container
 from utils import lower, split, remove_punctuation, lines_from_file
 from ucb import main, interact, trace
 from datetime import datetime
@@ -292,6 +294,17 @@ def report_progress(typed, prompt, user_id, upload):
     """
     # BEGIN PROBLEM 8
     "*** YOUR CODE HERE ***"
+    i, correct_count, flag = 0,0, True
+    while i < len(typed):
+        if prompt[i] == typed[i] and flag == True:
+            correct_count += 1
+        else:
+            flag = False
+        i += 1
+    ratio = correct_count/len(prompt)
+    upload({'id' : user_id, 'progress': ratio})
+    return ratio
+
     # END PROBLEM 8
 
 
@@ -314,6 +327,17 @@ def time_per_word(words, times_per_player):
     """
     # BEGIN PROBLEM 9
     "*** YOUR CODE HERE ***"
+    time_per_word = []
+    for times in times_per_player:
+        i = 0
+        container = []
+        while i < len(times) - 1:
+            container += [abs(times[i] - times[i+1])]
+            i += 1
+        time_per_word += [container]
+    
+    return {'times' : time_per_word, 'words': words}
+    
     # END PROBLEM 9
 
 
@@ -335,7 +359,36 @@ def fastest_words(match):
     player_indices = range(len(match["times"]))  # contains an *index* for each player
     word_indices = range(len(match["words"]))    # contains an *index* for each word
     # BEGIN PROBLEM 10
-    "*** YOUR CODE HERE ***"
+    # for every word, get the time for every person and get the minimum's 
+    #index then add that to the list
+
+    i, j, fastest_arr = 0, 0, []
+    def lowest_value(match, word_index):
+        lowest = 20
+        j = 0
+        index = 0
+        while j < len(match["times"]):
+            if time(match,j, word_index) < lowest:
+                lowest = time(match,j,word_index)
+                index = j
+            j += 1
+        return index
+        
+
+    while i < len(match["times"]):
+        word_index, j = [], 0
+        while j < len(match["words"]):
+            if i == lowest_value(match,j):
+                word_index += [get_word(match,j)]
+            j += 1
+        fastest_arr += [word_index]
+        i += 1
+
+
+    return fastest_arr
+
+
+
     # END PROBLEM 10
 
 
