@@ -3,6 +3,7 @@
 from cmath import inf
 from email.base64mime import header_length
 import random
+from selectors import BaseSelector
 from ucb import main, interact, trace
 from collections import OrderedDict
 
@@ -263,7 +264,7 @@ class FireAnt(Ant):
     food_cost = 5
     # OVERRIDE CLASS ATTRIBUTES HERE
     # BEGIN Problem 5
-    implemented = False   # Change to True to view in the GUI
+    implemented = True   # Change to True to view in the GUI
     # END Problem 5
 
     def __init__(self, health=3):
@@ -279,15 +280,69 @@ class FireAnt(Ant):
         """
         # BEGIN Problem 5
         "*** YOUR CODE HERE ***"
+        if self.health <= amount:
+            total = amount + self.damage
+        else:
+            total = amount
+        counter = 0
+        bees = self.place.bees
+        while counter < len(self.place.bees):
+            if bees[counter].health < total:
+                bees[counter].reduce_health(total)
+            else:
+                bees[counter].reduce_health(total)
+                counter +=1
+                
+        Ant.reduce_health(self, amount)
+
         # END Problem 5
 
 # BEGIN Problem 6
 # The WallAnt class
 # END Problem 6
+class WallAnt(Ant):
+    food_cost = 4
+    name = 'Wall'
+
+
+    def __init__(self, health = 4):
+        super().__init__(health)
+
+
+    
+
 
 # BEGIN Problem 7
 # The HungryAnt Class
 # END Problem 7
+class HungryAnt(Ant):
+    name = 'Hungry'
+    food_cost = 4
+    implemented = True
+    chew_duration = 3
+
+
+    def __init__(self,health = 1):
+        super().__init__(health)
+        self.chew_countdown = 0
+
+    def action(self, gamestate):
+        if self.chew_countdown == 0:
+            if self.random_bee():
+                chosen_bee = self.random_bee()
+                chosen_bee.reduce_health(chosen_bee.health)
+                self.chew_countdown= self.chew_duration
+            else:
+                return
+        else:
+            self.chew_countdown -=1
+
+    def random_bee(self):
+        num_of_bees = len(self.place.bees)
+        if len(self.place.bees) == 0:
+            return 0
+        return self.place.bees[random.randint(0,num_of_bees-1)]
+
 
 
 class ContainerAnt(Ant):
