@@ -1,5 +1,7 @@
 """CS 61A presents Ants Vs. SomeBees."""
 
+from cmath import inf
+from email.base64mime import header_length
 import random
 from ucb import main, interact, trace
 from collections import OrderedDict
@@ -27,6 +29,10 @@ class Place:
         # Phase 1: Add an entrance to the exit
         # BEGIN Problem 2
         "*** YOUR CODE HERE ***"
+        if self.exit:
+            self.exit.entrance = self
+
+        
         # END Problem 2
 
     def add_insect(self, insect):
@@ -158,6 +164,8 @@ class HarvesterAnt(Ant):
     name = 'Harvester'
     implemented = True
     # OVERRIDE CLASS ATTRIBUTES HERE
+    food_cost = 2
+    health = 1
 
     def action(self, gamestate):
         """Produce 1 additional food for the colony.
@@ -166,6 +174,7 @@ class HarvesterAnt(Ant):
         """
         # BEGIN Problem 1
         "*** YOUR CODE HERE ***"
+        gamestate.food += 1
         # END Problem 1
 
 
@@ -176,7 +185,10 @@ class ThrowerAnt(Ant):
     implemented = True
     damage = 1
     # ADD/OVERRIDE CLASS ATTRIBUTES HERE
-
+    food_cost = 3
+    health = 1
+    min_range = 0
+    max_range = float('inf')
     def nearest_bee(self):
         """Return the nearest Bee in a Place that is not the HIVE, connected to
         the ThrowerAnt's Place by following entrances.
@@ -184,7 +196,19 @@ class ThrowerAnt(Ant):
         This method returns None if there is no such Bee (or none in range).
         """
         # BEGIN Problem 3 and 4
-        return random_bee(self.place.bees)  # REPLACE THIS LINE
+        current_place = self.place
+        places_traversed = 0
+        # For the LongThrower Ant who cannot attack any near him, however this is un needed as his min range already takes care of it
+        # if self.places_traversed == 1:
+        #     current_place = self.place.entrance
+        while not current_place.is_hive:
+            if self.min_range <= places_traversed <= self.max_range:
+                if current_place.bees:
+                    return random_bee(current_place.bees)
+            current_place = current_place.entrance
+            places_traversed +=1
+        return None
+
         # END Problem 3 and 4
 
     def throw_at(self, target):
@@ -215,19 +239,20 @@ class ShortThrower(ThrowerAnt):
     food_cost = 2
     # OVERRIDE CLASS ATTRIBUTES HERE
     # BEGIN Problem 4
-    implemented = False   # Change to True to view in the GUI
-    # END Problem 4
+    implemented = True   # Change to True to view in the GUI
+    max_range = 3
+    min_range = 0
+
 
 
 class LongThrower(ThrowerAnt):
     """A ThrowerAnt that only throws leaves at Bees at least 5 places away."""
-
+    max_range = float('inf')
+    min_range = 5
     name = 'Long'
     food_cost = 2
     # OVERRIDE CLASS ATTRIBUTES HERE
     # BEGIN Problem 4
-    implemented = False   # Change to True to view in the GUI
-    # END Problem 4
 
 
 class FireAnt(Ant):
