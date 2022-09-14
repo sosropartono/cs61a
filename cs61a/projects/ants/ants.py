@@ -2,6 +2,7 @@
 
 from cmath import inf
 from email.base64mime import header_length
+from mimetypes import init
 import random
 from selectors import BaseSelector
 from ucb import main, interact, trace
@@ -32,8 +33,6 @@ class Place:
         "*** YOUR CODE HERE ***"
         if self.exit:
             self.exit.entrance = self
-
-        
         # END Problem 2
 
     def add_insect(self, insect):
@@ -59,6 +58,7 @@ class Insect:
 
     damage = 0
     # ADD CLASS ATTRIBUTES HERE
+    is_waterproof = False
 
     def __init__(self, health, place=None):
         """Create an Insect with a health amount and a starting PLACE."""
@@ -139,7 +139,15 @@ class Ant(Insect):
             place.ant = self
         else:
             # BEGIN Problem 8
-            assert place.ant is None, 'Two ants in {0}'.format(place)
+            # This portion shows the power of object oriented programming/ poly functions in which the same method name can be implemented differently to where, if you add an object of a super class it can contain the same method but not the same meaning as to if you add the current class, it is interpreted and looked up differently
+            if place.ant.can_contain(self):
+                place.ant.store_ant(self)
+                place.ant = place.ant
+            elif self.can_contain(place.ant):
+                self.store_ant(place.ant)
+                place.ant = self
+            else:
+                assert place.ant is None, 'Two ants in {0}'.format(place)
             # END Problem 8
         Insect.add_to(self, place)
 
@@ -358,11 +366,16 @@ class ContainerAnt(Ant):
     def can_contain(self, other):
         # BEGIN Problem 8
         "*** YOUR CODE HERE ***"
+        if (self.ant_contained is None) and (other.is_container is not True):
+            return True
+        return False
         # END Problem 8
 
     def store_ant(self, ant):
         # BEGIN Problem 8
         "*** YOUR CODE HERE ***"
+        if self.ant_contained is None:
+            self.ant_contained = ant
         # END Problem 8
 
     def remove_ant(self, ant):
@@ -383,8 +396,9 @@ class ContainerAnt(Ant):
     def action(self, gamestate):
         # BEGIN Problem 8
         "*** YOUR CODE HERE ***"
+        if self.ant_contained is not None:
+            self.ant_contained.action(gamestate)
         # END Problem 8
-
 
 class BodyguardAnt(ContainerAnt):
     """BodyguardAnt provides protection to other Ants."""
@@ -393,11 +407,36 @@ class BodyguardAnt(ContainerAnt):
     food_cost = 4
     # OVERRIDE CLASS ATTRIBUTES HERE
     # BEGIN Problem 8
-    implemented = False   # Change to True to view in the GUI
+    implemented = True   # Change to True to view in the GUI
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs, health =2)
+        self.ant_contained = None
+
     # END Problem 8
 
 # BEGIN Problem 9
 # The TankAnt class
+class TankAnt(ContainerAnt):
+    name = "Tank"
+    food_cost = 6
+    damage = 1
+    implemented = True
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs, health = 2)
+        self.ant_contained = None
+
+
+    def action(self, gamestate):
+        ContainerAnt.action(self, gamestate)
+        counter = 0
+        bees=self.place.bees
+        while counter < len(bees):
+            if self.damage >= bees[counter].health:
+                bees[counter].reduce_health(self.damage)
+            else:
+                bees[counter].reduce_health(self.damage)
+                counter += 1
+
 # END Problem 9
 
 
@@ -409,16 +448,26 @@ class Water(Place):
         its health to 0."""
         # BEGIN Problem 10
         "*** YOUR CODE HERE ***"
+        health = insect.health
+        super().add_insect(insect)
+        if not insect.is_waterproof:
+            insect.reduce_health(health)
+
         # END Problem 10
 
 # BEGIN Problem 11
 # The ScubaThrower class
+class ScubaThrower(ThrowerAnt):
+    is_waterproof = True
+    name = 'Scuba'
+    food_cost = 6
+
 # END Problem 11
 
 # BEGIN Problem 12
 
 
-class QueenAnt(Ant):  # You should change this line
+class QueenAnt(ScubaThrower):  # You should change this line
 # END Problem 12
     """The Queen of the colony. The game is over if a bee enters her place."""
 
@@ -426,7 +475,7 @@ class QueenAnt(Ant):  # You should change this line
     food_cost = 7
     # OVERRIDE CLASS ATTRIBUTES HERE
     # BEGIN Problem 12
-    implemented = False   # Change to True to view in the GUI
+    implemented = True   # Change to True to view in the GUI
     # END Problem 12
 
     @classmethod
@@ -437,6 +486,10 @@ class QueenAnt(Ant):  # You should change this line
         """
         # BEGIN Problem 12
         "*** YOUR CODE HERE ***"
+        if gamestate.queen_created == False:
+            return cls(ScubaThrower.construct(gamestate))
+        else:
+            return
         # END Problem 12
 
     def action(self, gamestate):
@@ -445,6 +498,17 @@ class QueenAnt(Ant):  # You should change this line
         """
         # BEGIN Problem 12
         "*** YOUR CODE HERE ***"
+        super().action(gamestate)
+        current_place = self.place
+        while current_place != None:
+            ant = self.place.ant
+            if ant and not ant.buff:
+                ant.damage = self.damage *2
+                ant.buff = True
+                if ant.contained_ant and not ant.buff:
+                    ant.damage = self.damage *2
+                    ant.buff =True
+            current_place = self.place.exit
         # END Problem 12
 
     def reduce_health(self, amount):
@@ -453,6 +517,11 @@ class QueenAnt(Ant):  # You should change this line
         """
         # BEGIN Problem 12
         "*** YOUR CODE HERE ***"
+        if self.health <= amount:
+            self.gamestate
+
+
+
         # END Problem 12
 
 
@@ -472,6 +541,7 @@ class Bee(Insect):
     name = 'Bee'
     damage = 1
     # OVERRIDE CLASS ATTRIBUTES HERE
+    is_waterproof = True
 
     def sting(self, ant):
         """Attack an ANT, reducing its health by 1."""
@@ -722,6 +792,7 @@ class GameState:
         self.dimensions = dimensions
         self.active_bees = []
         self.configure(beehive, create_places)
+        self.queen_created= False
 
     def configure(self, beehive, create_places):
         """Configure the places in the colony."""
