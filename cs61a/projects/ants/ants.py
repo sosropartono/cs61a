@@ -111,11 +111,13 @@ class Ant(Insect):
     implemented = False  # Only implemented Ant classes should be instantiated
     food_cost = 0
     is_container = False
+    
     # ADD CLASS ATTRIBUTES HERE
-
     def __init__(self, health=1):
         """Create an Insect with a HEALTH quantity."""
         super().__init__(health)
+        self.buffed = False
+        
 
     @classmethod
     def construct(cls, gamestate):
@@ -164,6 +166,9 @@ class Ant(Insect):
         """Double this ants's damage, if it has not already been buffed."""
         # BEGIN Problem 12
         "*** YOUR CODE HERE ***"
+        if self.buffed is False:
+            self.damage *=2
+            self.buffed = True
         # END Problem 12
 
 
@@ -311,7 +316,7 @@ class FireAnt(Ant):
 class WallAnt(Ant):
     food_cost = 4
     name = 'Wall'
-
+    implemented = True
 
     def __init__(self, health = 4):
         super().__init__(health)
@@ -458,9 +463,10 @@ class Water(Place):
 # BEGIN Problem 11
 # The ScubaThrower class
 class ScubaThrower(ThrowerAnt):
-    is_waterproof = True
     name = 'Scuba'
     food_cost = 6
+    implemented = True
+    is_waterproof = True
 
 # END Problem 11
 
@@ -476,6 +482,7 @@ class QueenAnt(ScubaThrower):  # You should change this line
     # OVERRIDE CLASS ATTRIBUTES HERE
     # BEGIN Problem 12
     implemented = True   # Change to True to view in the GUI
+    buffed = True
     # END Problem 12
 
     @classmethod
@@ -486,10 +493,12 @@ class QueenAnt(ScubaThrower):  # You should change this line
         """
         # BEGIN Problem 12
         "*** YOUR CODE HERE ***"
-        if gamestate.queen_created == False:
-            return cls(ScubaThrower.construct(gamestate))
+        if gamestate.queen_created == True:
+            return None
         else:
-            return
+            gamestate.queen_created = True
+            return super().construct(gamestate)
+            
         # END Problem 12
 
     def action(self, gamestate):
@@ -499,16 +508,14 @@ class QueenAnt(ScubaThrower):  # You should change this line
         # BEGIN Problem 12
         "*** YOUR CODE HERE ***"
         super().action(gamestate)
-        current_place = self.place
-        while current_place != None:
-            ant = self.place.ant
-            if ant and not ant.buff:
-                ant.damage = self.damage *2
-                ant.buff = True
-                if ant.contained_ant and not ant.buff:
-                    ant.damage = self.damage *2
-                    ant.buff =True
-            current_place = self.place.exit
+        place_behind = self.place.exit
+        while place_behind is not None:
+            ant = place_behind.ant
+            if ant:
+                if ant.is_container is True and ant.ant_contained:
+                    ant.ant_contained.buff()
+                ant.buff()
+            place_behind = place_behind.exit
         # END Problem 12
 
     def reduce_health(self, amount):
@@ -518,11 +525,11 @@ class QueenAnt(ScubaThrower):  # You should change this line
         # BEGIN Problem 12
         "*** YOUR CODE HERE ***"
         if self.health <= amount:
-            self.gamestate
-
-
-
+            ants_lose()
         # END Problem 12
+
+    def remove_from(self, place):
+        pass
 
 
 class AntRemover(Ant):
@@ -792,8 +799,7 @@ class GameState:
         self.dimensions = dimensions
         self.active_bees = []
         self.configure(beehive, create_places)
-        self.queen_created= False
-
+        self.queen_created = False
     def configure(self, beehive, create_places):
         """Configure the places in the colony."""
         self.base = AntHomeBase('Ant Home Base')
