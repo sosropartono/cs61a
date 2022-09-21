@@ -1,4 +1,5 @@
 from mimetypes import init
+from queue import Empty
 
 
 class VendingMachine:
@@ -49,7 +50,7 @@ class VendingMachine:
         self.price = price
 
     def add_funds(self, amount):
-        if self.stock is 0:
+        if self.stock == 0:
             return f'{self.message} Here is your ${amount}.'
         self.funds += amount
         return f'Current balance: ${self.funds}'
@@ -61,11 +62,11 @@ class VendingMachine:
     
     def vend(self):
         change = self.funds - self.price
-        if self.stock is 0:
+        if self.stock == 0:
             return(self.message)
         elif self.price > self.funds:
             return f'You must add ${abs(change)} more funds.'
-        elif change is 0:
+        elif change == 0:
             self.stock -=1
             self.funds -= self.price + change
             return f'Here is your {self.name}.'
@@ -115,9 +116,11 @@ class Mint:
 
     def create(self, kind):
         "*** YOUR CODE HERE ***"
+        return kind(self.year)
 
     def update(self):
         "*** YOUR CODE HERE ***"
+        self.year = self.present_year
 
 
 class Coin:
@@ -126,6 +129,9 @@ class Coin:
 
     def worth(self):
         "*** YOUR CODE HERE ***"
+        if self.year == Mint.present_year:
+            return self.cents
+        return self.cents + ((Mint.present_year - self.year) - 50)
 
 
 class Nickel(Coin):
@@ -153,6 +159,17 @@ def store_digits(n):
     >>> link1 = Link(3, Link(Link(4), Link(5, Link(6))))
     """
     "*** YOUR CODE HERE ***"
+    copy_n = n
+    if n < 10:
+        return Link(n)
+    else:
+        first_digit = 0
+        counter = 0
+        while copy_n > 9:
+            copy_n = copy_n //10
+            counter += 1
+        first_digit = n//(10**counter)
+        return Link(first_digit, store_digits(n% (first_digit* 10**counter)))
 
 
 def deep_map_mut(fn, link):
@@ -173,7 +190,15 @@ def deep_map_mut(fn, link):
     <9 <16> 25 36>
     """
     "*** YOUR CODE HERE ***"
-
+    if isinstance(link.first, Link):
+        deep_map_mut(fn,link.first)
+        deep_map_mut(fn, link.rest)
+    else:
+        link.first = fn(link.first)
+        if link.rest == link.empty:
+            return
+        deep_map_mut(fn,link.rest)
+            
 
 def two_list(vals, amounts):
     """
@@ -195,6 +220,27 @@ def two_list(vals, amounts):
     Link(1, Link(1, Link(3, Link(3, Link(2)))))
     """
     "*** YOUR CODE HERE ***"
+    link = Link(vals[0])
+    counter, repeat_counter = 0, 1
+    pointer = link
+    while counter < len(vals) -1:
+        repeat_counter = 1
+        if amounts[counter] > 1:
+            while repeat_counter < amounts[counter]:
+                new_link = Link(vals[counter])
+                pointer.rest = new_link
+                pointer = pointer.rest 
+                repeat_counter +=1
+        pointer.rest = Link(vals[counter+1])
+        pointer = pointer.rest
+        counter +=1
+    return link
+
+
+    # add the elmeent in a b amount of times
+    # add element a as the first property in link
+    # add new Link as the link.rest
+        
 
 
 class VirFib():
