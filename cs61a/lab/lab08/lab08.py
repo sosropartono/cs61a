@@ -8,18 +8,18 @@ def convert_link(link):
     []
     """
     "*** YOUR CODE HERE ***"
-    #iterative solution
-    # arr = []
-    # while link is not Link.empty:
-    #   arr += [link.first]
-    #   link = link.rest
-    # return arr
+    # iterative solution
+    arr = []
+    while link is not Link.empty:
+      arr += [link.first]
+      link = link.rest
+    return arr
 
-    #recursive solution
-    if link.rest is not Link.empty:
-      return [link.first]
-    else:
-      return [link.first] + convert_link(link.rest)
+    # recursive solution
+    # if link.rest is Link.empty:
+    #   return [link]
+    # else:
+    #   return [link.first] + convert_link(link.rest)
       
       
 
@@ -33,6 +33,9 @@ def label_squarer(t):
     Tree(1, [Tree(9, [Tree(25)]), Tree(49)])
     """
     "*** YOUR CODE HERE ***"
+    t.label **= 2
+    for branch in t.branches:
+      label_squarer(branch)
 
 
 def cumulative_mul(t):
@@ -45,6 +48,9 @@ def cumulative_mul(t):
     Tree(105, [Tree(15, [Tree(5)]), Tree(7)])
     """
     "*** YOUR CODE HERE ***"
+    for branch in t.branches:
+      cumulative_mul(branch)
+      t.label *= branch.label
 
 
 def add_d_leaves(t, v):
@@ -106,7 +112,15 @@ def add_d_leaves(t, v):
         10
     """
     "*** YOUR CODE HERE ***"
-
+    def helper(t, v, depth):
+      additions = depth
+      if additions > 0 and t.label is not v:
+        while additions > 0:
+          t.branches += [Tree(v)]
+          additions -= 1
+      for branch in t.branches:
+        helper(branch,v, depth+1)
+    return helper(t,v,0)
 
 def every_other(s):
     """Mutates a linked list so that all the odd-indiced elements are removed
