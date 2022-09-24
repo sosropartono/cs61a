@@ -8,18 +8,18 @@ def convert_link(link):
     []
     """
     "*** YOUR CODE HERE ***"
-    # iterative solution
-    arr = []
-    while link is not Link.empty:
-      arr += [link.first]
-      link = link.rest
-    return arr
+    # # iterative solution
+    # arr = []
+    # while link is not Link.empty:
+    #   arr += [link.first]
+    #   link = link.rest
+    # return arr
 
     # recursive solution
-    # if link.rest is Link.empty:
-    #   return [link]
-    # else:
-    #   return [link.first] + convert_link(link.rest)
+    if link is Link.empty:
+      return []
+    else:
+      return [link.first] + convert_link(link.rest)
       
       
 
