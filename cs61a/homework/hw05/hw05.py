@@ -80,8 +80,6 @@ def path_yielder(t, value):
         for branch in branches(t):
             for path in path_yielder(branch, value):
                 yield [label(t)] + path
-                
-
             "*** YOUR CODE HERE ***"
 
 

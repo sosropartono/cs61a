@@ -21,11 +21,12 @@ def subseqs(s):
     >>> subseqs([])
     [[]]
     """
-    if ________________:
-        ________________
+    if s == []:
+        return [s]
     else:
-        ________________
-        ________________
+        subset = subseqs(s[1:])
+        return subset + insert_into_all(s[0], subset)
+
 
 
 def non_decrease_subseqs(s):
@@ -44,14 +45,14 @@ def non_decrease_subseqs(s):
     """
     def subseq_helper(s, prev):
         if not s:
-            return ____________________
+            return [[]]
         elif s[0] < prev:
-            return ____________________
+            return subseq_helper(s[1:], prev) #if previous greater than current, re called ignoring s[0]
         else:
-            a = ______________________
-            b = ______________________
-            return insert_into_all(________, ______________) + ________________
-    return subseq_helper(____, ____)
+            a = subseq_helper(s[1:], s[0]) #include
+            b = subseq_helper(s[1:], prev) #excluding s[0]
+            return insert_into_all(s[0], a) + b
+    return subseq_helper(s, 0)
 
 
 def num_trees(n):
@@ -75,7 +76,12 @@ def num_trees(n):
 
     """
     "*** YOUR CODE HERE ***"
-
+    if n <= 2:
+        return 1
+    ans = 0
+    for i in range(1, n):
+        ans += num_trees(i) * num_trees(n - i)
+    return ans
 
 def merge(incr_a, incr_b):
     """Yield the elements of strictly increasing iterables incr_a and incr_b, removing
@@ -97,6 +103,32 @@ def merge(incr_a, incr_b):
     iter_a, iter_b = iter(incr_a), iter(incr_b)
     next_a, next_b = next(iter_a, None), next(iter_b, None)
     "*** YOUR CODE HERE ***"
+    if next_a == 0 or next_b == 0:
+        next_a = next(iter_a)
+        next_b = next(iter_b)
+        yield 0
+    memo = []
+    while next_a is not None and next_b is not None:
+        if next_a == next_b:
+            yield next_a
+            memo += [next_a]
+            next_a, next_b = next(iter_a, None), next(iter_b, None)
+        if next_a > next_b and next_b not in memo:
+            yield next_b
+            memo += [next_b]
+            next_b = next(iter_b, None)
+        elif next_a < next_b and next_a not in memo:
+            yield next_a
+            memo += [next_a]
+            next_a = next(iter_a, None)
+
+    if next_b:
+        yield next_b
+        yield from iter_b
+    if next_a:
+        yield next_a
+        yield from iter_a
+    
 
 
 class Account:
@@ -127,24 +159,41 @@ class Account:
         self.balance = 0
         self.holder = account_holder
         "*** YOUR CODE HERE ***"
+        self.num_of_deposits =0
+        self.num_of_withdraws =0
+        self.transactions = []
+
 
     def deposit(self, amount):
         """Increase the account balance by amount, add the deposit
         to the transaction history, and return the new balance.
         """
         "*** YOUR CODE HERE ***"
+        self.balance += amount
+        self.num_of_deposits +=1
+        self.transactions += [('deposit', amount)]
+        return self.balance
 
     def withdraw(self, amount):
         """Decrease the account balance by amount, add the withdraw
         to the transaction history, and return the new balance.
         """
         "*** YOUR CODE HERE ***"
+        self.balance -= amount
+        self.num_of_withdraws +=1
+        self.transactions += [('withdraw', amount) ]
+        return self.balance
+
+
 
     def __str__(self):
         "*** YOUR CODE HERE ***"
+        return f"{self.holder}'s Balance: ${self.balance}"
 
     def __repr__(self):
         "*** YOUR CODE HERE ***"
+        return f"Accountholder: {self.holder}, Deposits: {self.num_of_deposits}, Withdraws: {self.num_of_withdraws}"
+
 
 
 def trade(first, second):
@@ -184,9 +233,9 @@ def trade(first, second):
     """
     m, n = 1, 1
 
-    equal_prefix = lambda: ______________________
-    while _______________________________:
-        if __________________:
+    equal_prefix = lambda: sum(first[:m]) == sum(second[:n])
+    while not equal_prefix() and n <= len(first) and m <= len(second) :
+        if sum(first[:m]) < sum(second[:n]):
             m += 1
         else:
             n += 1
@@ -224,11 +273,16 @@ def shuffle(cards):
     ['AH', 'AD', 'AS', 'AC', '2H', '2D', '2S', '2C', '3H', '3D', '3S', '3C']
     """
     assert len(cards) % 2 == 0, 'len(cards) must be even'
-    half = _______________
+
+    # Here since we're adding twice to the shuffled array, itll take half the steps to complete the length of the array
+    # half of an array of length 6 is 3. the range(half) goes from 0 to 2, which covers 3 numbers/inserts. we insert cards at [i]
+    # then insert card[half+i] which then adds the half, because we split in half, we will not cross theend as half is 3 and i will go to 3 which 
+    # will be equal to 5 which is the last index the array iterates to 
+    half = len(cards) //2
     shuffled = []
-    for i in _____________:
-        _________________
-        _________________
+    for i in range(half):
+        shuffled += [cards[i]]
+        shuffled += [cards[half+i]]
     return shuffled
 
 
@@ -253,6 +307,17 @@ def insert(link, value, index):
     IndexError: Out of bounds!
     """
     "*** YOUR CODE HERE ***"
+    def helper(link,value,index, curr_link_index):
+        if link is Link.empty:
+            raise IndexError("Out of bounds!")
+        if index == curr_link_index:
+            temp = link.first
+            link.first = value
+            link.rest = Link(temp, link.rest)
+        else:
+            helper(link.rest, value, index, curr_link_index+1)
+    return helper(link, value, index, 0)
+
 
 
 def deep_len(lnk):
@@ -269,12 +334,16 @@ def deep_len(lnk):
     >>> deep_len(levels)
     5
     """
-    if ______________:
+    # Here the solution is found by traversing the list using tree recursion. If its not an instance and a number, lnk is set to return 1
+    # if its at the end of a list, lnk is returning 0, this works with lnk as base cases as we are recursively calling deep_len with lnk.rest and lnk.first
+    # and soem of the calls may have an int in them, which does not have a .rest or .first method, thus we have to check if its an instance or not and also if it itself is an empty Link:
+    # does not produce an error
+    if lnk is Link.empty:
         return 0
-    elif ______________:
+    elif isinstance(lnk, int):
         return 1
     else:
-        return _________________________
+        return deep_len(lnk.rest) + deep_len(lnk.first)
 
 
 def make_to_string(front, mid, back, empty_repr):
@@ -292,11 +361,13 @@ def make_to_string(front, mid, back, empty_repr):
     >>> jerrys_to_string(Link.empty)
     '()'
     """
+
+    #lnk when you pass lnk.rest, its either a link or empty cannot be just a number 
     def printer(lnk):
-        if ______________:
-            return _________________________
+        if lnk is Link.empty:
+            return empty_repr
         else:
-            return _________________________
+            return front + str(lnk.first) + mid  + printer(lnk.rest) + back
     return printer
 
 
@@ -351,6 +422,17 @@ def long_paths(t, n):
     [[0, 11, 12, 13, 14]]
     """
     "*** YOUR CODE HERE ***"
+    def long_pths(t, n, current):
+        paths = []
+        if current >= n and t.is_leaf():
+            paths.append([t.label])
+        for b in t.branches:
+            for path in long_pths(b, n, current +1):
+                paths.append([t.label] + path)
+        return paths
+ 
+         
+    return long_pths(t,n,0)
 
 
 class Link:

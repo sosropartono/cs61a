@@ -236,6 +236,8 @@ def has_path(t, word):
     False
     """
     "*** YOUR CODE HERE ***"
+    # for this problem the magic comes in the idea that you can search each branch and if it has a path return True, but does not return anything if
+    # The search does not return anything
     if label(t) == word[0] and len(word) == 1:
         return True
     if label(t) == word[0]:
