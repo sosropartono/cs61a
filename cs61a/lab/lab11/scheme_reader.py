@@ -83,7 +83,7 @@ def read_tail(src):
         else:
             # BEGIN PROBLEM 2
             "*** YOUR CODE HERE ***"
-            return Pair(scheme_read(src), read_tail(src))
+            return (Pair(scheme_read(src), read_tail(src)))
             # END PROBLEM 2
     except EOFError:
         raise SyntaxError('unexpected end of file')
