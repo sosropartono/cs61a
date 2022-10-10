@@ -1,16 +1,13 @@
 """This module implements the built-in data types of the Scheme language, along
 with a parser for Scheme expressions.
-
 In addition to the types defined in this file, some data types in Scheme are
 represented by their corresponding type in Python:
     number:       int or float
     symbol:       string
     boolean:      bool
     unspecified:  None
-
 The __repr__ method of a Scheme value will return a Python expression that
 would be evaluated to the value, where possible.
-
 The __str__ method of a Scheme value will return a Scheme expression that
 would be read to the value, where possible.
 """
@@ -29,7 +26,6 @@ from pair import Pair, nil
 
 def scheme_read(src):
     """Read the next expression from SRC, a Buffer of tokens.
-
     >>> scheme_read(Buffer(tokenize_lines(['nil'])))
     nil
     >>> scheme_read(Buffer(tokenize_lines(['1'])))
@@ -44,17 +40,14 @@ def scheme_read(src):
     val = src.pop_first()  # Get and remove the first token
     if val == 'nil':
         # BEGIN PROBLEM 2
-        "*** YOUR CODE HERE ***"
         return nil
         # END PROBLEM 2
     elif val == '(':
         # BEGIN PROBLEM 2
-        "*** YOUR CODE HERE ***"
         return read_tail(src)
         # END PROBLEM 2
     elif val == "'":
         # BEGIN PROBLEM 3
-        "*** YOUR CODE HERE ***"
         return Pair('quote', Pair(scheme_read(src), nil))
         # END PROBLEM 3
     elif val not in DELIMITERS:
@@ -65,7 +58,6 @@ def scheme_read(src):
 
 def read_tail(src):
     """Return the remainder of a list in SRC, starting before an element or ).
-
     >>> read_tail(Buffer(tokenize_lines([')'])))
     nil
     >>> read_tail(Buffer(tokenize_lines(['2 3)'])))
@@ -76,14 +68,13 @@ def read_tail(src):
             raise SyntaxError('unexpected end of file')
         elif src.current() == ')':
             # BEGIN PROBLEM 2
-            "*** YOUR CODE HERE ***"
-            src.pop()
+            src.pop_first()
             return nil
             # END PROBLEM 2
         else:
             # BEGIN PROBLEM 2
             "*** YOUR CODE HERE ***"
-            return (Pair(scheme_read(src), read_tail(src)))
+            return Pair(scheme_read(src), read_tail(src))
             # END PROBLEM 2
     except EOFError:
         raise SyntaxError('unexpected end of file')

@@ -1,7 +1,6 @@
 """The buffer module assists in iterating through lines and tokens."""
 
 import math
-from queue import Empty
 import sys
 
 
@@ -53,33 +52,25 @@ class Buffer:
         exhausted its source, returns None."""
         # BEGIN PROBLEM 1
         "*** YOUR CODE HERE ***"
-        if self.current_line == ():
-            self.current_line = next(self.source)
-        if self.current_line == []:
-            return None
-        return self.current_line.pop(0)
-
+        element = self.current()
+        self.index += 1
+        return element
         # END PROBLEM 1
 
     def current(self):
         """Return the current element, or None if none exists."""
-        while self.current_line == []:
+        while not self.more_on_line():
             try:
                 # BEGIN PROBLEM 1
                 "*** YOUR CODE HERE ***"
-                self.index = 0
                 self.current_line = next(self.source)
-                if self.current_line:
-                    self.index = self.current_line[self.index]
-                    return self.index
-                if self.more_on_line() is False:
-                    self.index = 0
-                    return
+                self.index = 0
+                
                 # END PROBLEM 1
             except StopIteration:
                 self.current_line = ()
                 return None
-        return self.index
+        return self.current_line[self.index]
 
     def more_on_line(self):
         return self.index < len(self.current_line)
