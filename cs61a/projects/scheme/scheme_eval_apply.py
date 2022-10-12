@@ -1,5 +1,6 @@
 import sys
 import os
+from typing import Type
 
 from pair import *
 from scheme_utils import *
@@ -46,6 +47,16 @@ def scheme_apply(procedure, args, env):
     if isinstance(procedure, BuiltinProcedure):
         # BEGIN PROBLEM 2
         "*** YOUR CODE HERE ***"
+        py_list = []
+        while args is not nil:
+            py_list += [args.first]
+            args = args.rest
+        if procedure.expect_env is True:
+            py_list += [env]
+        try:
+            return procedure.py_func(*py_list)
+        except TypeError:
+            raise SchemeError('incorrect number of arguments')
         # END PROBLEM 2
     elif isinstance(procedure, LambdaProcedure):
         # BEGIN PROBLEM 9

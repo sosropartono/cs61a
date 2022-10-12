@@ -31,12 +31,20 @@ class Frame:
         """Define Scheme SYMBOL to have VALUE."""
         # BEGIN PROBLEM 1
         "*** YOUR CODE HERE ***"
+        self.bindings[symbol] = value
         # END PROBLEM 1
 
     def lookup(self, symbol):
         """Return the value bound to SYMBOL. Errors if SYMBOL is not found."""
         # BEGIN PROBLEM 1
         "*** YOUR CODE HERE ***"
+        # Checks current frame, then goes through all the frames up until the last one? doesnt check the global frame
+        while self is not None:
+            try:
+                if self.bindings[symbol] != None:
+                    return self.bindings[symbol]
+            except: 
+                self = self.parent
         # END PROBLEM 1
         raise SchemeError('unknown identifier: {0}'.format(symbol))
 
