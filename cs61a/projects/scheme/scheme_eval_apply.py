@@ -1,5 +1,7 @@
+from ast import Expression, Lambda
 import sys
 import os
+from turtle import xcor
 from typing import Type
 
 from pair import *
@@ -27,7 +29,6 @@ def scheme_eval(expr, env, _=None):  # Optional third argument is ignored
         return env.lookup(expr)
     elif self_evaluating(expr):
         return expr
-
     # All non-atomic expressions are lists (combinations)
     if not scheme_listp(expr):
         raise SchemeError('malformed list: {0}'.format(repl_str(expr)))
@@ -37,6 +38,10 @@ def scheme_eval(expr, env, _=None):  # Optional third argument is ignored
     else:
         # BEGIN PROBLEM 3
         "*** YOUR CODE HERE ***"
+        symbol = scheme_eval(expr.first, env)
+        rest = expr.rest.map(lambda x: scheme_eval(x, env))
+        # apply scheme eval to all parts of the expression, in which if its a multiple procedure, it will return that expr and apply it
+        return scheme_apply(symbol, rest, env)
         # END PROBLEM 3
 
 
@@ -61,10 +66,16 @@ def scheme_apply(procedure, args, env):
     elif isinstance(procedure, LambdaProcedure):
         # BEGIN PROBLEM 9
         "*** YOUR CODE HERE ***"
+        # env is where the procedure is called frame possibly (GF), the frame should be a new frame below the definition of the frame (f1)
+        # so it should be the procedure's env and the child of that env where lambda is called and the body is evaluated 
+        new_env = procedure.env.make_child_frame(procedure.formals, args)
+        return eval_all(procedure.body, new_env)         
         # END PROBLEM 9
     elif isinstance(procedure, MuProcedure):
         # BEGIN PROBLEM 11
         "*** YOUR CODE HERE ***"
+        new_env = env.make_child_frame(procedure.formals, args)
+        return eval_all(procedure.body, new_env)
         # END PROBLEM 11
     else:
         assert False, "Unexpected procedure: {}".format(procedure)
@@ -86,7 +97,12 @@ def eval_all(expressions, env):
     2
     """
     # BEGIN PROBLEM 6
-    return scheme_eval(expressions.first, env)  # replace this with lines of your own code
+    if expressions == nil:
+        return None
+    while expressions.rest is not nil:
+        scheme_eval(expressions.first, env)
+        expressions = expressions.rest
+    return scheme_eval(expressions.first, env, True)
     # END PROBLEM 6
 
 
@@ -112,7 +128,6 @@ def complete_apply(procedure, args, env):
     else:
         return val
 
-
 def optimize_tail_calls(original_scheme_eval):
     """Return a properly tail recursive version of an eval function."""
     def optimized_eval(expr, env, tail=False):
@@ -121,15 +136,16 @@ def optimize_tail_calls(original_scheme_eval):
         """
         if tail and not scheme_symbolp(expr) and not self_evaluating(expr):
             return Unevaluated(expr, env)
-
         result = Unevaluated(expr, env)
         # BEGIN PROBLEM EC
         "*** YOUR CODE HERE ***"
+        while isinstance(result, Unevaluated):
+            result = original_scheme_eval(result.expr, result.env)
+
+        return result
         # END PROBLEM EC
     return optimized_eval
-
-
 ################################################################
 # Uncomment the following line to apply tail call optimization #
 ################################################################
-# scheme_eval = optimize_tail_calls(scheme_eval)
+scheme_eval = optimize_tail_calls(scheme_eval)
