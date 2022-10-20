@@ -146,7 +146,7 @@ def optimize_tail_calls(original_scheme_eval):
         # stores expression until the next one evaluates to that value  
         # so by the end we can call unevaluated and evaluate it, until we recieve a value which is what we return
         # when we do this we only store the value into result, discarding the rest of the frames, this is tail recursive because at the end of the implementation, we can just return the answer
-        # in comparison with the other, where we would need to keep the frames since we're doing some recursive call to them here, we only return at the end of the result
+        # in comparison with the other, where we would need to keep the frames since we're doing some recursive call to them here keeping it (active), we only return at the end of the result
         # keeping the stack retrieval at constant time 
         while isinstance(result, Unevaluated):
             result = original_scheme_eval(result.expr, result.env)
