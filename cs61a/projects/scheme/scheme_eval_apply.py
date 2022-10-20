@@ -38,9 +38,10 @@ def scheme_eval(expr, env, _=None):  # Optional third argument is ignored
     else:
         # BEGIN PROBLEM 3
         "*** YOUR CODE HERE ***"
+        # apply scheme eval to all parts of the expression, in which if its a multiple procedure, it will return that expr and apply it
+
         symbol = scheme_eval(expr.first, env)
         rest = expr.rest.map(lambda x: scheme_eval(x, env))
-        # apply scheme eval to all parts of the expression, in which if its a multiple procedure, it will return that expr and apply it
         return scheme_apply(symbol, rest, env)
         # END PROBLEM 3
 
@@ -134,14 +135,21 @@ def optimize_tail_calls(original_scheme_eval):
         """Evaluate Scheme expression EXPR in Frame ENV. If TAIL,
         return an Unevaluated containing an expression for further evaluation.
         """
+        # evaluates to another expression for further evaluation
         if tail and not scheme_symbolp(expr) and not self_evaluating(expr):
             return Unevaluated(expr, env)
         result = Unevaluated(expr, env)
         # BEGIN PROBLEM EC
         "*** YOUR CODE HERE ***"
+        #  
+        # calling on original scheme expression until it evaluates to some value, then returning that value at the end which is making it sort of alike a retrival rather than computation
+        # stores expression until the next one evaluates to that value  
+        # so by the end we can call unevaluated and evaluate it, until we recieve a value which is what we return
+        # when we do this we only store the value into result, discarding the rest of the frames, this is tail recursive because at the end of the implementation, we can just return the answer
+        # in comparison with the other, where we would need to keep the frames since we're doing some recursive call to them here, we only return at the end of the result
+        # keeping the stack retrieval at constant time 
         while isinstance(result, Unevaluated):
             result = original_scheme_eval(result.expr, result.env)
-
         return result
         # END PROBLEM EC
     return optimized_eval
