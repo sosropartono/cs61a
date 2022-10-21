@@ -19,7 +19,7 @@ def roman_numerals(text):
     >>> roman_numerals("she loves ALL editors equally.")
     []
     """
-    return re.findall(__________, text)
+    return re.findall('[IVX]+[MDC]{0,1}', text)
 
 
 import re
@@ -43,7 +43,7 @@ def cs_classes(post):
     >>> cs_classes("What are some good CS upper division courses? I was thinking about CS 161 or CS 169a")
     True
     """
-    return bool(re.search(__________, post))
+    return bool(re.search('[[CScs]+[\s]*(\d\d)+(.)]*', post))
 
 
 import re
@@ -60,9 +60,7 @@ def match_time(text):
     >>> match_time("At 2:00 I pinged 127.0.0.1:80.")
     ['2:00']
     """
-    return re.findall(__________, text)
-
-
+    return re.findall('\d{1,2}:[0-6]{1}\d{1}[\w]*', text)
 import re
 
 
@@ -79,8 +77,15 @@ def area_codes(text):
     >>> area_codes("no matches for 12 3456 7890 or 09876-54321")
     []
     """
-    return re.findall(__________, text)
-
+    yeah = re.findall('\(*[\d]{3}\)*[ -]*[\d]{3}[ -]*[\d]{4,5}', text)
+    all_tele = []
+    for string in yeah:
+        if string[0] == '(':
+            string = string[1:4]
+        if len(''.join(re.findall('\d*', string))) > 10:
+            string = ''
+        all_tele += re.findall('^\d{3}', string)
+    return all_tele
 
 def most_common_code(text):
     """
@@ -98,3 +103,21 @@ def most_common_code(text):
     '123'
     """
     "*** YOUR CODE HERE ***"
+    yeah = re.findall('\(*[\d]{3}\)*[ -]*[\d]{3}[ -]*[\d]{4}', text)
+    all_tele = []
+    for string in yeah:
+        if string[0] == '(':
+            string = string[1:4]
+        if len(''.join(re.findall('\d*', string))) > 10:
+            string = ''
+        all_tele += re.findall('^\d{3}', string)
+    max, largest = 'null', 0
+    for zip in all_tele:
+        if all_tele.count(zip) > largest:
+            largest = all_tele.count(zip)
+            max = zip
+
+    return max
+
+    # return all_tele
+
