@@ -9,6 +9,12 @@
     %import common.NUMBER
 
 
+# For the branches portion, we need to take into account if in branches, there is a tree with nested branches
+# Tree(4), ...
+# tree_node takes care of Tree(3, ...)
+# Grammar bascially describes the syntax of the language, how to form words according to language's syntax
+# Grammar is a way to syntatically analyze the language, breaking it down into a syntax tree
+# syntax for describing a context free grammar
 ?start: tree_node    
     tree_node: "Tree("label")" | "Tree("label", ""["branches"]"")" 
     
