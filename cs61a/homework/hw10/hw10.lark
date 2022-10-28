@@ -1,0 +1,28 @@
+
+rstring: "r\"" regex* "\""
+
+?regex: character | word | pipe | group | class | num_quant | plus_quant | star_quant
+
+group: "("regex")"
+
+pipe : regex "|" regex
+
+range: NUMBER"-"NUMBER | LETTER"-"LETTER
+
+class: "["range* character* range* character*"]"
+
+character: LETTER | NUMBER 
+
+plus_quant: group "+"| character "+" | class "+"
+
+star_quant: group "*"| character "*" | class "*"
+
+num_quant: group " {"NUMBER"}" | group "{"NUMBER",""}" | group "{"","NUMBER "}" | group"{"NUMBER","NUMBER "}" | character "{"NUMBER"}" |character "{"NUMBER",""}" | character "{"","NUMBER "}" |character "{"NUMBER","NUMBER "}" | class "{"NUMBER"}" |class "{"NUMBER",""}" | class "{"","NUMBER "}" |class "{"NUMBER","NUMBER "}"
+
+
+word: WORD
+
+%ignore /\s+/
+%import common.LETTER
+%import common.NUMBER
+%import common.WORD
