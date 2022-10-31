@@ -1,7 +1,9 @@
+from contextlib import nullcontext
 import re
 
 
 from operator import add, sub, mul
+from tkinter import N
 
 
 def prune_min(t):
@@ -21,6 +23,20 @@ def prune_min(t):
     Tree(6, [Tree(3, [Tree(1)])])
     """
     "*** YOUR CODE HERE ***"
+    min = 1000
+    if len(t.branches) == 2:
+        for branch in t.branches:
+            if branch.label < min:
+                min = branch.label
+                temp = branch
+        t.branches = [temp]
+    for branch in t.branches:
+        prune_min(branch)
+            
+
+            
+            
+
 
 
 def address_oneline(text):
@@ -41,12 +57,14 @@ def address_oneline(text):
     >>> address_oneline("790 lowercase St")
     []
     """
-    block_number = r'___'
-    cardinal_dir = r'___'  # whitespace is important!
-    street = r'___'
-    type_abbr = r'___'
+    block_number = r'(?:\d{3,5})'
+    cardinal_dir = r'[NEWS ]*'  # whitespace is important!
+    street = r'(?:[A-Z]\w*\s)+'
+    type_abbr = r'(?:[A-Z][a-z]{1,4})\b'
     street_name = f"{cardinal_dir}{street}{type_abbr}"
     return re.findall(f"{block_number} {street_name}", text)
+
+
 
 
 def make_test_random():
@@ -107,9 +125,25 @@ class Player:
 
     def debate(self, other):
         "*** YOUR CODE HERE ***"
+        probability = max(0.1, self.popularity/(self.popularity + other.popularity))
+        if probability < random():
+            self.popularity -= 50
+        else:
+            self.popularity += 50
+        if self.popularity <= 0:
+            self.popularity = 0
+
+
 
     def speech(self, other):
         "*** YOUR CODE HERE ***"
+        self.votes += self.popularity//10
+        self.popularity += self.popularity//10
+        other.votes -= other.popularity//10 
+        other.popularity -= other.popularity//10 
+        if self.popularity <= 0:
+            self.popularity = 0
+        
 
     def choose(self, other):
         return self.speech
@@ -134,6 +168,12 @@ class Game:
     def play(self):
         while not self.game_over:
             "*** YOUR CODE HERE ***"
+            if self.turn % 2 == 0:
+                self.p1.choose(self.p2)
+                self.turn += 1
+            else:
+                self.p2.choose(self.p1)
+                self.turn += 1
         return self.winner
 
     @property
@@ -142,7 +182,12 @@ class Game:
 
     @property
     def winner(self):
-        "*** YOUR CODE HERE ***"
+        if self.p1.votes > self.p2.votes:
+            return self.p1
+        elif self.p1.votes < self.p2.votes:
+            return self.p2
+        else:
+            return self.p1
 
 
 # Phase 3: New Players
@@ -159,6 +204,11 @@ class AggressivePlayer(Player):
 
     def choose(self, other):
         "*** YOUR CODE HERE ***"
+        if self.popularity <= other.popularity:
+            return self.debate
+        else:
+            return self.speech
+        
 
 
 class CautiousPlayer(Player):
@@ -176,6 +226,9 @@ class CautiousPlayer(Player):
 
     def choose(self, other):
         "*** YOUR CODE HERE ***"
+        if self.popularity is 0:
+            return self.debate
+        return self.speech
 
 
 def add_trees(t1, t2):
